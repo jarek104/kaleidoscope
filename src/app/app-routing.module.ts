@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DataTableComponent } from './data-table/data-table.component';
 
 const routes: Routes = [
   // { path: 'view/:id', component: QAVComponent},
-  // { path: 'data', component: DataTableComponent},
-  // { path: '' , redirectTo: '/data', pathMatch: 'full'},
-  // { path: '**' , component: DataTableComponent}
+  { path: 'data', component: DataTableComponent},
+  { path: '' , redirectTo: '/data', pathMatch: 'full'},
+  { path: '**' , component: DataTableComponent}
 ];
 
 @NgModule({
