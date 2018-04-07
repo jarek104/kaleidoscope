@@ -8,6 +8,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AfterViewInit, OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Subscription } from 'rxjs/Subscription';
+import { DocumentService } from '../services/document.service';
+import { IDocument } from '../../models/document';
 
 @Component({
   selector: 'app-data-table',
@@ -16,15 +18,14 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class DataTableComponent implements OnInit, AfterViewInit {
   displayedColumns = ['Author', 'Title', 'Year', 'Genre', 'Difficulty', 'Language', 'Link'];
-  songsFirestoreDocument: AngularFirestoreDocument<Song>;
-  dataSource = new MatTableDataSource<Song>();
+  dataSource = new MatTableDataSource<IDocument>();
   selectedRow: Number;
   setClickedRow: Function;
   songToEdit;
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private songsService: SongsService ) {
+  constructor(private songsService: DocumentService ) {
     this.setClickedRow = function(index, data){
       if (index === this.selectedRow) {
         this.selectedRow = -1;
@@ -38,7 +39,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.selectedRow = -1;
-    this.songsService.getSongs().subscribe(data => {
+    this.songsService.getDocuments().subscribe(data => {
       this.dataSource.data = data;
 
     });
@@ -48,10 +49,10 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  openRandom() {
-    const rand = Math.floor(Math.random() * this.dataSource.data.length);
-    window.open(this.dataSource.data[rand].Link);
-  }
+  // openRandom() {
+  //   const rand = Math.floor(Math.random() * this.dataSource.data.length);
+  //   window.open(this.dataSource.data[rand].Link);
+  // }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();

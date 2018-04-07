@@ -7,8 +7,8 @@
             </mat-form-field>
 
             <span class="fill-remaining-space"></span>
-            <button mat-raised-button [routerLink]="['/edit', 0]" color="accent">Add song</button>
-            <button mat-raised-button [disabled]="selectedRow == -1" [routerLink]="['/edit', songToEdit]" color="accent" class="m-1">Edit song</button>
+            <button mat-raised-button [routerLink]="['/view', 0]" color="accent">Add song</button>
+            <button mat-raised-button [disabled]="selectedRow == -1" [routerLink]="['/view', songToEdit]" color="accent" class="m-1">Edit song</button>
             <button mat-raised-button class="margin-left" (click)="openRandom()" color="primary">Random song</button>
         </mat-toolbar>
     </div>
@@ -23,24 +23,24 @@
             <mat-cell *matCellDef="let song"> {{song.Title}} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="Difficulty">
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="mat-column-difficulty"> Difficulty </mat-header-cell>
-            <mat-cell *matCellDef="let song" class="mat-column-difficulty"> {{song.Difficulty}} </mat-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Difficulty </mat-header-cell>
+            <mat-cell *matCellDef="let song"> {{song.Difficulty}} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="Year">
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="mat-column-year"> Year </mat-header-cell>
-            <mat-cell *matCellDef="let song" class="mat-column-year"> {{song.Year}} </mat-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Year </mat-header-cell>
+            <mat-cell *matCellDef="let song"> {{song.Year}} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="Genre">
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="mat-column-genre"> Genre </mat-header-cell>
-            <mat-cell *matCellDef="let song" class="mat-column-genre"> {{song.Genre}} </mat-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Genre </mat-header-cell>
+            <mat-cell *matCellDef="let song"> {{song.Genre}} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="Language">
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="mat-column-language"> Language </mat-header-cell>
-            <mat-cell *matCellDef="let song" class="mat-column-language"> {{song.Language}} </mat-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Language </mat-header-cell>
+            <mat-cell *matCellDef="let song"> {{song.Language}} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="Link">
-            <mat-header-cell *matHeaderCellDef class="mat-column-genre"> Link </mat-header-cell>
-            <mat-cell *matCellDef="let song" class="mat-column-genre">
+            <mat-header-cell *matHeaderCellDef> Link </mat-header-cell>
+            <mat-cell *matCellDef="let song">
                 <a href="{{song.Link}}" mat-raised-button color="primary" target="_blank">Open</a>
             </mat-cell>
         </ng-container>
