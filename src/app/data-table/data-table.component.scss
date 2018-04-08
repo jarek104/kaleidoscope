@@ -1,0 +1,24 @@
+.menu__width {
+    min-width: 56px !important;
+}
+
+.container {
+    padding: 0px 3px;
+}
+
+mat-button-toggle-group {
+    box-shadow: none !important;
+}
+
+.mat-button-toggle-checked {
+    background: #fff !important;
+    border-bottom: 2px solid #4054B2;
+}
+
+mat-button-toggle:focus {
+    background: #fff !important;
+}
+
+mat-button-toggle:active {
+    background: #fff !important;
+}
