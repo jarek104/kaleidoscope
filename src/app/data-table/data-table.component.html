@@ -1,50 +1,22 @@
-<div class="container">
-    <div class="search-header mat-elevation-z8">
-        <mat-toolbar>
+<div class="container" fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-form-field class="search-box">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search...">
+    </mat-form-field>
 
-            <mat-form-field class="search-box">
-                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search...">
-            </mat-form-field>
-
-            <span class="fill-remaining-space"></span>
-            <button mat-raised-button [routerLink]="['/view', 0]" color="accent">Add song</button>
-            <button mat-raised-button [disabled]="selectedRow == -1" [routerLink]="['/view', songToEdit]" color="accent" class="m-1">Edit song</button>
-            <button mat-raised-button class="margin-left" (click)="openRandom()" color="primary">Random song</button>
-        </mat-toolbar>
-    </div>
-
-    <mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-        <ng-container matColumnDef="Author">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Author </mat-header-cell>
-            <mat-cell *matCellDef="let song"> {{song.Author}} </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="Title">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
-            <mat-cell *matCellDef="let song"> {{song.Title}} </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="Difficulty">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Difficulty </mat-header-cell>
-            <mat-cell *matCellDef="let song"> {{song.Difficulty}} </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="Year">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Year </mat-header-cell>
-            <mat-cell *matCellDef="let song"> {{song.Year}} </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="Genre">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Genre </mat-header-cell>
-            <mat-cell *matCellDef="let song"> {{song.Genre}} </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="Language">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Language </mat-header-cell>
-            <mat-cell *matCellDef="let song"> {{song.Language}} </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="Link">
-            <mat-header-cell *matHeaderCellDef> Link </mat-header-cell>
-            <mat-cell *matCellDef="let song">
-                <a href="{{song.Link}}" mat-raised-button color="primary" target="_blank">Open</a>
-            </mat-cell>
-        </ng-container>
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns; let i = index" (click)="setClickedRow(i, row)" [class.active]="i == selectedRow"></mat-row>
-    </mat-table>
+    <span class="fill-remaining-space"></span>
+    <mat-button-toggle-group #group="matButtonToggleGroup" value="metadata">
+        <mat-button-toggle value="metadata">
+            Metadata
+        </mat-button-toggle>
+        <mat-button-toggle value="keywords">
+            Keywords
+        </mat-button-toggle>
+        <mat-button-toggle value="thumbnails">
+            Thumnails
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+    <button mat-button><mat-icon>menu</mat-icon></button>
 </div>
+<app-metadata-table *ngIf="group.value === 'metadata'"></app-metadata-table>
+<app-keywords-table *ngIf="group.value === 'keywords'"></app-keywords-table>
+<app-thumbnails-table *ngIf="group.value === 'thumbnails'"></app-thumbnails-table>

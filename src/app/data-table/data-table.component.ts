@@ -17,29 +17,29 @@ import { IDocument } from '../../models/document';
   styleUrls: ['./data-table.component.scss']
 })
 export class DataTableComponent implements OnInit, AfterViewInit {
-  displayedColumns = ['Author', 'Title', 'Year', 'Genre', 'Difficulty', 'Language', 'Link'];
+  displayedColumns = ['id', 'name', 'author', 'dateCreated', 'lastModified'];
   dataSource = new MatTableDataSource<IDocument>();
   selectedRow: Number;
   setClickedRow: Function;
-  songToEdit;
+  documentToEdit;
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private songsService: DocumentService ) {
+  constructor(private documentsService: DocumentService ) {
     this.setClickedRow = function(index, data){
       if (index === this.selectedRow) {
         this.selectedRow = -1;
-        this.songToEdit = 0;
+        this.documentToEdit = 0;
       } else {
         this.selectedRow = index;
-        this.songToEdit = data.SongID;
+        this.documentToEdit = data.documentID;
       }
     };
   }
 
   ngOnInit() {
     this.selectedRow = -1;
-    this.songsService.getDocuments().subscribe(data => {
+    this.documentsService.getDocuments().subscribe(data => {
       this.dataSource.data = data;
 
     });

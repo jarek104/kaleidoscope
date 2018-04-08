@@ -9,11 +9,17 @@ import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../shared/material.module';
 import { DocumentService } from './services/document.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MetadataTableComponent } from './metadata-table/metadata-table.component';
+import { KeywordsTableComponent } from './keywords-table/keywords-table.component';
+import { ThumbnailsTableComponent } from './thumbnails-table/thumbnails-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DataTableComponent
+    DataTableComponent,
+    MetadataTableComponent,
+    KeywordsTableComponent,
+    ThumbnailsTableComponent
   ],
   imports: [
     BrowserModule,
