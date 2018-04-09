@@ -1,6 +1,6 @@
 <div class="container" fxFlex fxLayout="row">
     <!-- fxLayoutAlign="space-between center" -->
-    <div class="search__align flex-item">
+    <div class="search__align flex-item" fxLayout="row" fxLayoutAlign="start center">
         <mat-form-field class="search-box">
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search...">
         </mat-form-field>
@@ -16,16 +16,16 @@
     <div class="flex-item" fxLayout="row" fxLayoutAlign="space-around center">
         <mat-button-toggle-group #group="matButtonToggleGroup" value="metadata">
             <mat-button-toggle value="metadata">
-                <!-- <i class="fi fi-list-square-bullet"></i> -->
-                Generic
+                <i class="fi fi-info"></i>
+                <!-- Generic -->
             </mat-button-toggle>
             <mat-button-toggle value="keywords">
-                <!-- <i class="fi fi-table"></i> -->
-                Keywords
+                <i class="fi fi-key"></i>
+                <!-- Keywords -->
             </mat-button-toggle>
             <mat-button-toggle value="thumbnails">
-                <!-- <i class="fi fi-four-squares"></i> -->
-                Thumnails
+                <i class="fi fi-eye"></i>
+                <!-- Thumnails -->
             </mat-button-toggle>
         </mat-button-toggle-group>
     </div>

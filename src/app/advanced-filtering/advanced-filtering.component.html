@@ -1,6 +1,6 @@
 <div fxLayout="row" fxLayoutAlign="space-between center" class="container__padding">
     <div>
-        <span class="label__font">Document date range:</span>
+        <span class="label__font">Date range:</span>
         <mat-form-field>
             <input matInput [matDatepicker]="fromPicker" placeholder="From">
             <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
@@ -12,13 +12,13 @@
             <mat-datepicker #toPicker></mat-datepicker>
         </mat-form-field>
     </div>
-    <div>
-        <span class="label__font">Document ID range:</span>
+    <!-- <div>
+        <span class="label__font">ID range:</span>
         <mat-form-field>
             <input matInput placeholder="From">
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="To">
         </mat-form-field>
-    </div>
+    </div> -->
 </div>

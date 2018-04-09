@@ -1,22 +1,22 @@
 <mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> id </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Document ID</mat-header-cell>
         <mat-cell *matCellDef="let document"> {{document.id}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> name </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Document Name</mat-header-cell>
         <mat-cell *matCellDef="let document"> {{document.name}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="author">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> author </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Author</mat-header-cell>
         <mat-cell *matCellDef="let document"> {{document.author}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="dateCreated">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> dateCreated </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Date Created</mat-header-cell>
         <mat-cell *matCellDef="let document"> {{document.dateCreated | date}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="lastModified">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> lastModified </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Last Modified</mat-header-cell>
         <mat-cell *matCellDef="let document"> {{document.lastModified | date}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="imageUrl">
