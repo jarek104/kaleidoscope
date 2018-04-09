@@ -15,10 +15,18 @@ mat-button-toggle-group {
     border-bottom: 2px solid #4054B2;
 }
 
+mat-button-toggle:active {
+    background: #fff !important;
+}
+
 mat-button-toggle:focus {
     background: #fff !important;
 }
 
-mat-button-toggle:active {
+mat-button-toggle-group:focus {
     background: #fff !important;
+}
+
+.flex-item {
+    flex: 1;
 }

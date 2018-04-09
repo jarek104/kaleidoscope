@@ -1,40 +1,44 @@
-<div class="container" fxLayout="row" fxLayoutAlign="space-between center">
-    <div>
+<div class="container" fxFlex fxLayout="row">
+    <!-- fxLayoutAlign="space-between center" -->
+    <div class="search__align flex-item">
         <mat-form-field class="search-box">
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search...">
         </mat-form-field>
         <button *ngIf="!(advancedFilteringEnabled)" (click)="toggleAdvancedFiltering()" mat-icon-button>
-            <i class="material-icons">expand_more</i>
+                <i class="fi fi-angle-bottom"></i>
         </button>
         <button *ngIf="advancedFilteringEnabled" (click)="toggleAdvancedFiltering()" mat-icon-button>
-            <i class="material-icons">expand_less</i>
+                <i class="fi fi-angle-top"></i>
+            
         </button>
     </div>
 
-    <span class="fill-remaining-space"></span>
-    <mat-button-toggle-group #group="matButtonToggleGroup" value="metadata">
-        <mat-button-toggle value="metadata">
-            <i class="material-icons">info_outline</i>
-            <!-- Metadata -->
-        </mat-button-toggle>
-        <mat-button-toggle value="keywords">
-            <i class="material-icons">vpn_key</i>
-            <!-- Keywords -->
-        </mat-button-toggle>
-        <mat-button-toggle value="thumbnails">
-            <i class="material-icons">grid_on</i>
-            <!-- Thumnails -->
-        </mat-button-toggle>
-    </mat-button-toggle-group>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item>Export</button>
-        <button mat-menu-item>Generate report</button>
-        <button mat-menu-item>Send via email</button>
-        <button mat-menu-item>Send to Sharebase</button>
-        <button mat-menu-item>Add to favorites</button>
-    </mat-menu>
-    <button mat-button [matMenuTriggerFor]="menu" class="menu__width"><mat-icon>menu</mat-icon></button>
-
+    <div class="flex-item" fxLayout="row" fxLayoutAlign="space-around center">
+        <mat-button-toggle-group #group="matButtonToggleGroup" value="metadata">
+            <mat-button-toggle value="metadata">
+                <!-- <i class="fi fi-list-square-bullet"></i> -->
+                Generic
+            </mat-button-toggle>
+            <mat-button-toggle value="keywords">
+                <!-- <i class="fi fi-table"></i> -->
+                Keywords
+            </mat-button-toggle>
+            <mat-button-toggle value="thumbnails">
+                <!-- <i class="fi fi-four-squares"></i> -->
+                Thumnails
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+    <div class="flex-item" fxLayout="row" fxLayoutAlign="end center">
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Export</button>
+            <button mat-menu-item>Generate report</button>
+            <button mat-menu-item>Send via email</button>
+            <button mat-menu-item>Send to Sharebase</button>
+            <button mat-menu-item>Add to favorites</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="menu" class="menu__width"><i class="fi fi-three-horizontal-lines"></i></button>
+    </div>
 </div>
 <app-advanced-filtering *ngIf="advancedFilteringEnabled"></app-advanced-filtering>
 <app-metadata-table *ngIf="group.value === 'metadata'"></app-metadata-table>
