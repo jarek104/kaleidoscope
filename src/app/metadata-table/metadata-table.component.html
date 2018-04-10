@@ -1,4 +1,4 @@
-<mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+<mat-table #table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Document ID</mat-header-cell>
         <mat-cell *matCellDef="let document"> {{document.id}} </mat-cell>
