@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, Input, OnChanges } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { IDocument } from '../../models/document';
 import { DocumentService } from '../services/document.service';
@@ -8,12 +8,14 @@ import { DocumentService } from '../services/document.service';
   templateUrl: './metadata-table.component.html',
   styleUrls: ['./metadata-table.component.scss']
 })
-export class MetadataTableComponent implements OnInit, AfterViewInit {
+export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges {
+
   displayedColumns = ['id', 'name', 'author', 'dateCreated', 'lastModified'];
   dataSource = new MatTableDataSource<IDocument>();
   selectedRow: Number;
   setClickedRow: Function;
   documentToEdit;
+  @Input() filterValue = '';
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -40,7 +42,9 @@ export class MetadataTableComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
-
+  ngOnChanges() {
+    this.applyFilter(this.filterValue);
+  }
   // openRandom() {
   //   const rand = Math.floor(Math.random() * this.dataSource.data.length);
   //   window.open(this.dataSource.data[rand].Link);

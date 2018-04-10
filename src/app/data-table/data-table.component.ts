@@ -18,8 +18,12 @@ import { IDocument } from '../../models/document';
 })
 export class DataTableComponent  {
   advancedFilteringEnabled = false;
+  filterValue = '';
 
   toggleAdvancedFiltering() {
     this.advancedFilteringEnabled = !this.advancedFilteringEnabled;
+  }
+  storeFilterValue(filterValue: string) {
+    this.filterValue = filterValue;
   }
 }

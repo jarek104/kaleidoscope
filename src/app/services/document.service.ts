@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class DocumentService {
-  private _documentUrl = './assets/documents.json';
+  private _documentUrl = './assets/docs2.json';
 
     constructor(private _http: HttpClient) { }
 
