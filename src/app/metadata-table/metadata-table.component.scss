@@ -27,3 +27,8 @@ $ligher-blue: #c5cae9;
 .mat-header-cell {
     font-size: 15px;
 }
+
+.mat-row, .mat-header-row {
+  background: white;
+  min-width: 600px;
+}

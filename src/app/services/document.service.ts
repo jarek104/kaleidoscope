@@ -7,13 +7,13 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class DocumentService {
-  private _documentUrl = './assets/docs2.json';
+  private _documentUrl = './assets/docs2shorter.json';
 
     constructor(private _http: HttpClient) { }
 
     getDocuments(): Observable<IDocument[]> {
         return this._http.get<IDocument[]>(this._documentUrl)
-            .do(data => console.log('All: ' + JSON.stringify(data)))
+            // .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 

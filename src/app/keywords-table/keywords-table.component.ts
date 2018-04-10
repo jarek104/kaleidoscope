@@ -19,7 +19,7 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
     'streetAddress',
     'stockIndustry',
     'movieGender'];
-  dataSource = new MatTableDataSource<IDocument>();
+  @Input() dataSource = new MatTableDataSource<IDocument>();
   selectedRow: Number;
   setClickedRow: Function;
   documentToEdit;
@@ -41,10 +41,6 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
 
   ngOnInit() {
     this.selectedRow = -1;
-    this.documentsService.getDocuments().subscribe(data => {
-      this.dataSource.data = data;
-
-    });
   }
 
   ngAfterViewInit() {

@@ -11,7 +11,7 @@ import { DocumentService } from '../services/document.service';
 export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges {
 
   displayedColumns = ['id', 'name', 'author', 'dateCreated', 'lastModified'];
-  dataSource = new MatTableDataSource<IDocument>();
+  @Input() dataSource = new MatTableDataSource<IDocument>();
   selectedRow: Number;
   setClickedRow: Function;
   documentToEdit;
@@ -19,7 +19,7 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private documentsService: DocumentService ) {
+  constructor() {
     this.setClickedRow = function(index, data){
       if (index === this.selectedRow) {
         this.selectedRow = -1;
@@ -33,10 +33,6 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
 
   ngOnInit() {
     this.selectedRow = -1;
-    this.documentsService.getDocuments().subscribe(data => {
-      this.dataSource.data = data;
-
-    });
   }
 
   ngAfterViewInit() {

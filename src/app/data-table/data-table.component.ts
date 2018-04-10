@@ -16,10 +16,18 @@ import { IDocument } from '../../models/document';
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.scss']
 })
-export class DataTableComponent  {
+export class DataTableComponent implements OnInit  {
   advancedFilteringEnabled = false;
   filterValue = '';
+  dataSource = new MatTableDataSource<IDocument>();
 
+  ngOnInit() {
+    this.documentsService.getDocuments().subscribe(data => {
+      this.dataSource.data = data;
+    });
+  }
+
+  constructor(private documentsService: DocumentService) {}
   toggleAdvancedFiltering() {
     this.advancedFilteringEnabled = !this.advancedFilteringEnabled;
   }
