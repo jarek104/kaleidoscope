@@ -1,5 +1,9 @@
 <div fxLayout="row" fxLayoutAlign="center center" class="container__padding">
     <div>
+        <!-- <mat-form-field class="search-box" style="margin-right: 40px; min-width: 250px;">
+            <input matInput (keyup)="storeFilterValue($event.target.value)" placeholder="Search term">
+        </mat-form-field> -->
+
         <mat-form-field>
             <input matInput [matDatepicker]="fromPicker" placeholder="From">
             <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
