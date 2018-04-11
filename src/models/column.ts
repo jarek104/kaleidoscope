@@ -1,7 +1,7 @@
-export interface Column {
+export interface IColumn {
   name: string;
   width: string;
-  dataType: string;
+  dataType?: string;
   showOnMobile?: boolean;
   filterValue?: string;
 }

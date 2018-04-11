@@ -1,28 +1,29 @@
+<!-- <pre>{{columns | json}}</pre> -->
 <div class="table-container">
     <mat-table #table [dataSource]="dataSource" matSort>
         <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Document ID</mat-header-cell>
-            <mat-cell *matCellDef="let document"> {{document.id}} </mat-cell>
+            <mat-cell *matCellDef="let document">{{document.id}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Document Name</mat-header-cell>
-            <mat-cell *matCellDef="let document"> {{document.name}} </mat-cell>
+            <mat-cell *matCellDef="let document">{{document.name}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="author">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Author</mat-header-cell>
-            <mat-cell *matCellDef="let document"> {{document.author}} </mat-cell>
+            <mat-cell *matCellDef="let document">{{document.author}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="dateCreated">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Date Created</mat-header-cell>
-            <mat-cell *matCellDef="let document"> {{document.dateCreated | date}} </mat-cell>
+            <mat-cell *matCellDef="let document">{{document.dateCreated | date}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="lastModified">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Last Modified</mat-header-cell>
-            <mat-cell *matCellDef="let document"> {{document.lastModified | date}} </mat-cell>
+            <mat-cell *matCellDef="let document">{{document.lastModified | date}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef class="actions-column__width"></mat-header-cell>
+            <mat-header-cell *matHeaderCellDef class="actions-column__width">Actions</mat-header-cell>
             <mat-cell *matCellDef="let document" class="actions-column__width">
                 <button mat-icon-button [matMenuTriggerFor]="menu" class="more-button__hover">
                         <mat-icon>more_vert</mat-icon>
@@ -49,8 +50,6 @@
                         <span>Information</span>
                     </button>
                 </mat-menu>
-                <!-- <button mat-menu-item (click)="window.open('google.com','_blank')"><mat-icon>open_in_new</mat-icon></button> -->
-                <!-- <a href="{{document.Link}}" mat-raised-button color="primary" target="_blank">Open</a> -->
             </mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

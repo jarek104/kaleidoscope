@@ -4,10 +4,12 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { IDocument } from '../../models/document';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
+import { IColumn } from '../../models/column';
 
 @Injectable()
 export class DocumentService {
   private _documentUrl = './assets/docs2shorter.json';
+  private _columnsUrl = './assets/columns.json';
 
     constructor(private _http: HttpClient) { }
 
@@ -16,6 +18,11 @@ export class DocumentService {
             // .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
+    getColumns(): Observable<IColumn[]> {
+      return this._http.get<IDocument[]>(this._columnsUrl)
+          .do(data => console.log('All: ' + JSON.stringify(data)))
+          .catch(this.handleError);
+  }
 
     private handleError(err: HttpErrorResponse) {
         console.error(err.message);

@@ -17,6 +17,7 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
   documentToEdit;
   showButtons: Boolean = false;
   @Input() filterValue = '';
+  @Input() columns;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;

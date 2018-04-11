@@ -20,10 +20,14 @@ export class DataTableComponent implements OnInit  {
   advancedFilteringEnabled = false;
   filterValue = '';
   dataSource = new MatTableDataSource<IDocument>();
+  columns;
 
   ngOnInit() {
     this.documentsService.getDocuments().subscribe(data => {
       this.dataSource.data = data;
+    });
+    this.documentsService.getColumns().subscribe(data => {
+      this.columns = data;
     });
   }
 

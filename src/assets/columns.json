@@ -1,0 +1,26 @@
+[
+  {
+        "name": "Document ID",
+        "width": "100px"
+  },
+  {
+        "name": "Document Name",
+        "width": "100px"
+  },
+  {
+        "name": "Author",
+        "width": "100px"
+  },
+  {
+        "name": "Date Created",
+        "width": "100px"
+  },
+  {
+        "name": "Last Modified",
+        "width": "100px"
+  },
+  {
+        "name": "Actions",
+        "width": "100px"
+  }
+]

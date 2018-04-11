@@ -46,7 +46,7 @@
 
     </div>
     <app-advanced-filtering *ngIf="advancedFilteringEnabled"></app-advanced-filtering>
-    <app-metadata-table [filterValue]="filterValue" [dataSource]="dataSource" *ngIf="group.value === 'metadata'"></app-metadata-table>
+    <app-metadata-table [filterValue]="filterValue" [columns]="columns" [dataSource]="dataSource" *ngIf="group.value === 'metadata'"></app-metadata-table>
     <app-keywords-table [filterValue]="filterValue" [dataSource]="dataSource" *ngIf="group.value === 'keywords'"></app-keywords-table>
     <app-thumbnails-table *ngIf="group.value === 'thumbnails'"></app-thumbnails-table>
 </div>
