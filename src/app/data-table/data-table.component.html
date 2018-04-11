@@ -1,7 +1,7 @@
 <div class="mat-elevation-z6">
     <div class="container" fxFlex fxLayout="row">
         <div class="flex-item" fxLayout="row" fxLayoutAlign="start center">
-            <button mat-button [matMenuTriggerFor]="menu" class="menu__width"><i class="fi fi-three-horizontal-lines"></i></button>
+            <button mat-button [matMenuTriggerFor]="menu" class="menu__width"><mat-icon>menu</mat-icon></button>
             <mat-menu #menu="matMenu">
                 <button mat-menu-item>Export</button>
                 <button mat-menu-item>Generate report</button>
@@ -18,10 +18,10 @@
             </mat-form-field>
             <button *ngIf="!(advancedFilteringEnabled)" (click)="toggleAdvancedFiltering()" mat-icon-button>
                 <i class="fi fi-angle-bottom"></i>
-        </button>
+            </button>
             <button *ngIf="advancedFilteringEnabled" (click)="toggleAdvancedFiltering()" mat-icon-button>
                 <i class="fi fi-angle-top"></i>
-        </button>
+            </button>
 
         </div>
 

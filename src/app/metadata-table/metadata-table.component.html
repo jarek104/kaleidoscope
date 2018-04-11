@@ -1,34 +1,61 @@
-<mat-table #table [dataSource]="dataSource" matSort>
-    <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Document ID</mat-header-cell>
-        <mat-cell *matCellDef="let document"> {{document.id}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Document Name</mat-header-cell>
-        <mat-cell *matCellDef="let document"> {{document.name}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="author">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Author</mat-header-cell>
-        <mat-cell *matCellDef="let document"> {{document.author}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="dateCreated">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Date Created</mat-header-cell>
-        <mat-cell *matCellDef="let document"> {{document.dateCreated | date}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="lastModified">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Last Modified</mat-header-cell>
-        <mat-cell *matCellDef="let document"> {{document.lastModified | date}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="imageUrl">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> imageUrl </mat-header-cell>
-        <mat-cell *matCellDef="let document"> {{document.imageUrl}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="Link">
-        <mat-header-cell *matHeaderCellDef> Link </mat-header-cell>
-        <mat-cell *matCellDef="let document">
-            <a href="{{document.Link}}" mat-raised-button color="primary" target="_blank">Open</a>
-        </mat-cell>
-    </ng-container>
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns; let i = index" (click)="setClickedRow(i, row)" [class.active]="i == selectedRow"></mat-row>
-</mat-table>
+<div class="table-container">
+    <mat-table #table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Document ID</mat-header-cell>
+            <mat-cell *matCellDef="let document"> {{document.id}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Document Name</mat-header-cell>
+            <mat-cell *matCellDef="let document"> {{document.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="author">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Author</mat-header-cell>
+            <mat-cell *matCellDef="let document"> {{document.author}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="dateCreated">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Date Created</mat-header-cell>
+            <mat-cell *matCellDef="let document"> {{document.dateCreated | date}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="lastModified">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Last Modified</mat-header-cell>
+            <mat-cell *matCellDef="let document"> {{document.lastModified | date}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef class="actions-column__width"></mat-header-cell>
+            <mat-cell *matCellDef="let document" class="actions-column__width">
+                <button mat-icon-button [matMenuTriggerFor]="menu" class="more-button__hover">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                        <mat-icon>edit</mat-icon>
+                        <span>Edit</span>
+                    </button>
+                    <button mat-menu-item disabled>
+                        <mat-icon>share</mat-icon>
+                        <span>Share</span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>file_download</mat-icon>
+                        <span>Download</span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>delete</mat-icon>
+                        <span>Delete</span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>info</mat-icon>
+                        <span>Information</span>
+                    </button>
+                </mat-menu>
+                <!-- <button mat-menu-item (click)="window.open('google.com','_blank')"><mat-icon>open_in_new</mat-icon></button> -->
+                <!-- <a href="{{document.Link}}" mat-raised-button color="primary" target="_blank">Open</a> -->
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns; let i = index" (click)="setSelectedRow(i, row)" [class.active]="i == selectedRow"></mat-row>
+    </mat-table>
+</div>
+<mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
+</mat-paginator>

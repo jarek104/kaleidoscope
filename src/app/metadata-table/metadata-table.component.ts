@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild, Input, OnChanges } from '@angular/core';
-import { MatTableDataSource, MatSort } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { IDocument } from '../../models/document';
 import { DocumentService } from '../services/document.service';
 
@@ -10,23 +10,27 @@ import { DocumentService } from '../services/document.service';
 })
 export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges {
 
-  displayedColumns = ['id', 'name', 'author', 'dateCreated', 'lastModified'];
+  displayedColumns = ['id', 'name', 'author', 'dateCreated', 'lastModified', 'actions'];
   @Input() dataSource = new MatTableDataSource<IDocument>();
   selectedRow: Number;
-  setClickedRow: Function;
+  setSelectedRow: Function;
   documentToEdit;
+  showButtons: Boolean = false;
   @Input() filterValue = '';
 
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor() {
-    this.setClickedRow = function(index, data){
+    this.setSelectedRow = function(index, data){
       if (index === this.selectedRow) {
+        console.log('if' + this.selectedRow);
         this.selectedRow = -1;
         this.documentToEdit = 0;
       } else {
+        console.log('else' + this.selectedRow);
         this.selectedRow = index;
-        this.documentToEdit = data.documentID;
+        // this.documentToEdit = data.documentID;
       }
     };
   }
@@ -37,14 +41,12 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+    // Uncomment line below for pagination
+    // this.dataSource.paginator = this.paginator;
   }
   ngOnChanges() {
     this.applyFilter(this.filterValue);
   }
-  // openRandom() {
-  //   const rand = Math.floor(Math.random() * this.dataSource.data.length);
-  //   window.open(this.dataSource.data[rand].Link);
-  // }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
