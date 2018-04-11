@@ -13,6 +13,9 @@ import { MetadataTableComponent } from './metadata-table/metadata-table.componen
 import { KeywordsTableComponent } from './keywords-table/keywords-table.component';
 import { ThumbnailsTableComponent } from './thumbnails-table/thumbnails-table.component';
 import { AdvancedFilteringComponent } from './advanced-filtering/advanced-filtering.component';
+import { RowMenuComponent } from './row-menu/row-menu.component';
+import { TableMenuComponent } from './table-menu/table-menu.component';
+import { TableFooterComponent } from './table-footer/table-footer.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { AdvancedFilteringComponent } from './advanced-filtering/advanced-filter
     MetadataTableComponent,
     KeywordsTableComponent,
     ThumbnailsTableComponent,
-    AdvancedFilteringComponent
+    AdvancedFilteringComponent,
+    RowMenuComponent,
+    TableMenuComponent,
+    TableFooterComponent
   ],
   imports: [
     BrowserModule,

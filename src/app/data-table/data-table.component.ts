@@ -10,6 +10,8 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Subscription } from 'rxjs/Subscription';
 import { DocumentService } from '../services/document.service';
 import { IDocument } from '../../models/document';
+import { ObservableMedia } from '@angular/flex-layout';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-data-table',
@@ -21,6 +23,12 @@ export class DataTableComponent implements OnInit  {
   filterValue = '';
   dataSource = new MatTableDataSource<IDocument>();
   columns;
+  isExtraSmall?: Observable<boolean>;
+
+  constructor(
+    private documentsService: DocumentService,
+    private observableMedia: ObservableMedia
+  ) {}
 
   ngOnInit() {
     this.documentsService.getDocuments().subscribe(data => {
@@ -31,7 +39,7 @@ export class DataTableComponent implements OnInit  {
     });
   }
 
-  constructor(private documentsService: DocumentService) {}
+
   toggleAdvancedFiltering() {
     this.advancedFilteringEnabled = !this.advancedFilteringEnabled;
   }

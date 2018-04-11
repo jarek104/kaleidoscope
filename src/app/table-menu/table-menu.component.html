@@ -1,0 +1,10 @@
+<button mat-button [matMenuTriggerFor]="menu" class="menu__width">
+  <mat-icon>menu</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item>Export</button>
+    <button mat-menu-item>Generate report</button>
+    <button mat-menu-item>Send via email</button>
+    <button mat-menu-item>Send to Sharebase</button>
+    <button mat-menu-item>Add to favorites</button>
+</mat-menu>

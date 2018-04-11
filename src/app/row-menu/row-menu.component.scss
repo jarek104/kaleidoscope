@@ -1,0 +1,9 @@
+.more-button__hover {
+  display: none;
+}
+
+::ng-deep mat-row:hover {
+  .more-button__hover {
+      display: inline-block;
+  }
+}

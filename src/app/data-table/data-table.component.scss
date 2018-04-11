@@ -1,3 +1,6 @@
+.size {
+  max-height: 600px
+}
 .menu__width {
     min-width: 56px !important;
 }
@@ -22,14 +25,13 @@ mat-button-toggle:active {
 mat-button-toggle:focus {
     background: #fff !important;
 }
-
 .flex-item {
-    flex: 1;
+  flex: 1 1;
 }
 .search-box {
-  min-width: 250px;
+  min-width: 240px;
 }
-.mat-row, .mat-header-row, .container {
+.mat-row, .mat-header-row, .container, app-metadata-table {
   background: white;
-  min-width: 600px;
+  min-width: 400px;
 }

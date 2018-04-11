@@ -25,36 +25,10 @@
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef class="actions-column__width">Actions</mat-header-cell>
             <mat-cell *matCellDef="let document" class="actions-column__width">
-                <button mat-icon-button [matMenuTriggerFor]="menu" class="more-button__hover">
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
-                <mat-menu #menu="matMenu">
-                    <button mat-menu-item>
-                        <mat-icon>edit</mat-icon>
-                        <span>Edit</span>
-                    </button>
-                    <button mat-menu-item disabled>
-                        <mat-icon>share</mat-icon>
-                        <span>Share</span>
-                    </button>
-                    <button mat-menu-item>
-                        <mat-icon>file_download</mat-icon>
-                        <span>Download</span>
-                    </button>
-                    <button mat-menu-item>
-                        <mat-icon>delete</mat-icon>
-                        <span>Delete</span>
-                    </button>
-                    <button mat-menu-item>
-                        <mat-icon>info</mat-icon>
-                        <span>Information</span>
-                    </button>
-                </mat-menu>
+                <app-row-menu></app-row-menu>
             </mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns; let i = index" (click)="setSelectedRow(i, row)" [class.active]="i == selectedRow"></mat-row>
     </mat-table>
 </div>
-<mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
-</mat-paginator>
