@@ -1,42 +1,67 @@
-<mat-table #table [dataSource]="dataSource" matSort>
-    <ng-container matColumnDef="employee_first_name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>First Name</mat-header-cell>
-        <mat-cell *matCellDef="let document"> {{document.employee_first_name}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="employee_last_name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
-        <mat-cell *matCellDef="let document"> {{document.employee_last_name}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
-        <mat-cell *matCellDef="let document"> {{document.email}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="department">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Department</mat-header-cell>
-        <mat-cell *matCellDef="let document"> {{document.department}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="city">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
-        <mat-cell *matCellDef="let document"> {{document.city}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="streetAddress">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Street Address</mat-header-cell>
-        <mat-cell *matCellDef="let document"> {{document.streetAddress}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="stockIndustry">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Industry</mat-header-cell>
-        <mat-cell *matCellDef="let document"> {{document.stockIndustry}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="movieGender">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Movie Gender</mat-header-cell>
-        <mat-cell *matCellDef="let document"> {{document.movieGender}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="imageUrl">
-        <mat-header-cell *matHeaderCellDef>Link</mat-header-cell>
-        <mat-cell *matCellDef="let document">
-            <a href="{{document.imageUrl}}" mat-raised-button color="primary" target="_blank">Open</a>
-        </mat-cell>
-    </ng-container>
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns; let i = index" (click)="setClickedRow(i, row)" [class.active]="i == selectedRow"></mat-row>
-</mat-table>
+<div class="table-container">
+    <mat-table #table [dataSource]="dataSource" matSort>
+      <!-- Column header definitions -->
+        <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef class="small-column__width">
+                <mat-checkbox (change)="$event ? masterToggle() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+                </mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" class="small-column__width">
+                <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null"
+                            [checked]="selection.isSelected(row)">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="small-column__width">ID</mat-header-cell>
+            <mat-cell *matCellDef="let document" class="small-column__width">{{document.id}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="employee_first_name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>First Name</mat-header-cell>
+            <mat-cell *matCellDef="let document"> {{document.employee_first_name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="employee_last_name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
+            <mat-cell *matCellDef="let document"> {{document.employee_last_name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+            <mat-cell *matCellDef="let document"> {{document.email}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="department">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Department</mat-header-cell>
+            <mat-cell *matCellDef="let document"> {{document.department}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="city">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
+            <mat-cell *matCellDef="let document"> {{document.city}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="streetAddress">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Street Address</mat-header-cell>
+            <mat-cell *matCellDef="let document"> {{document.streetAddress}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="stockIndustry">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Industry</mat-header-cell>
+            <mat-cell *matCellDef="let document"> {{document.stockIndustry}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="movieGender">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Movie Gender</mat-header-cell>
+            <mat-cell *matCellDef="let document"> {{document.movieGender}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef class="small-column__width">Actions</mat-header-cell>
+            <mat-cell *matCellDef="let document" class="small-column__width">
+                <app-row-menu></app-row-menu>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Data -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>

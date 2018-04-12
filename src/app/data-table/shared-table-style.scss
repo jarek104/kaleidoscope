@@ -1,0 +1,52 @@
+$ligher-blue: #EEEEEE;
+$hover-color: #c5cac9;
+.highlight {
+    background-color: #F5F5F5;
+}
+.mat-row:hover {
+  background: #eeeeee;
+}
+
+.mat-header-cell {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.mat-row:hover {
+    background-color: $hover-color;
+    -webkit-transition: background-color 400ms linear;
+    -ms-transition: background-color 400ms linear;
+    transition: background-color 400ms linear;
+}
+
+//Testing
+.table-container {
+    position: relative;
+    margin-top: 10px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+  margin-top: 46px;
+}
+
+.table-container .mat-table .mat-header-row {
+    position: absolute;
+    top: -10px;
+    left: 0px;
+    right: 15px;
+    background: #fff;
+}
+
+.small-column__width {
+    flex: 0 0 100px !important;
+    white-space: unset !important;
+}
+
+
+.mat-column-select {
+    overflow: initial;
+}

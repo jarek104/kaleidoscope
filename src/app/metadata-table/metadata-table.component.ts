@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-metadata-table',
   templateUrl: './metadata-table.component.html',
-  styleUrls: ['./metadata-table.component.scss']
+  styleUrls: ['./metadata-table.component.scss', '../data-table/shared-table-style.scss']
 })
 export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges {
 
@@ -30,13 +30,13 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
 
   ngOnInit() {
     this.selection.onChange.subscribe( () => {
-      this.rowSelectionChanged.emit(this.selection.selected.length)});
+      this.rowSelectionChanged.emit(this.selection.selected.length);});
   }
 
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
-    return numSelected == numRows;
+    return numSelected === numRows;
   }
   masterToggle() {
     this.isAllSelected() ?

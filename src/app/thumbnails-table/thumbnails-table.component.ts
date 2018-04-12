@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
+import { IDocument } from '../../models/document';
 
 @Component({
   selector: 'app-thumbnails-table',
@@ -7,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ThumbnailsTableComponent implements OnInit {
 
+  @Input() dataSource = new MatTableDataSource<IDocument>();
   constructor() { }
 
   ngOnInit() {
