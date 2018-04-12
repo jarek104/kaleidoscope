@@ -1,7 +1,9 @@
-<div class="container">
-  <div>
+<div class="container" fxLayout="row" fxLayoutAlign="space-between center">
+  <div *ngIf="numberOfSelectedItems > 0; else nothing_selected">
       <span>{{numberOfSelectedItems}} {{numberOfSelectedItems > 1 ? 'items' : 'item'}} selected</span>
+      <app-table-menu></app-table-menu>
   </div>
+  <ng-template #nothing_selected>No items selected</ng-template>
   <div class="flex-item" fxLayout="row" fxLayoutAlign="end center">
     <mat-button-toggle-group #group="matButtonToggleGroup" value="metadata" (change)="setCurrentView($event)">
         <mat-button-toggle value="metadata">

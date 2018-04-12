@@ -40,29 +40,35 @@ $hover-color: #f5f5f5;
 //Testing
 .table-container {
     position: relative;
-    margin-top: 57px;
-}
-
-.table-container .mat-table {
-    max-height: 600px;
-    overflow-y: auto;
+    margin-top: 20px;
     overflow-x: auto;
+    overflow-y: auto;
+}
+.table-container .mat-table.mat-table {
+  min-width: 800px;
+  max-height: 600px;
+}
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+  margin-top: 46px;
 }
 
 .table-container .mat-table .mat-header-row {
     position: absolute;
-    top: -57px;
+    min-width: 800px;
+    top: -10px;
     left: 0px;
     right: 15px;
     background: #fff;
 }
 
-.actions-column__width {
-    flex: 0 0 80px !important;
+.small-column__width {
+    flex: 0 0 100px !important;
     white-space: unset !important;
 }
 
 
 .mat-column-select {
     overflow: initial;
-  }
+}
