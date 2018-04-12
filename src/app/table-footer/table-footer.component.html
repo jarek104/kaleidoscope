@@ -1,5 +1,7 @@
 <div class="container">
-  <div>Selected rows:</div>
+  <div>
+      <span>{{numberOfSelectedItems}} {{numberOfSelectedItems > 1 ? 'items' : 'item'}} selected</span>
+  </div>
   <div class="flex-item" fxLayout="row" fxLayoutAlign="end center">
     <mat-button-toggle-group #group="matButtonToggleGroup" value="metadata" (change)="setCurrentView($event)">
         <mat-button-toggle value="metadata">

@@ -26,8 +26,9 @@
     [filterValue]="filterValue"
     [columns]="columns"
     [dataSource]="dataSource"
+    (rowSelectionChanged)="updateSelectedRowCount($event);"
     *ngIf="currentView === 'metadata'"></app-metadata-table>
     <app-keywords-table [filterValue]="filterValue" [dataSource]="dataSource" *ngIf="currentView === 'keywords'"></app-keywords-table>
     <app-thumbnails-table *ngIf="currentView === 'thumbnails'"></app-thumbnails-table>
-    <app-table-footer></app-table-footer>
+    <app-table-footer [numberOfSelectedItems]="numberOfSelectedItems"></app-table-footer>
 </div>

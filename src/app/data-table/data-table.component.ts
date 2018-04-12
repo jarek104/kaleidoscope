@@ -26,6 +26,7 @@ export class DataTableComponent implements OnInit  {
   columns;
   isExtraSmall?: Observable<boolean>;
   currentView: string;
+  numberOfSelectedItems;
 
   constructor(
     private documentsService: DocumentService,
@@ -51,4 +52,9 @@ export class DataTableComponent implements OnInit  {
   storeFilterValue(filterValue: string) {
     this.filterValue = filterValue;
   }
+  updateSelectedRowCount(count: any) {
+    console.log("count: " +  count);
+    this.numberOfSelectedItems = count;
+  }
+  
 }
