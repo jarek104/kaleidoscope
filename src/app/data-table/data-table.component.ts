@@ -41,7 +41,7 @@ export class DataTableComponent implements OnInit  {
     this.documentsService.getColumns().subscribe(data => {
       this.columns = data;
     });
-    this.viewService.selectedView$.subscribe(view => 
+    this.viewService.selectedView$.subscribe(view =>
     this.currentView = view);
   }
 
@@ -53,8 +53,7 @@ export class DataTableComponent implements OnInit  {
     this.filterValue = filterValue;
   }
   updateSelectedRowCount(count: any) {
-    console.log("count: " +  count);
     this.numberOfSelectedItems = count;
   }
-  
+
 }

@@ -40,13 +40,14 @@ $hover-color: #f5f5f5;
 //Testing
 .table-container {
     position: relative;
-    margin-top: 20px;
+    margin-top: 10px;
     overflow-x: auto;
     overflow-y: auto;
 }
 .table-container .mat-table.mat-table {
   min-width: 800px;
-  max-height: 600px;
+  max-height: 550px;
+  height: 550px;
 }
 .mat-table {
   overflow: auto;
