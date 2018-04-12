@@ -1,11 +1,11 @@
 <div class="mat-elevation-z6">
-    <div class="container" fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
         <div fxLayout="row" fxLayoutAlign="start center">
             <app-table-menu></app-table-menu>
 
         </div>
         <div fxLayout="row" fxLayoutAlign="center center">
-            <mat-form-field class="search-box" fxHide.xs="true">
+            <mat-form-field fxHide.xs="true">
                 <input matInput (keyup)="storeFilterValue($event.target.value)" placeholder="Search...">
             </mat-form-field>
             <button *ngIf="!(advancedFilteringEnabled)" (click)="toggleAdvancedFiltering()" mat-icon-button>
@@ -22,12 +22,17 @@
     </div>
     <app-advanced-filtering *ngIf="advancedFilteringEnabled"></app-advanced-filtering>
     <app-metadata-table
-    [filterValue]="filterValue"
-    [columns]="columns"
-    [dataSource]="dataSource"
-    (rowSelectionChanged)="updateSelectedRowCount($event);"
-    *ngIf="currentView === 'metadata'"></app-metadata-table>
-    <app-keywords-table [filterValue]="filterValue" [dataSource]="dataSource" *ngIf="currentView === 'keywords'"></app-keywords-table>
+      [filterValue]="filterValue"
+      [columns]="columns"
+      [dataSource]="dataSource"
+      (rowSelectionChanged)="updateSelectedRowCount($event);"
+      *ngIf="currentView === 'metadata'">
+    </app-metadata-table>
+    <app-keywords-table
+      [filterValue]="filterValue"
+      [dataSource]="dataSource"
+      *ngIf="currentView === 'keywords'">
+    </app-keywords-table>
     <app-thumbnails-table *ngIf="currentView === 'thumbnails'"></app-thumbnails-table>
     <app-table-footer [numberOfSelectedItems]="numberOfSelectedItems"></app-table-footer>
 </div>

@@ -24,9 +24,8 @@ export class DataTableComponent implements OnInit  {
   filterValue = '';
   dataSource = new MatTableDataSource<IDocument>();
   columns;
-  isExtraSmall?: Observable<boolean>;
   currentView: string;
-  numberOfSelectedItems;
+  numberOfSelectedItems: number;
 
   constructor(
     private documentsService: DocumentService,

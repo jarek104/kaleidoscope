@@ -1,28 +1,10 @@
 $ligher-blue: #EEEEEE;
-$hover-color: #f5f5f5;
+$hover-color: #c5cac9;
 .highlight {
     background-color: #F5F5F5;
 }
-
-.mat-table-selectable {
-    .mat-row:hover {
-        background: #eeeeee;
-    }
-    .mat-row.selected {
-        background: #f5f5f5;
-    }
-}
-
-// .margin-left {
-//     margin-left: 20px;
-// }
-
-.active {
-    background: $ligher-blue !important;
-}
-
-.mat-header-cell.mat-sort-header-sorted {
-    color: black;
+.mat-row:hover {
+  background: #eeeeee;
 }
 
 .mat-header-cell {

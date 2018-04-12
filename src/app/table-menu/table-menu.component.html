@@ -1,4 +1,4 @@
-<button mat-button [matMenuTriggerFor]="menu" class="menu__width">
+<button mat-button [matMenuTriggerFor]="menu" class="menu__width" [disabled]="isDisabled">
   <mat-icon>menu</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
