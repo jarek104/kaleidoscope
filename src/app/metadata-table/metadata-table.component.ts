@@ -1,7 +1,9 @@
-import { Component, OnInit, AfterViewInit, ViewChild, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { IDocument } from '../../models/document';
 import { DocumentService } from '../services/document.service';
+import { SelectionModel } from '@angular/cdk/collections';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-metadata-table',
@@ -10,43 +12,46 @@ import { DocumentService } from '../services/document.service';
 })
 export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges {
 
-  displayedColumns = ['id', 'name', 'author', 'dateCreated', 'lastModified', 'actions'];
+  displayedColumns = ['select', 'id', 'name', 'author', 'dateCreated', 'lastModified', 'actions'];
+
+  @ViewChild(MatSort) sort: MatSort;
   @Input() dataSource = new MatTableDataSource<IDocument>();
-  selectedRow: Number;
-  setSelectedRow: Function;
-  documentToEdit;
-  showButtons: Boolean = false;
   @Input() filterValue = '';
   @Input() columns;
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor() {
-    this.setSelectedRow = function(index, data){
-      if (index === this.selectedRow) {
-        console.log('if' + this.selectedRow);
-        this.selectedRow = -1;
-        this.documentToEdit = 0;
-      } else {
-        console.log('else' + this.selectedRow);
-        this.selectedRow = index;
-        // this.documentToEdit = data.documentID;
-      }
-    };
-  }
+  showButtons: Boolean = false;
+  
+  initialSelection = [];
+  allowMultiSelect = true;
+  selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
+  
+  @Output() rowSelectionChanged: EventEmitter<number> = new EventEmitter<number>();
 
   ngOnInit() {
-    this.selectedRow = -1;
+    this.selection.onChange.subscribe( () => {
+      this.rowSelectionChanged.emit(this.selection.selected.length)});
+  }
+
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected == numRows;
+  }
+  masterToggle() {
+    this.isAllSelected() ?
+        this.selection.clear() :
+        this.dataSource.data.forEach(row => this.selection.select(row));
+
+        
   }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
-    // Uncomment line below for pagination
-    // this.dataSource.paginator = this.paginator;
   }
   ngOnChanges() {
     this.applyFilter(this.filterValue);
+    console.log(this.selection.selected);
   }
 
   applyFilter(filterValue: string) {

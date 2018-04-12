@@ -18,24 +18,7 @@
 
         </div>
 
-        <div class="flex-item" fxLayout="row" fxLayoutAlign="end center">
-            <mat-button-toggle-group #group="matButtonToggleGroup" value="metadata">
-                <mat-button-toggle value="metadata">
-                    <mat-icon>bubble_chart</mat-icon>
-                    <!-- <i class="material-icons">label_outline</i> -->
-                    <!-- <i class="material-icons">blur_linear</i> -->
-                </mat-button-toggle>
-                <mat-button-toggle value="keywords">
-                    <i class="material-icons">reorder</i>
-                </mat-button-toggle>
-                <mat-button-toggle value="thumbnails">
-                    <mat-icon>apps</mat-icon>
-                </mat-button-toggle>
-                <mat-button-toggle value="map">
-                    <mat-icon>pin_drop</mat-icon>
-                </mat-button-toggle>
-            </mat-button-toggle-group>
-        </div>
+        
 
     </div>
     <app-advanced-filtering *ngIf="advancedFilteringEnabled"></app-advanced-filtering>
@@ -43,8 +26,9 @@
     [filterValue]="filterValue"
     [columns]="columns"
     [dataSource]="dataSource"
-    *ngIf="group.value === 'metadata'"></app-metadata-table>
-    <app-keywords-table [filterValue]="filterValue" [dataSource]="dataSource" *ngIf="group.value === 'keywords'"></app-keywords-table>
-    <app-thumbnails-table *ngIf="group.value === 'thumbnails'"></app-thumbnails-table>
-    <app-table-footer></app-table-footer>
+    (rowSelectionChanged)="updateSelectedRowCount($event);"
+    *ngIf="currentView === 'metadata'"></app-metadata-table>
+    <app-keywords-table [filterValue]="filterValue" [dataSource]="dataSource" *ngIf="currentView === 'keywords'"></app-keywords-table>
+    <app-thumbnails-table *ngIf="currentView === 'thumbnails'"></app-thumbnails-table>
+    <app-table-footer [numberOfSelectedItems]="numberOfSelectedItems"></app-table-footer>
 </div>

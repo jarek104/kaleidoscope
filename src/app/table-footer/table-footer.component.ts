@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { TableViewService } from '../services/table-view.service';
 
 @Component({
   selector: 'app-table-footer',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableFooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private viewService: TableViewService) { }
+
+  @Input() numberOfSelectedItems;
 
   ngOnInit() {
+    
   }
-
+  setCurrentView(viewName) {
+    console.log(viewName.value);
+    this.viewService.setCurrentView(viewName.value);
+  }
 }

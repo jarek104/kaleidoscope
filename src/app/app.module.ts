@@ -16,6 +16,7 @@ import { AdvancedFilteringComponent } from './advanced-filtering/advanced-filter
 import { RowMenuComponent } from './row-menu/row-menu.component';
 import { TableMenuComponent } from './table-menu/table-menu.component';
 import { TableFooterComponent } from './table-footer/table-footer.component';
+import { TableViewService } from './services/table-view.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { TableFooterComponent } from './table-footer/table-footer.component';
     MaterialModule,
     HttpClientModule
   ],
-  providers: [DocumentService],
+  providers: [DocumentService, TableViewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

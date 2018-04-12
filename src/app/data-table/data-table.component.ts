@@ -12,6 +12,7 @@ import { DocumentService } from '../services/document.service';
 import { IDocument } from '../../models/document';
 import { ObservableMedia } from '@angular/flex-layout';
 import { map } from 'rxjs/operators';
+import { TableViewService } from '../services/table-view.service';
 
 @Component({
   selector: 'app-data-table',
@@ -24,10 +25,13 @@ export class DataTableComponent implements OnInit  {
   dataSource = new MatTableDataSource<IDocument>();
   columns;
   isExtraSmall?: Observable<boolean>;
+  currentView: string;
+  numberOfSelectedItems;
 
   constructor(
     private documentsService: DocumentService,
-    private observableMedia: ObservableMedia
+    private observableMedia: ObservableMedia,
+    private viewService: TableViewService
   ) {}
 
   ngOnInit() {
@@ -37,13 +41,20 @@ export class DataTableComponent implements OnInit  {
     this.documentsService.getColumns().subscribe(data => {
       this.columns = data;
     });
+    this.viewService.selectedView$.subscribe(view => 
+    this.currentView = view);
   }
-
 
   toggleAdvancedFiltering() {
     this.advancedFilteringEnabled = !this.advancedFilteringEnabled;
   }
+
   storeFilterValue(filterValue: string) {
     this.filterValue = filterValue;
   }
+  updateSelectedRowCount(count: any) {
+    console.log("count: " +  count);
+    this.numberOfSelectedItems = count;
+  }
+  
 }
