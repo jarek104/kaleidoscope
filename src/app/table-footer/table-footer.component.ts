@@ -16,7 +16,6 @@ export class TableFooterComponent implements OnInit {
     this.numberOfSelectedItems = 0;
   }
   setCurrentView(viewName) {
-    console.log(viewName.value);
     this.viewService.setCurrentView(viewName.value);
   }
 }

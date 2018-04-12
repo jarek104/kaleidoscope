@@ -21,11 +21,11 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
 
 
   showButtons: Boolean = false;
-  
+
   initialSelection = [];
   allowMultiSelect = true;
   selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
-  
+
   @Output() rowSelectionChanged: EventEmitter<number> = new EventEmitter<number>();
 
   ngOnInit() {
@@ -43,7 +43,7 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
         this.selection.clear() :
         this.dataSource.data.forEach(row => this.selection.select(row));
 
-        
+
   }
 
   ngAfterViewInit() {
@@ -51,7 +51,6 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
   }
   ngOnChanges() {
     this.applyFilter(this.filterValue);
-    console.log(this.selection.selected);
   }
 
   applyFilter(filterValue: string) {
