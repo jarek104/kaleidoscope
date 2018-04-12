@@ -1,3 +1,21 @@
 <div class="container">
   <div>Selected rows:</div>
+  <div class="flex-item" fxLayout="row" fxLayoutAlign="end center">
+    <mat-button-toggle-group #group="matButtonToggleGroup" value="metadata" (change)="setCurrentView($event)">
+        <mat-button-toggle value="metadata">
+            <mat-icon>bubble_chart</mat-icon>
+            <!-- <i class="material-icons">label_outline</i> -->
+            <!-- <i class="material-icons">blur_linear</i> -->
+        </mat-button-toggle>
+        <mat-button-toggle value="keywords">
+            <i class="material-icons">reorder</i>
+        </mat-button-toggle>
+        <mat-button-toggle value="thumbnails">
+            <mat-icon>apps</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle value="map">
+            <mat-icon>pin_drop</mat-icon>
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+</div>
 </div>
