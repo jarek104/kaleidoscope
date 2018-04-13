@@ -3,11 +3,11 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
-import { IDocument } from '../models/document';
-import { IColumn } from '../models/column';
+import { IDocument } from '../kaleidoscope/models/document';
+import { IColumn } from '../kaleidoscope/models/column';
 
 @Injectable()
-export class DocumentService {
+export class DocumentProviderService {
   private _documentUrl = './assets/docs2shorter.json';
   private _columnsUrl = './assets/columns.json';
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatSort, MatTableDataSource } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { DataSource } from '@angular/cdk/table';
@@ -11,7 +11,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { ObservableMedia } from '@angular/flex-layout';
 import { map } from 'rxjs/operators';
 import { IDocument } from './models/document';
-import { DocumentService } from './services/document.service';
 import { TableViewService } from './services/table-view.service';
 
 @Component({
@@ -23,25 +22,18 @@ import { TableViewService } from './services/table-view.service';
 export class KaleidoscopeComponent implements OnInit  {
   advancedFilteringEnabled = false;
   filterValue = '';
-  dataSource = new MatTableDataSource<IDocument>();
-  columns;
+  @Input() dataSource = new MatTableDataSource<IDocument>();
   currentView: string;
   numberOfSelectedItems: number;
   selectedRowsData: IDocument[];
 
   constructor(
-    private documentsService: DocumentService,
     private observableMedia: ObservableMedia,
     private viewService: TableViewService
   ) {}
 
   ngOnInit() {
-    this.documentsService.getDocuments().subscribe(data => {
-      this.dataSource.data = data;
-    });
-    this.documentsService.getColumns().subscribe(data => {
-      this.columns = data;
-    });
+
     this.viewService.selectedView$.subscribe(view =>
     this.currentView = view);
   }

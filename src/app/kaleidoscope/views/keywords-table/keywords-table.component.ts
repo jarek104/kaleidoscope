@@ -2,7 +2,6 @@ import { Component, OnInit, OnChanges, AfterViewInit, Input, ViewChild, Output, 
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { IDocument } from '../../models/document';
 import { SelectionModel } from '@angular/cdk/collections';
-import { DocumentService } from '../../services/document.service';
 
 @Component({
   selector: 'app-keywords-table',
@@ -37,7 +36,7 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
   allowMultiSelect = true;
   selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
 
-  constructor(private documentsService: DocumentService ) {}
+  constructor() {}
 
   ngOnInit() {
     this.selection.onChange.subscribe( () => {

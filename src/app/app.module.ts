@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from '../shared/shared.module';
@@ -16,9 +15,10 @@ import { RowMenuComponent } from './kaleidoscope/shared/row-menu/row-menu.compon
 import { TableMenuComponent } from './kaleidoscope/shared/table-menu/table-menu.component';
 import { TableFooterComponent } from './kaleidoscope/table-footer/table-footer.component';
 import { MapViewComponent } from './kaleidoscope/views/map-view/map-view.component';
-import { DocumentService } from './kaleidoscope/services/document.service';
+
 import { TableViewService } from './kaleidoscope/services/table-view.service';
 import { KaleidoscopeComponent } from './kaleidoscope/kaleidoscope.component';
+import { DocumentProviderService } from './document-provider/document-provider.service';
 
 
 
@@ -37,7 +37,6 @@ import { KaleidoscopeComponent } from './kaleidoscope/kaleidoscope.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
     MaterialModule,
@@ -46,7 +45,7 @@ import { KaleidoscopeComponent } from './kaleidoscope/kaleidoscope.component';
       apiKey: 'AIzaSyB0erysD83QSAKH9CCVghJXph0py7BwmiY'
     })
   ],
-  providers: [DocumentService, TableViewService],
+  providers: [DocumentProviderService, TableViewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
