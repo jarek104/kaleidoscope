@@ -3,10 +3,10 @@
     <agm-marker *ngFor="let document of dataSource.data; let i = index" [latitude]="document.latitude" [longitude]="document.longitude" [label]="document.name" [markerDraggable]="false">
 
         <agm-info-window>
-            <strong>{{document.id}}</strong>
-            <div>{{document.name}}</div>
-            <div>{{document.author}}</div>
-            <div>{{document.dateCreated}}</div>
+            <strong>{{document.name}}</strong>
+            <div>Document ID: {{document.id}}</div>
+            <div>Author: {{document.author}}</div>
+            <div>Date Created: {{document.dateCreated}}</div>
             <div class="image-container">
                 <img [src]="document.imageUrl">
             </div>

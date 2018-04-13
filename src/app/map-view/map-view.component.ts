@@ -12,7 +12,7 @@ export class MapViewComponent {
 
   @Input() dataSource = new MatTableDataSource<IDocument>();
  // google maps zoom level
- zoom = 4;
+ zoom = 6;
 
  // initial center position for the map
  lat = 52.2297;
