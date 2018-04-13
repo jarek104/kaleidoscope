@@ -15,4 +15,7 @@ export class ThumbnailsTableComponent implements OnInit {
   ngOnInit() {
   }
 
+  log(name) {
+    console.log(name);
+  }
 }
