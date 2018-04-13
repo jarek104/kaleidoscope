@@ -1,17 +1,13 @@
 <div class="table-container">
     <mat-table #table [dataSource]="dataSource" matSort>
-      <!-- Column header definitions -->
+        <!-- Column header definitions -->
         <ng-container matColumnDef="select">
             <mat-header-cell *matHeaderCellDef class="small-column__width">
-                <mat-checkbox (change)="$event ? masterToggle() : null"
-                            [checked]="selection.hasValue() && isAllSelected()"
-                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+                <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
                 </mat-checkbox>
             </mat-header-cell>
             <mat-cell *matCellDef="let row" class="small-column__width">
-                <mat-checkbox (click)="$event.stopPropagation()"
-                            (change)="$event ? selection.toggle(row) : null"
-                            [checked]="selection.isSelected(row)">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
                 </mat-checkbox>
             </mat-cell>
         </ng-container>
@@ -48,9 +44,9 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header>Industry</mat-header-cell>
             <mat-cell *matCellDef="let document"> {{document.stockIndustry}} </mat-cell>
         </ng-container>
-        <ng-container matColumnDef="movieGender">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Movie Gender</mat-header-cell>
-            <mat-cell *matCellDef="let document"> {{document.movieGender}} </mat-cell>
+        <ng-container matColumnDef="stockName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Company</mat-header-cell>
+            <mat-cell *matCellDef="let document"> {{document.stockName}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="actions">

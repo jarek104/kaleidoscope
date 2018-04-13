@@ -17,6 +17,8 @@ import { RowMenuComponent } from './row-menu/row-menu.component';
 import { TableMenuComponent } from './table-menu/table-menu.component';
 import { TableFooterComponent } from './table-footer/table-footer.component';
 import { TableViewService } from './services/table-view.service';
+import { AgmCoreModule } from '@agm/core';
+import { MapViewComponent } from './map-view/map-view.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { TableViewService } from './services/table-view.service';
     AdvancedFilteringComponent,
     RowMenuComponent,
     TableMenuComponent,
-    TableFooterComponent
+    TableFooterComponent,
+    MapViewComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,10 @@ import { TableViewService } from './services/table-view.service';
     BrowserAnimationsModule,
     SharedModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB0erysD83QSAKH9CCVghJXph0py7BwmiY'
+    })
   ],
   providers: [DocumentService, TableViewService],
   bootstrap: [AppComponent]

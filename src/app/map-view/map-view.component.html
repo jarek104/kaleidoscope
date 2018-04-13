@@ -1,0 +1,21 @@
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="true">
+
+    <agm-marker *ngFor="let document of dataSource.data; let i = index" [latitude]="document.latitude" [longitude]="document.longitude" [label]="document.name" [markerDraggable]="false">
+
+        <agm-info-window>
+            <strong>{{document.id}}</strong>
+            <div>{{document.name}}</div>
+            <div>{{document.author}}</div>
+            <div>{{document.dateCreated}}</div>
+            <div class="image-container">
+                <img [src]="document.imageUrl">
+            </div>
+
+        </agm-info-window>
+
+    </agm-marker>
+
+    <!-- <agm-circle [latitude]="lat + 0.3" [longitude]="lng" [radius]="5000" [fillColor]="'red'" [circleDraggable]="true" [editable]="true">
+    </agm-circle> -->
+
+</agm-map>

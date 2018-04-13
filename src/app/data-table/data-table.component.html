@@ -17,23 +17,13 @@
         </div>
     </div>
     <app-advanced-filtering *ngIf="advancedFilteringEnabled"></app-advanced-filtering>
-    <app-metadata-table
-      [filterValue]="filterValue"
-      [columns]="columns"
-      [dataSource]="dataSource"
-      (rowSelectionChanged)="updateSelectedRowCount($event);"
-      *ngIf="currentView === 'metadata'">
+    <app-metadata-table [filterValue]="filterValue" [columns]="columns" [dataSource]="dataSource" (rowSelectionChanged)="updateSelectedRowCount($event);" *ngIf="currentView === 'metadata'">
     </app-metadata-table>
-    <app-keywords-table
-      [filterValue]="filterValue"
-      [columns]="columns"
-      [dataSource]="dataSource"
-      (rowSelectionChanged)="updateSelectedRowCount($event);"
-      *ngIf="currentView === 'keywords'">
+    <app-keywords-table [filterValue]="filterValue" [columns]="columns" [dataSource]="dataSource" (rowSelectionChanged)="updateSelectedRowCount($event);" *ngIf="currentView === 'keywords'">
     </app-keywords-table>
-    <app-thumbnails-table
-      [dataSource]="dataSource"
-      *ngIf="currentView === 'thumbnails'">
+    <app-thumbnails-table [dataSource]="dataSource" *ngIf="currentView === 'thumbnails'">
     </app-thumbnails-table>
+    <app-map-view [dataSource]="dataSource" *ngIf="currentView === 'map'">
+    </app-map-view>
     <app-table-footer [numberOfSelectedItems]="numberOfSelectedItems"></app-table-footer>
 </div>

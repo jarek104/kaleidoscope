@@ -11,6 +11,8 @@ export interface IDocument {
     city: string;
     streetAddress: string;
     stockIndustry: string;
-    movieGender: string;
+    stockName: string;
     imageUrl: string;
+    latitude: number;
+    longitude: number;
 }

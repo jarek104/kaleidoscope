@@ -21,7 +21,7 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
     'city',
     'streetAddress',
     'stockIndustry',
-    'movieGender'
+    'stockName'
   ];
 
   @ViewChild(MatSort) sort: MatSort;
