@@ -2,11 +2,12 @@ import { Component, OnInit, OnChanges, AfterViewInit, Input, ViewChild, Output, 
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { IDocument } from '../../models/document';
 import { SelectionModel } from '@angular/cdk/collections';
+import { DataControllerService } from '../../services/data-controller.service';
 
 @Component({
   selector: 'app-keywords-table',
   templateUrl: './keywords-table.component.html',
-  styleUrls: ['./keywords-table.component.scss', '../../../kaleidoscope/shared-table-style.scss']
+  styleUrls: ['./keywords-table.component.scss', '../shared-table-style.scss']
 })
 export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges {
 
@@ -24,7 +25,7 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
   ];
 
   @ViewChild(MatSort) sort: MatSort;
-  @Input() dataSource = new MatTableDataSource<IDocument>();
+  dataSource = new MatTableDataSource<IDocument>();
   @Input() filterValue = '';
   @Input() columns;
   @Output() rowSelectionChanged: EventEmitter<number> = new EventEmitter<number>();
@@ -36,9 +37,10 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
   allowMultiSelect = true;
   selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
 
-  constructor() {}
+  constructor(private _dcs: DataControllerService) {}
 
   ngOnInit() {
+    this.dataSource = this._dcs.dataSource;
     this.selection.onChange.subscribe( () => {
       this.rowSelectionChanged.emit(this.selection.selected.length); });
   }

@@ -19,6 +19,7 @@ import { MapViewComponent } from './kaleidoscope/views/map-view/map-view.compone
 import { TableViewService } from './kaleidoscope/services/table-view.service';
 import { KaleidoscopeComponent } from './kaleidoscope/kaleidoscope.component';
 import { DocumentProviderService } from './document-provider/document-provider.service';
+import { DataControllerService } from './kaleidoscope/services/data-controller.service';
 
 
 
@@ -45,7 +46,7 @@ import { DocumentProviderService } from './document-provider/document-provider.s
       apiKey: 'AIzaSyB0erysD83QSAKH9CCVghJXph0py7BwmiY'
     })
   ],
-  providers: [DocumentProviderService, TableViewService],
+  providers: [DocumentProviderService, TableViewService, DataControllerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

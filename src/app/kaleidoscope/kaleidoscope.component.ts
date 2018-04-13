@@ -8,10 +8,10 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AfterViewInit, OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Subscription } from 'rxjs/Subscription';
-import { ObservableMedia } from '@angular/flex-layout';
 import { map } from 'rxjs/operators';
 import { IDocument } from './models/document';
 import { TableViewService } from './services/table-view.service';
+import { DataControllerService } from './services/data-controller.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -22,18 +22,18 @@ import { TableViewService } from './services/table-view.service';
 export class KaleidoscopeComponent implements OnInit  {
   advancedFilteringEnabled = false;
   filterValue = '';
-  @Input() dataSource = new MatTableDataSource<IDocument>();
+  @Input() private dataSource = new MatTableDataSource<IDocument>();
   currentView: string;
   numberOfSelectedItems: number;
   selectedRowsData: IDocument[];
 
   constructor(
-    private observableMedia: ObservableMedia,
+    private dataControllerService: DataControllerService,
     private viewService: TableViewService
   ) {}
 
   ngOnInit() {
-
+    this.dataControllerService.dataSource = this.dataSource;
     this.viewService.selectedView$.subscribe(view =>
     this.currentView = view);
   }
@@ -45,6 +45,7 @@ export class KaleidoscopeComponent implements OnInit  {
   storeFilterValue(filterValue: string) {
     this.filterValue = filterValue;
   }
+
   updateSelectedRowCount(count: any) {
     this.numberOfSelectedItems = count;
   }

@@ -3,18 +3,19 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { IDocument } from '../../models/document';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
+import { DataControllerService } from '../../services/data-controller.service';
 
 @Component({
   selector: 'app-metadata-table',
   templateUrl: './metadata-table.component.html',
-  styleUrls: ['./metadata-table.component.scss', '../../../kaleidoscope/shared-table-style.scss']
+  styleUrls: ['./metadata-table.component.scss', '../shared-table-style.scss']
 })
 export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges {
 
   displayedColumns = ['select', 'id', 'name', 'author', 'dateCreated', 'lastModified', 'actions'];
 
   @ViewChild(MatSort) sort: MatSort;
-  @Input() dataSource = new MatTableDataSource<IDocument>();
+  dataSource = new MatTableDataSource<IDocument>();
   @Input() filterValue = '';
   @Input() columns;
 
@@ -27,7 +28,11 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
 
   @Output() rowSelectionChanged: EventEmitter<number> = new EventEmitter<number>();
 
+  constructor(private _dcs: DataControllerService) {
+  }
+
   ngOnInit() {
+    this.dataSource = this._dcs.dataSource;
     this.selection.onChange.subscribe( () => {
       this.rowSelectionChanged.emit(this.selection.selected.length);
     });
