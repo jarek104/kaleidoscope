@@ -1,9 +1,11 @@
 <div class="thumbnails-container">
-    <mat-grid-list cols="4" rowHeight="1:1.3">
+    <mat-grid-list cols="4" rowHeight="1:1">
         <mat-grid-tile *ngFor="let document of dataSource.data">
+            <div class="image-container">
+                <img [src]="document.imageUrl">
+                <div class="overflow-hide">{{document.name | uppercase}}</div>
+            </div>
 
-            <img [src]="document.imageUrl">
-            <!-- <p>{{document.imageUrl}}</p> -->
         </mat-grid-tile>
         <!-- <img [src]="document.imageURL"> {{document.imageURL}} -->
     </mat-grid-list>

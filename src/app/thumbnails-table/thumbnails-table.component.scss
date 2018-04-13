@@ -1,5 +1,6 @@
 .thumbnails-container {
     overflow-x: auto;
+    height: 606px;
 }
 
 mat-grid-list {
@@ -8,5 +9,17 @@ mat-grid-list {
 }
 
 mat-grid-tile {
-    background: teal;
+    background: #fefefe;
+}
+
+.image-container,
+img {
+    text-align: center;
+    width: 92%;
+    height: 92%;
+}
+
+.overflow-hide {
+    overflow: hidden;
+    white-space: nowrap;
 }
