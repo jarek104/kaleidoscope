@@ -26,6 +26,7 @@ export class DataTableComponent implements OnInit  {
   columns;
   currentView: string;
   numberOfSelectedItems: number;
+  selectedRowsData: IDocument[];
 
   constructor(
     private documentsService: DocumentService,

@@ -1,17 +1,14 @@
+<button (click)="change();">test</button>
 <div class="table-container">
     <mat-table #table [dataSource]="dataSource" matSort>
-      <!-- Column header definitions -->
+        <!-- Column header definitions -->
         <ng-container matColumnDef="select">
             <mat-header-cell *matHeaderCellDef class="small-column__width">
-                <mat-checkbox (change)="$event ? masterToggle() : null"
-                            [checked]="selection.hasValue() && isAllSelected()"
-                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+                <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
                 </mat-checkbox>
             </mat-header-cell>
             <mat-cell *matCellDef="let row" class="small-column__width">
-                <mat-checkbox (click)="$event.stopPropagation()"
-                            (change)="$event ? selection.toggle(row) : null"
-                            [checked]="selection.isSelected(row)">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
                 </mat-checkbox>
             </mat-cell>
         </ng-container>

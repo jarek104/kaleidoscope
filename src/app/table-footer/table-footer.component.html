@@ -1,9 +1,10 @@
-<div class="container" fxLayout="row" fxLayoutAlign="space-between center">
+<div class="container" fxLayoutAlign="space-between center">
     <div>
         <app-table-menu [isDisabled]="numberOfSelectedItems === 0?  true : false"></app-table-menu>
         <span *ngIf="numberOfSelectedItems > 0">{{numberOfSelectedItems}} {{numberOfSelectedItems > 1 ? 'items' : 'item'}} selected</span>
     </div>
-    <div>
+    <div fxLayout="row" fxLayoutAlign="right center">
+        <div style="padding-right: 10px;">Views </div>
         <mat-button-toggle-group #group="matButtonToggleGroup" value="metadata" (change)="setCurrentView($event)">
             <mat-button-toggle value="metadata">
                 <mat-icon>bubble_chart</mat-icon>
