@@ -1,8 +1,10 @@
-<mat-grid-list cols="4" rowHeight="100px">
-    <mat-grid-tile *ngFor="let document of dataSource.data">
+<div class="thumbnails-container">
+    <mat-grid-list cols="4" rowHeight="1:1.3">
+        <mat-grid-tile *ngFor="let document of dataSource.data">
 
-            <img mat-card-image [src]="document.imageURL" alt="Photo of a Shiba Inu">
-    </mat-grid-tile>
-  </mat-grid-list>
-
-
+            <img [src]="document.imageUrl">
+            <!-- <p>{{document.imageUrl}}</p> -->
+        </mat-grid-tile>
+        <!-- <img [src]="document.imageURL"> {{document.imageURL}} -->
+    </mat-grid-list>
+</div>

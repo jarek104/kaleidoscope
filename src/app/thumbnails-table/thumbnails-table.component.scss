@@ -1,0 +1,12 @@
+.thumbnails-container {
+    overflow-x: auto;
+}
+
+mat-grid-list {
+    overflow: auto;
+    max-height: 606px;
+}
+
+mat-grid-tile {
+    background: teal;
+}
