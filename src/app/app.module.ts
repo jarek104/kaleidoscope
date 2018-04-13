@@ -4,26 +4,28 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DataTableComponent } from './data-table/data-table.component';
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../shared/material.module';
-import { DocumentService } from './services/document.service';
 import { HttpClientModule } from '@angular/common/http';
-import { MetadataTableComponent } from './metadata-table/metadata-table.component';
-import { KeywordsTableComponent } from './keywords-table/keywords-table.component';
-import { ThumbnailsTableComponent } from './thumbnails-table/thumbnails-table.component';
-import { AdvancedFilteringComponent } from './advanced-filtering/advanced-filtering.component';
-import { RowMenuComponent } from './row-menu/row-menu.component';
-import { TableMenuComponent } from './table-menu/table-menu.component';
-import { TableFooterComponent } from './table-footer/table-footer.component';
-import { TableViewService } from './services/table-view.service';
 import { AgmCoreModule } from '@agm/core';
-import { MapViewComponent } from './map-view/map-view.component';
+import { MetadataTableComponent } from './kaleidoscope/views/metadata-table/metadata-table.component';
+import { KeywordsTableComponent } from './kaleidoscope/views/keywords-table/keywords-table.component';
+import { ThumbnailsTableComponent } from './kaleidoscope/views/thumbnails-table/thumbnails-table.component';
+import { AdvancedFilteringComponent } from './kaleidoscope/shared/advanced-filtering/advanced-filtering.component';
+import { RowMenuComponent } from './kaleidoscope/shared/row-menu/row-menu.component';
+import { TableMenuComponent } from './kaleidoscope/shared/table-menu/table-menu.component';
+import { TableFooterComponent } from './kaleidoscope/table-footer/table-footer.component';
+import { MapViewComponent } from './kaleidoscope/views/map-view/map-view.component';
+import { DocumentService } from './kaleidoscope/services/document.service';
+import { TableViewService } from './kaleidoscope/services/table-view.service';
+import { KaleidoscopeComponent } from './kaleidoscope/kaleidoscope.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    DataTableComponent,
+    KaleidoscopeComponent,
     MetadataTableComponent,
     KeywordsTableComponent,
     ThumbnailsTableComponent,

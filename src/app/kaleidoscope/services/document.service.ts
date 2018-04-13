@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { IDocument } from '../../models/document';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
-import { IColumn } from '../../models/column';
+import { IDocument } from '../models/document';
+import { IColumn } from '../models/column';
 
 @Injectable()
 export class DocumentService {

@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DataTableComponent } from './data-table/data-table.component';
+import { KaleidoscopeComponent } from './kaleidoscope/kaleidoscope.component';
+
 
 const routes: Routes = [
   // { path: 'view/:id', component: QAVComponent},
-  { path: 'data', component: DataTableComponent},
-  { path: '' , redirectTo: '/data', pathMatch: 'full'},
-  { path: '**' , component: DataTableComponent}
+  { path: 'kaleidoscope', component: KaleidoscopeComponent},
+  { path: '' , redirectTo: '/kaleidoscope', pathMatch: 'full'},
+  { path: '**' , component: KaleidoscopeComponent}
 ];
 
 @NgModule({

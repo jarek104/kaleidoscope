@@ -1,13 +1,13 @@
 import { Component, OnInit, OnChanges, AfterViewInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { IDocument } from '../../models/document';
-import { DocumentService } from '../services/document.service';
 import { SelectionModel } from '@angular/cdk/collections';
+import { DocumentService } from '../../services/document.service';
 
 @Component({
   selector: 'app-keywords-table',
   templateUrl: './keywords-table.component.html',
-  styleUrls: ['./keywords-table.component.scss', '../data-table/shared-table-style.scss']
+  styleUrls: ['./keywords-table.component.scss', '../../../kaleidoscope/shared-table-style.scss']
 })
 export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges {
 

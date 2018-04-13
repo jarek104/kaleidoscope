@@ -8,18 +8,19 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AfterViewInit, OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Subscription } from 'rxjs/Subscription';
-import { DocumentService } from '../services/document.service';
-import { IDocument } from '../../models/document';
 import { ObservableMedia } from '@angular/flex-layout';
 import { map } from 'rxjs/operators';
-import { TableViewService } from '../services/table-view.service';
+import { IDocument } from './models/document';
+import { DocumentService } from './services/document.service';
+import { TableViewService } from './services/table-view.service';
 
 @Component({
-  selector: 'app-data-table',
-  templateUrl: './data-table.component.html',
-  styleUrls: ['./data-table.component.scss']
+  // tslint:disable-next-line:component-selector
+  selector: 'kaleidoscope',
+  templateUrl: './kaleidoscope.component.html',
+  styleUrls: ['./kaleidoscope.component.scss']
 })
-export class DataTableComponent implements OnInit  {
+export class KaleidoscopeComponent implements OnInit  {
   advancedFilteringEnabled = false;
   filterValue = '';
   dataSource = new MatTableDataSource<IDocument>();

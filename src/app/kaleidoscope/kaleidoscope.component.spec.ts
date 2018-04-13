@@ -1,20 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { KaleidoscopeComponent } from './kaleidoscope.component';
 
-import { DataTableComponent } from './data-table.component';
 
-describe('DataTableComponent', () => {
-  let component: DataTableComponent;
-  let fixture: ComponentFixture<DataTableComponent>;
+
+describe('KaleidoscopeComponent', () => {
+  let component: KaleidoscopeComponent;
+  let fixture: ComponentFixture<KaleidoscopeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DataTableComponent ]
+      declarations: [ KaleidoscopeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DataTableComponent);
+    fixture = TestBed.createComponent(KaleidoscopeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
