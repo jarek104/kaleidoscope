@@ -57,15 +57,8 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
+
   ngOnChanges() {
-    this.applyFilter(this.filterValue);
     this.selection = this._dataControllerService.selection;
   }
-
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim();
-    filterValue = filterValue.toLowerCase();
-    this.dataSource.filter = filterValue;
-  }
-
 }

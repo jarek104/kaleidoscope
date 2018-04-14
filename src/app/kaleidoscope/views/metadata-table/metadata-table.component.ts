@@ -23,6 +23,7 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
   initialSelection = [];
   allowMultiSelect = true;
   selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
+
   constructor(private _dataControllerService: DataControllerService) {
   }
 
@@ -49,13 +50,8 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
     this.dataSource.sort = this.sort;
   }
   ngOnChanges() {
-    this.applyFilter(this.filterValue);
     this.selection = this._dataControllerService.selection;
+    this.dataSource = this._dataControllerService.dataSource;
   }
 
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim();
-    filterValue = filterValue.toLowerCase();
-    this.dataSource.filter = filterValue;
-  }
 }

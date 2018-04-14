@@ -20,6 +20,7 @@ import { TableViewService } from './kaleidoscope/services/table-view.service';
 import { KaleidoscopeComponent } from './kaleidoscope/kaleidoscope.component';
 import { DocumentProviderService } from './document-provider/document-provider.service';
 import { DataControllerService } from './kaleidoscope/services/data-controller.service';
+import { FilteringService } from './kaleidoscope/services/filtering.service';
 
 
 
@@ -46,7 +47,12 @@ import { DataControllerService } from './kaleidoscope/services/data-controller.s
       apiKey: 'AIzaSyB0erysD83QSAKH9CCVghJXph0py7BwmiY'
     })
   ],
-  providers: [DocumentProviderService, TableViewService, DataControllerService],
+  providers: [
+    DocumentProviderService,
+    TableViewService,
+    DataControllerService,
+    FilteringService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

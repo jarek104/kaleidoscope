@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 import { IDocument } from './models/document';
 import { TableViewService } from './services/table-view.service';
 import { DataControllerService } from './services/data-controller.service';
+import { FilteringService } from './services/filtering.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -28,6 +29,7 @@ export class KaleidoscopeComponent implements OnInit  {
   selectedRowsData: IDocument[];
 
   constructor(
+    private _filteringService: FilteringService,
     private dataControllerService: DataControllerService,
     private viewService: TableViewService
   ) {}
@@ -42,8 +44,8 @@ export class KaleidoscopeComponent implements OnInit  {
     this.advancedFilteringEnabled = !this.advancedFilteringEnabled;
   }
 
-  storeFilterValue(filterValue: string) {
-    this.filterValue = filterValue;
+  applyFilter(filterValue: string) {
+    this._filteringService.applyFilter(filterValue);
   }
 
   updateSelectedRowCount(count: any) {

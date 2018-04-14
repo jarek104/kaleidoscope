@@ -3,7 +3,7 @@
         <app-table-menu></app-table-menu>
         <div fxLayout="row" fxLayoutAlign="center center">
             <mat-form-field fxHide.xs="true">
-                <input matInput (keyup)="storeFilterValue($event.target.value)">
+                <input matInput (keyup)="applyFilter($event.target.value)">
                 <mat-placeholder>
                     <mat-icon>search</mat-icon> Search term
                 </mat-placeholder>
