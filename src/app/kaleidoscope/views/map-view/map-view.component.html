@@ -2,13 +2,15 @@
 
     <agm-marker *ngFor="let document of dataSource.data; let i = index" [latitude]="document.latitude" [longitude]="document.longitude" [label]="document.name" [markerDraggable]="false">
 
-        <agm-info-window>
-            <strong>{{document.name}}</strong>
-            <div>Document ID: {{document.id}}</div>
-            <div>Author: {{document.author}}</div>
-            <div>Date Created: {{document.dateCreated}}</div>
-            <div class="image-container">
-                <img [src]="document.imageUrl">
+        <agm-info-window [isOpen]="isSelected(document)">
+            <div (click)="toggleSelection(document);">
+                <strong>{{document.name}}</strong>
+                <div>Document ID: {{document.id}}</div>
+                <div>Author: {{document.author}}</div>
+                <div>Date Created: {{document.dateCreated}}</div>
+                <div class="image-container">
+                    <img [src]="document.imageUrl" [ngClass]="{ 'selected' : isSelected(document) }">
+                </div>
             </div>
 
         </agm-info-window>

@@ -5,8 +5,13 @@ agm-map {
 img {
     width: 200px;
     height: 200px;
+    border: 3px solid #eee;
 }
 
 .image-container {
     text-align: center;
+}
+
+.selected {
+    border: 3px solid #fc4482;
 }

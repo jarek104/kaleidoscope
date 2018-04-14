@@ -12,15 +12,27 @@ import { DataControllerService } from '../../services/data-controller.service';
 export class MapViewComponent implements OnInit {
 
   dataSource = new MatTableDataSource<IDocument>();
-  // google maps zoom level
+  // default zoom level
   zoom = 6;
 
-  // initial center position for the map
+  // initial center position for the map - Warsaw
   lat = 52.2297;
   lng = 21.0122;
 
   constructor(private _dcs: DataControllerService) { }
   ngOnInit() {
     this.dataSource = this._dcs.dataSource;
+  }
+
+  isSelected(item: IDocument): boolean {
+    return this._dcs.selection.selected.includes(item);
+  }
+
+  toggleSelection(item: IDocument) {
+    if (this._dcs.selection.selected.includes(item)) {
+      this._dcs.selection.deselect(item);
+    } else {
+      this._dcs.selection.select(item);
+    }
   }
 }
