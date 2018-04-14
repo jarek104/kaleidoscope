@@ -29,7 +29,7 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
   @Input() filterValue = '';
 
   showButtons: Boolean = false;
-  test;
+
   initialSelection = [];
   allowMultiSelect = true;
   selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
@@ -40,12 +40,9 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
     this.dataSource = this._dataControllerService.dataSource;
     this.selection.onChange.subscribe( () => {
       this._dataControllerService.selectedRowsData.next(this.selection.selected);
-      this.test = this._dataControllerService.selection.selected;
     });
   }
-  selectStuff() {
-    this.selection = this._dataControllerService.selection;
-  }
+
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
@@ -55,8 +52,6 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
     this.isAllSelected() ?
         this.selection.clear() :
         this.dataSource.data.forEach(row => this.selection.select(row));
-
-
   }
 
   ngAfterViewInit() {
@@ -64,6 +59,7 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
   }
   ngOnChanges() {
     this.applyFilter(this.filterValue);
+    this.selection = this._dataControllerService.selection;
   }
 
   applyFilter(filterValue: string) {
