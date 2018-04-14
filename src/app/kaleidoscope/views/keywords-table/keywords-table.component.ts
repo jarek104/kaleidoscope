@@ -28,8 +28,6 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
   dataSource = new MatTableDataSource<IDocument>();
   @Input() filterValue = '';
   @Input() columns;
-  @Output() rowSelectionChanged: EventEmitter<number> = new EventEmitter<number>();
-
 
   showButtons: Boolean = false;
 
@@ -37,12 +35,13 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
   allowMultiSelect = true;
   selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
 
-  constructor(private _dcs: DataControllerService) {}
+  constructor(private _dataControllerService: DataControllerService) {}
 
   ngOnInit() {
-    this.dataSource = this._dcs.dataSource;
+    this.dataSource = this._dataControllerService.dataSource;
     this.selection.onChange.subscribe( () => {
-      this.rowSelectionChanged.emit(this.selection.selected.length); });
+      this._dataControllerService.selectedRowsData.next(this.selection.selected);
+    });
   }
 
   isAllSelected() {

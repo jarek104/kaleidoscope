@@ -26,15 +26,13 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
   allowMultiSelect = true;
   selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
 
-  @Output() rowSelectionChanged: EventEmitter<number> = new EventEmitter<number>();
-
-  constructor(private _dcs: DataControllerService) {
+  constructor(private _dataControllerService: DataControllerService) {
   }
 
   ngOnInit() {
-    this.dataSource = this._dcs.dataSource;
+    this.dataSource = this._dataControllerService.dataSource;
     this.selection.onChange.subscribe( () => {
-      this.rowSelectionChanged.emit(this.selection.selected.length);
+      this._dataControllerService.selectedRowsData.next(this.selection.selected);
     });
   }
 
