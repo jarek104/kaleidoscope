@@ -11,11 +11,19 @@ mat-grid-list {
 .image-container,
 img {
     text-align: center;
-    width: 92%;
-    height: 92%;
+    width: 90%;
+    height: 90%;
 }
 
 .overflow-hide {
     overflow: hidden;
     white-space: nowrap;
+}
+
+img {
+    border: 3px solid #eee;
+}
+
+.selected {
+    border: 3px solid #fc4482;
 }

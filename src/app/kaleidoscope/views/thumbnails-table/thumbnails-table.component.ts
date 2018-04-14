@@ -17,7 +17,11 @@ export class ThumbnailsTableComponent implements OnInit {
     this.dataSource = this._dcs.dataSource;
   }
 
-  log(name) {
-    console.log(name);
+  isSelected(item: IDocument): boolean {
+    return this._dcs.selection.selected.includes(item);
+  }
+
+  select(item: IDocument) {
+    this._dcs.selection.select(item);
   }
 }

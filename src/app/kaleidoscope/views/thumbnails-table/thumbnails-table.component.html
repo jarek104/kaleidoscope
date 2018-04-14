@@ -1,12 +1,10 @@
 <div class="thumbnails-container">
     <mat-grid-list cols="4" rowHeight="1:1">
         <mat-grid-tile *ngFor="let document of dataSource.data">
-            <div class="image-container" (click)="log(document.name);">
-                <img [src]="document.imageUrl">
+            <div class="image-container" (click)="select(document);">
+                <img [src]="document.imageUrl" [ngClass]="{ 'selected' : isSelected(document) }">
                 <div class="overflow-hide">{{document.name | uppercase}}</div>
             </div>
-
         </mat-grid-tile>
-        <!-- <img [src]="document.imageURL"> {{document.imageURL}} -->
     </mat-grid-list>
 </div>
