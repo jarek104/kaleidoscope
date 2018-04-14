@@ -21,7 +21,11 @@ export class ThumbnailsTableComponent implements OnInit {
     return this._dcs.selection.selected.includes(item);
   }
 
-  select(item: IDocument) {
-    this._dcs.selection.select(item);
+  toggleSelection(item: IDocument) {
+    if (this._dcs.selection.selected.includes(item)) {
+      this._dcs.selection.deselect(item);
+    } else {
+      this._dcs.selection.select(item);
+    }
   }
 }
