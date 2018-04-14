@@ -27,10 +27,9 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
   @ViewChild(MatSort) sort: MatSort;
   dataSource = new MatTableDataSource<IDocument>();
   @Input() filterValue = '';
-  @Input() columns;
 
   showButtons: Boolean = false;
-
+  test;
   initialSelection = [];
   allowMultiSelect = true;
   selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
@@ -41,9 +40,12 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
     this.dataSource = this._dataControllerService.dataSource;
     this.selection.onChange.subscribe( () => {
       this._dataControllerService.selectedRowsData.next(this.selection.selected);
+      this.test = this._dataControllerService.selection.selected;
     });
   }
-
+  selectStuff() {
+    this.selection = this._dataControllerService.selection;
+  }
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;

@@ -17,22 +17,22 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
   @ViewChild(MatSort) sort: MatSort;
   dataSource = new MatTableDataSource<IDocument>();
   @Input() filterValue = '';
-  @Input() columns;
-
 
   showButtons: Boolean = false;
 
   initialSelection = [];
   allowMultiSelect = true;
   selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
-
+  test;
   constructor(private _dataControllerService: DataControllerService) {
   }
 
   ngOnInit() {
     this.dataSource = this._dataControllerService.dataSource;
+    // Push selection to the service everytime componenent's selection changes
     this.selection.onChange.subscribe( () => {
       this._dataControllerService.selectedRowsData.next(this.selection.selected);
+      this.test = this._dataControllerService.selection.selected;
     });
   }
 
@@ -52,6 +52,11 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
   }
   ngOnChanges() {
     this.applyFilter(this.filterValue);
+    this.selection = this._dataControllerService.selection;
+  }
+
+  selectStuff() {
+    this.selection = this._dataControllerService.selection;
   }
 
   applyFilter(filterValue: string) {
