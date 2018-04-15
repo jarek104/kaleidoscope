@@ -18,11 +18,12 @@ import { MapViewComponent } from './kaleidoscope/views/map-view/map-view.compone
 
 import { TableViewService } from './kaleidoscope/services/table-view.service';
 import { KaleidoscopeComponent } from './kaleidoscope/kaleidoscope.component';
-import { DocumentProviderService } from './document-provider/document-provider.service';
 import { DataControllerService } from './kaleidoscope/services/data-controller.service';
 import { FilteringService } from './kaleidoscope/services/filtering.service';
 import { SelectionMenuComponent } from './kaleidoscope/shared/selection-menu/selection-menu.component';
 import { RowDensityService } from './kaleidoscope/services/row-density.service';
+import { DocumentProviderService } from './app-services/document-provider.service';
+import { KaleidoscopeModule } from './kaleidoscope/kaleidoscope.module';
 
 
 
@@ -38,7 +39,8 @@ import { RowDensityService } from './kaleidoscope/services/row-density.service';
     TableMenuComponent,
     TableFooterComponent,
     MapViewComponent,
-    SelectionMenuComponent
+    SelectionMenuComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -48,14 +50,11 @@ import { RowDensityService } from './kaleidoscope/services/row-density.service';
     HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB0erysD83QSAKH9CCVghJXph0py7BwmiY'
-    })
+    }),
+    KaleidoscopeModule
   ],
   providers: [
-    DocumentProviderService,
-    TableViewService,
-    DataControllerService,
-    FilteringService,
-    RowDensityService
+    DocumentProviderService
   ],
   bootstrap: [AppComponent]
 })

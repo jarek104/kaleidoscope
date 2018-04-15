@@ -91,5 +91,6 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
         break;
       }
    }
+    return classes;
   }
 }

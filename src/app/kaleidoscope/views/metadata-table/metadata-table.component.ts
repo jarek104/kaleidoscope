@@ -83,7 +83,6 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
         break;
       }
    }
-
     return classes;
   }
 }

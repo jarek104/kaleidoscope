@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DocumentProviderService } from './document-provider/document-provider.service';
 import { IDocument } from './kaleidoscope/models/document';
 import { MatTableDataSource } from '@angular/material';
 import { IColumn } from './kaleidoscope/models/column';
+import { DocumentProviderService } from './app-services/document-provider.service';
 
 @Component({
   selector: 'app-root',
