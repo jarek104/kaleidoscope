@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { IDocument } from '../../models/document';
 import { SelectionModel } from '@angular/cdk/collections';
 import { DataControllerService } from '../../services/data-controller.service';
+import { ObservableMedia } from '@angular/flex-layout';
 
 
 @Component({
@@ -17,9 +18,11 @@ export class ThumbnailsTableComponent implements OnInit {
   initialSelection = [];
   allowMultiSelect = true;
   selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
+  columns = 4;
 
   constructor(
-    private _dataControllerService: DataControllerService) { }
+    private _dataControllerService: DataControllerService,
+    private _observableMedia: ObservableMedia) { }
 
   ngOnInit() {
     this.dataSource = this._dataControllerService.dataSource.connect();
@@ -27,6 +30,27 @@ export class ThumbnailsTableComponent implements OnInit {
     // Push selection to the service everytime componenent's selection changes
     this.selection.onChange.subscribe( () => {
       this._dataControllerService.selectedRowsData.next(this.selection.selected);
+    });
+    this._observableMedia.subscribe(value => {
+      switch (value.mqAlias) {
+        case 'xs': {
+          this.columns = 1;
+          break;
+        }
+        case 'sm': {
+          this.columns = 2;
+          break;
+        }
+        case 'md': {
+          this.columns = 3;
+          break;
+        }
+        default: {
+          this.columns = 4;
+          break;
+        }
+
+      }
     });
   }
 

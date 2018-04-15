@@ -1,5 +1,5 @@
 <div class="thumbnails-container">
-    <mat-grid-list cols="4" cols.sm="3" cols.xs="2" rowHeight="1:1">
+    <mat-grid-list cols="{{columns}}">
         <mat-grid-tile *ngFor="let document of dataSource | async" [ngClass]="{ 'selectedTile' : isSelected(document) }">
             <div class="tile-content" (click)="toggleSelection(document);">
                 <div class="image-container">
