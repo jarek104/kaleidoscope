@@ -40,7 +40,6 @@ import { KaleidoscopeModule } from './kaleidoscope/kaleidoscope.module';
     TableFooterComponent,
     MapViewComponent,
     SelectionMenuComponent,
-    
   ],
   imports: [
     BrowserModule,

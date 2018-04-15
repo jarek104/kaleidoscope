@@ -4,10 +4,12 @@ import { TableViewService } from './services/table-view.service';
 import { DataControllerService } from './services/data-controller.service';
 import { FilteringService } from './services/filtering.service';
 import { RowDensityService } from './services/row-density.service';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    AgmCoreModule,
   ],
   declarations: [],
   providers: [
