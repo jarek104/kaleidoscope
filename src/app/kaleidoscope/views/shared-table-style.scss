@@ -1,15 +1,16 @@
-$ligher-blue: #EEEEEE;
-$hover-color: #c5cac9;
+$selected-color: #f5f5f5;
+$hover-color: #EEEEEE;
 .highlight {
     background-color: #F5F5F5;
 }
+
 .mat-row:hover {
-  background: #eeeeee;
+    background: #eeeeee;
 }
 
 .mat-header-cell {
-  font-size: 15px;
-  font-weight: 600;
+    font-size: 15px;
+    font-weight: 600;
 }
 
 .mat-row:hover {
@@ -28,9 +29,9 @@ $hover-color: #c5cac9;
 }
 
 .mat-table {
-  overflow: auto;
-  max-height: 500px;
-  margin-top: 46px;
+    overflow: auto;
+    max-height: 500px;
+    margin-top: 46px;
 }
 
 .table-container .mat-table .mat-header-row {
@@ -46,7 +47,10 @@ $hover-color: #c5cac9;
     white-space: unset !important;
 }
 
-
 .mat-column-select {
     overflow: initial;
+}
+
+.selected {
+    background-color: $selected-color;
 }

@@ -21,6 +21,7 @@ import { KaleidoscopeComponent } from './kaleidoscope/kaleidoscope.component';
 import { DocumentProviderService } from './document-provider/document-provider.service';
 import { DataControllerService } from './kaleidoscope/services/data-controller.service';
 import { FilteringService } from './kaleidoscope/services/filtering.service';
+import { SelectionMenuComponent } from './kaleidoscope/shared/selection-menu/selection-menu.component';
 
 
 
@@ -35,7 +36,8 @@ import { FilteringService } from './kaleidoscope/services/filtering.service';
     RowMenuComponent,
     TableMenuComponent,
     TableFooterComponent,
-    MapViewComponent
+    MapViewComponent,
+    SelectionMenuComponent
   ],
   imports: [
     BrowserModule,

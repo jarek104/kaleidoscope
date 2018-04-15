@@ -1,18 +1,10 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { MatSort, MatTableDataSource } from '@angular/material';
-import { Observable } from 'rxjs/Observable';
-import { DataSource } from '@angular/cdk/table';
-import { CollectionViewer } from '@angular/cdk/collections';
-import 'rxjs/add/observable/of';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { AfterViewInit, OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
-import { SelectionModel } from '@angular/cdk/collections';
-import { Subscription } from 'rxjs/Subscription';
-import { map } from 'rxjs/operators';
+import { Component, OnInit, Input } from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
 import { IDocument } from './models/document';
-import { TableViewService } from './services/table-view.service';
-import { DataControllerService } from './services/data-controller.service';
 import { FilteringService } from './services/filtering.service';
+import { DataControllerService } from './services/data-controller.service';
+import { TableViewService } from './services/table-view.service';
+
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -25,19 +17,18 @@ export class KaleidoscopeComponent implements OnInit  {
   filterValue = '';
   @Input() private dataSource = new MatTableDataSource<IDocument>();
   currentView: string;
-  numberOfSelectedItems: number;
-  selectedRowsData: IDocument[];
 
   constructor(
     private _filteringService: FilteringService,
-    private dataControllerService: DataControllerService,
-    private viewService: TableViewService
+    private _dataControllerService: DataControllerService,
+    private _viewService: TableViewService
   ) {}
 
   ngOnInit() {
-    this.dataControllerService.dataSource = this.dataSource;
-    this.viewService.selectedView$.subscribe(view =>
-    this.currentView = view);
+    this._dataControllerService.dataSource = this.dataSource;
+    this._viewService.selectedView$.subscribe(view =>
+      this.currentView = view
+    );
   }
 
   toggleAdvancedFiltering() {
@@ -47,9 +38,4 @@ export class KaleidoscopeComponent implements OnInit  {
   applyFilter(filterValue: string) {
     this._filteringService.applyFilter(filterValue);
   }
-
-  updateSelectedRowCount(count: any) {
-    this.numberOfSelectedItems = count;
-  }
-
 }

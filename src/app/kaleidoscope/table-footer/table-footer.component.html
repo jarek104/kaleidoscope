@@ -1,6 +1,6 @@
 <div class="container" fxLayoutAlign="space-between center">
     <div>
-        <app-table-menu [isDisabled]="numberOfSelectedItems === 0?  true : false"></app-table-menu>
+        <app-selection-menu [isDisabled]="numberOfSelectedItems === 0?  true : false"></app-selection-menu>
         <span *ngIf="numberOfSelectedItems > 0">{{numberOfSelectedItems}} {{numberOfSelectedItems > 1 ? 'items' : 'item'}} selected</span>
     </div>
     <div fxLayout="row" fxLayoutAlign="right center">

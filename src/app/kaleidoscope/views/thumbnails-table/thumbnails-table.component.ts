@@ -1,10 +1,9 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
-import { IDocument } from '../../models/document';
-import { DataControllerService } from '../../services/data-controller.service';
-import { SelectionModel } from '@angular/cdk/collections';
-import { FilteringService } from '../../services/filtering.service';
+import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { IDocument } from '../../models/document';
+import { SelectionModel } from '@angular/cdk/collections';
+import { DataControllerService } from '../../services/data-controller.service';
+
 
 @Component({
   selector: 'app-thumbnails-table',
@@ -20,7 +19,6 @@ export class ThumbnailsTableComponent implements OnInit {
   selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
 
   constructor(
-    private _filteringService: FilteringService,
     private _dataControllerService: DataControllerService) { }
 
   ngOnInit() {

@@ -1,9 +1,9 @@
-import { Component, OnInit, AfterViewInit, ViewChild, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { Component, OnInit, AfterViewInit, OnChanges, ViewChild, Input } from '@angular/core';
+import { MatSort, MatTableDataSource } from '@angular/material';
 import { IDocument } from '../../models/document';
 import { SelectionModel } from '@angular/cdk/collections';
-import { Observable } from 'rxjs/Observable';
 import { DataControllerService } from '../../services/data-controller.service';
+
 
 @Component({
   selector: 'app-metadata-table',
@@ -35,6 +35,9 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
     });
   }
 
+  isSelected(item: IDocument): boolean {
+    return this._dataControllerService.selection.selected.includes(item);
+  }
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.filteredData.length;

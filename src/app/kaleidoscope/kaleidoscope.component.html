@@ -16,14 +16,16 @@
             </button>
         </div>
     </div>
-    <app-advanced-filtering *ngIf="advancedFilteringEnabled"></app-advanced-filtering>
-    <app-metadata-table [filterValue]="filterValue" *ngIf="currentView === 'metadata'">
-    </app-metadata-table>
-    <app-keywords-table [filterValue]="filterValue" *ngIf="currentView === 'keywords'">
-    </app-keywords-table>
-    <app-thumbnails-table *ngIf="currentView === 'thumbnails'">
-    </app-thumbnails-table>
-    <app-map-view *ngIf="currentView === 'map'">
-    </app-map-view>
+    <div [ngSwitch]="currentView">
+        <app-advanced-filtering *ngIf="advancedFilteringEnabled"></app-advanced-filtering>
+        <app-metadata-table *ngSwitchCase="'metadata'" [filterValue]="filterValue">
+        </app-metadata-table>
+        <app-keywords-table *ngSwitchCase="'keywords'" [filterValue]="filterValue">
+        </app-keywords-table>
+        <app-thumbnails-table *ngSwitchCase="'thumbnails'">
+        </app-thumbnails-table>
+        <app-map-view *ngSwitchCase="'map'">
+        </app-map-view>
+    </div>
     <app-table-footer></app-table-footer>
 </div>

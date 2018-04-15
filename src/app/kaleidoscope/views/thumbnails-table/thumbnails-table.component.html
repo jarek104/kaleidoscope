@@ -1,6 +1,6 @@
 <div class="thumbnails-container">
     <mat-grid-list cols="4" rowHeight="1:1">
-        <mat-grid-tile *ngFor="let document of dataSource | async">
+        <mat-grid-tile *ngFor="let document of dataSource | async" [ngClass]="{ 'selectedTile' : isSelected(document) }">
             <div class="image-container" (click)="toggleSelection(document);">
                 <img [src]="document.imageUrl" [ngClass]="{ 'selected' : isSelected(document) }">
                 <div class="overflow-hide">{{document.name | uppercase}}</div>

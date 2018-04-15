@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MouseEvent as AGMMouseEvent } from '@agm/core';
 import { MatTableDataSource } from '@angular/material';
 import { IDocument } from '../../models/document';
 import { DataControllerService } from '../../services/data-controller.service';

@@ -1,29 +1,20 @@
-<button mat-button [matMenuTriggerFor]="menu" class="menu__width" [disabled]="isDisabled">
-  <mat-icon>menu</mat-icon>
+<button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
 </button>
+
 <mat-menu #menu="matMenu">
     <button mat-menu-item>
-        <mat-icon>get_app</mat-icon>
-        <span>Export</span>
+        <mat-icon>refresh</mat-icon>
+        <span>Refresh</span>
     </button>
-    <button mat-menu-item>
-        <mat-icon>print</mat-icon>
-        <span>Print</span>
+    <button mat-menu-item [matMenuTriggerFor]="density">
+        <mat-icon>reorder</mat-icon>
+        <span>Row density</span>
     </button>
-    <button mat-menu-item>
-        <mat-icon>email</mat-icon>
-        <span>Send via email</span>
-    </button>
-    <button mat-menu-item>
-        <mat-icon>cloud</mat-icon>
-        <span>Send to Sharebase</span>
-    </button>
-    <button mat-menu-item>
-        <mat-icon>favorite</mat-icon>
-        <span>Add to favorites</span>
-    </button>
-    <button mat-menu-item>
-        <mat-icon>delete</mat-icon>
-        <span>Delete</span>
-    </button>
+</mat-menu>
+
+<mat-menu #density="matMenu">
+    <button mat-menu-item>Low</button>
+    <button mat-menu-item>Medium</button>
+    <button mat-menu-item>High</button>
 </mat-menu>
