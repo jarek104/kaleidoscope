@@ -40,6 +40,7 @@
 
         <!-- Data -->
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{ 'selected' : isSelected(row) }"></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="getRowClasses(row)"></mat-row>
     </mat-table>
 </div>
+<!-- [ngClass]="{ 'selected' : isSelected(row), 'density' }" -->

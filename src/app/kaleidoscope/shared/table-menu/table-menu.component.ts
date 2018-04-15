@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { RowDensityService } from '../../services/row-density.service';
 
 @Component({
   selector: 'app-table-menu',
@@ -8,9 +9,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TableMenuComponent implements OnInit {
 
   @Input() isDisabled?;
-  constructor() { }
+  constructor(private _densityService: RowDensityService) { }
 
   ngOnInit() {
   }
 
+  changeDensity(value) {
+    this._densityService.changeDensity(value);
+  }
 }

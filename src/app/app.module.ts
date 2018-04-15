@@ -22,6 +22,7 @@ import { DocumentProviderService } from './document-provider/document-provider.s
 import { DataControllerService } from './kaleidoscope/services/data-controller.service';
 import { FilteringService } from './kaleidoscope/services/filtering.service';
 import { SelectionMenuComponent } from './kaleidoscope/shared/selection-menu/selection-menu.component';
+import { RowDensityService } from './kaleidoscope/services/row-density.service';
 
 
 
@@ -53,7 +54,8 @@ import { SelectionMenuComponent } from './kaleidoscope/shared/selection-menu/sel
     DocumentProviderService,
     TableViewService,
     DataControllerService,
-    FilteringService
+    FilteringService,
+    RowDensityService
   ],
   bootstrap: [AppComponent]
 })

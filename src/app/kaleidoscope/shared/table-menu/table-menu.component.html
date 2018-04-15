@@ -14,7 +14,7 @@
 </mat-menu>
 
 <mat-menu #density="matMenu">
-    <button mat-menu-item>Low</button>
-    <button mat-menu-item>Medium</button>
-    <button mat-menu-item>High</button>
+    <button mat-menu-item (click)="changeDensity('low');">Low</button>
+    <button mat-menu-item (click)="changeDensity('medium');">Medium</button>
+    <button mat-menu-item (click)="changeDensity('high');">High</button>
 </mat-menu>

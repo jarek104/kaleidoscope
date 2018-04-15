@@ -3,6 +3,7 @@ import { MatSort, MatTableDataSource } from '@angular/material';
 import { IDocument } from '../../models/document';
 import { SelectionModel } from '@angular/cdk/collections';
 import { DataControllerService } from '../../services/data-controller.service';
+import { RowDensityService } from '../../services/row-density.service';
 
 
 @Component({
@@ -28,19 +29,25 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
   @ViewChild(MatSort) sort: MatSort;
   dataSource = new MatTableDataSource<IDocument>();
   @Input() filterValue = '';
-
+  rowDensity;
   showButtons: Boolean = false;
 
   initialSelection = [];
   allowMultiSelect = true;
   selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
 
-  constructor(private _dataControllerService: DataControllerService) {}
+  constructor(
+    private _dataControllerService: DataControllerService,
+    private _densityService: RowDensityService) {
+  }
 
   ngOnInit() {
     this.dataSource = this._dataControllerService.dataSource;
     this.selection.onChange.subscribe( () => {
       this._dataControllerService.selectedRowsData.next(this.selection.selected);
+    });
+    this._densityService.rowDensity.subscribe(value => {
+      this.rowDensity = value;
     });
   }
 
@@ -64,5 +71,25 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
 
   ngOnChanges() {
     this.selection = this._dataControllerService.selection;
+  }
+  getRowClasses(item: IDocument) {
+    const classes: string[] = [];
+    if (this._dataControllerService.selection.selected.includes(item)) {
+      classes.push('selected');
+    }
+    switch (this.rowDensity) {
+      case 'high': {
+        classes.push('row-density__high');
+        break;
+      }
+      case 'low': {
+        classes.push('row-density__low');
+        break;
+      }
+      default: {
+        classes.push('row-density__medium');
+        break;
+      }
+   }
   }
 }

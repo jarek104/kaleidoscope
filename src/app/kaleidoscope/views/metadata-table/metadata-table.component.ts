@@ -3,6 +3,7 @@ import { MatSort, MatTableDataSource } from '@angular/material';
 import { IDocument } from '../../models/document';
 import { SelectionModel } from '@angular/cdk/collections';
 import { DataControllerService } from '../../services/data-controller.service';
+import { RowDensityService } from '../../services/row-density.service';
 
 
 @Component({
@@ -22,9 +23,12 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
 
   initialSelection = [];
   allowMultiSelect = true;
+  rowDensity;
   selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
 
-  constructor(private _dataControllerService: DataControllerService) {
+  constructor(
+    private _dataControllerService: DataControllerService,
+    private _densityService: RowDensityService) {
   }
 
   ngOnInit() {
@@ -32,6 +36,9 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
     // Push selection to the service everytime componenent's selection changes
     this.selection.onChange.subscribe( () => {
       this._dataControllerService.selectedRowsData.next(this.selection.selected);
+    });
+    this._densityService.rowDensity.subscribe(value => {
+      this.rowDensity = value;
     });
   }
 
@@ -57,4 +64,26 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
     this.dataSource = this._dataControllerService.dataSource;
   }
 
+  getRowClasses(item: IDocument) {
+    const classes: string[] = [];
+    if (this._dataControllerService.selection.selected.includes(item)) {
+      classes.push('selected');
+    }
+    switch (this.rowDensity) {
+      case 'high': {
+        classes.push('row-density__high');
+        break;
+      }
+      case 'low': {
+        classes.push('row-density__low');
+        break;
+      }
+      default: {
+        classes.push('row-density__medium');
+        break;
+      }
+   }
+
+    return classes;
+  }
 }

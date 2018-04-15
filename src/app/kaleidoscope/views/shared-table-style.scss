@@ -1,13 +1,5 @@
 $selected-color: #f5f5f5;
 $hover-color: #EEEEEE;
-.highlight {
-    background-color: #F5F5F5;
-}
-
-.mat-row:hover {
-    background: #eeeeee;
-}
-
 .mat-header-cell {
     font-size: 15px;
     font-weight: 600;
@@ -53,4 +45,16 @@ $hover-color: #EEEEEE;
 
 .selected {
     background-color: $selected-color;
+}
+
+.row-density__low {
+    min-height: 40px !important;
+}
+
+.row-density__medium {
+    min-height: 48px !important;
+}
+
+.row-density__high {
+    min-height: 60px !important;
 }
