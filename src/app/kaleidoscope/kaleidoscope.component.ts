@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { IDocument } from './models/document';
 import { FilteringService } from './services/filtering.service';
@@ -7,6 +7,7 @@ import { TableViewService } from './services/table-view.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { IColumn } from './models/column';
 import { DynamicColumnsService } from './services/dynamic-columns.service';
+import { DocumentProviderService } from '../app-services/document-provider.service';
 
 
 @Component({
@@ -15,19 +16,20 @@ import { DynamicColumnsService } from './services/dynamic-columns.service';
   templateUrl: './kaleidoscope.component.html',
   styleUrls: ['./kaleidoscope.component.scss']
 })
-export class KaleidoscopeComponent implements OnInit  {
+export class KaleidoscopeComponent implements OnInit, OnChanges  {
   advancedFilteringEnabled = false;
   filterValue = '';
   currentView: string;
 
-  @Input() private dataSource = new MatTableDataSource<IDocument>();
-  @Input() private columnDefinitions = new BehaviorSubject<IColumn[]>([]);
+  @Input() dataSource = new MatTableDataSource<IDocument>();
+  @Input() columnDefinitions: IColumn[] = [];
 
   constructor(
     private _filteringService: FilteringService,
     private _dataControllerService: DataControllerService,
     private _viewService: TableViewService,
-    private _columnService: DynamicColumnsService
+    private _columnService: DynamicColumnsService,
+    private dps: DocumentProviderService
   ) {}
 
   ngOnInit() {
@@ -35,10 +37,6 @@ export class KaleidoscopeComponent implements OnInit  {
     this._viewService.selectedView$.subscribe(view =>
       this.currentView = view
     );
-
-    this.columnDefinitions.subscribe(values => {
-      this._columnService.columnDefinitions.next(values);
-    });
   }
 
   toggleAdvancedFiltering() {
@@ -47,5 +45,8 @@ export class KaleidoscopeComponent implements OnInit  {
 
   applyFilter(filterValue: string) {
     this._filteringService.applyFilter(filterValue);
+  }
+  ngOnChanges() {
+    this._columnService.columnDefinitions.next(this.columnDefinitions);
   }
 }

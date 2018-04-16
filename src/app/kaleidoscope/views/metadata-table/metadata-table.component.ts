@@ -4,6 +4,8 @@ import { IDocument } from '../../models/document';
 import { SelectionModel } from '@angular/cdk/collections';
 import { DataControllerService } from '../../services/data-controller.service';
 import { RowDensityService } from '../../services/row-density.service';
+import { DynamicColumnsService } from '../../services/dynamic-columns.service';
+import { IColumn } from '../../models/column';
 
 
 @Component({
@@ -25,20 +27,25 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
   allowMultiSelect = true;
   rowDensity;
   selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
+  columns: IColumn[];
 
   constructor(
+    private _dynamicColumns: DynamicColumnsService,
     private _dataControllerService: DataControllerService,
     private _densityService: RowDensityService) {
   }
 
   ngOnInit() {
     this.dataSource = this._dataControllerService.dataSource;
-    // Push selection to the service everytime componenent's selection changes
+    // Push selection to the service everytime componenent's row selection changes
     this.selection.onChange.subscribe( () => {
       this._dataControllerService.selectedRowsData.next(this.selection.selected);
     });
     this._densityService.rowDensity.subscribe(value => {
       this.rowDensity = value;
+    });
+    this._dynamicColumns.columnDefinitions.subscribe(values => {
+      this.columns = values;
     });
   }
 
@@ -62,6 +69,7 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
   ngOnChanges() {
     this.selection = this._dataControllerService.selection;
     this.dataSource = this._dataControllerService.dataSource;
+    this.displayedColumns = this._dynamicColumns.getMetaColumns();
   }
 
   getRowClasses(item: IDocument) {
