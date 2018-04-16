@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { IColumn } from '../models/column';
 
 @Injectable()
-export class DynamicColumnsService implements OnInit{
+export class DynamicColumnsService implements OnInit {
 
   columnDefinitions = new BehaviorSubject<IColumn[]>([]);
 
@@ -13,9 +13,7 @@ export class DynamicColumnsService implements OnInit{
   constructor() { }
 
   ngOnInit() {
-    this.columnDefinitions.subscribe(values => {
 
-    });
   }
 
 

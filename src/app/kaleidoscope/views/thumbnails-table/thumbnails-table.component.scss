@@ -1,11 +1,11 @@
 .thumbnails-container {
     overflow-x: auto;
-    height: 606px;
+    height: 556px;
 }
 
 mat-grid-list {
     overflow: auto;
-    max-height: 606px;
+    // max-height: 606px;
 }
 
 .tile-content {
