@@ -4,6 +4,9 @@ import { IDocument } from './models/document';
 import { FilteringService } from './services/filtering.service';
 import { DataControllerService } from './services/data-controller.service';
 import { TableViewService } from './services/table-view.service';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { IColumn } from './models/column';
+import { DynamicColumnsService } from './services/dynamic-columns.service';
 
 
 @Component({
@@ -15,13 +18,16 @@ import { TableViewService } from './services/table-view.service';
 export class KaleidoscopeComponent implements OnInit  {
   advancedFilteringEnabled = false;
   filterValue = '';
-  @Input() private dataSource = new MatTableDataSource<IDocument>();
   currentView: string;
+
+  @Input() private dataSource = new MatTableDataSource<IDocument>();
+  @Input() private columnDefinitions = new BehaviorSubject<IColumn[]>([]);
 
   constructor(
     private _filteringService: FilteringService,
     private _dataControllerService: DataControllerService,
-    private _viewService: TableViewService
+    private _viewService: TableViewService,
+    private _columnService: DynamicColumnsService
   ) {}
 
   ngOnInit() {
@@ -29,6 +35,10 @@ export class KaleidoscopeComponent implements OnInit  {
     this._viewService.selectedView$.subscribe(view =>
       this.currentView = view
     );
+
+    this.columnDefinitions.subscribe(values => {
+      this._columnService.columnDefinitions.next(values);
+    });
   }
 
   toggleAdvancedFiltering() {

@@ -1,5 +1,5 @@
 <div class="mat-elevation-z6">
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="menu-row__padding">
         <app-table-menu></app-table-menu>
         <div fxLayout="row" fxLayoutAlign="center center">
             <mat-form-field fxHide.xs="true">
@@ -8,10 +8,10 @@
                     <mat-icon>search</mat-icon> Search term
                 </mat-placeholder>
             </mat-form-field>
-            <button *ngIf="!(advancedFilteringEnabled)" (click)="toggleAdvancedFiltering()" mat-icon-button>
+            <button *ngIf="!(advancedFilteringEnabled)" (click)="toggleAdvancedFiltering()" mat-icon-button class="expand-button__margin">
                 <mat-icon>expand_more</mat-icon>
             </button>
-            <button *ngIf="advancedFilteringEnabled" (click)="toggleAdvancedFiltering()" mat-icon-button>
+            <button *ngIf="advancedFilteringEnabled" (click)="toggleAdvancedFiltering()" mat-icon-button class="expand-button__margin">
                 <mat-icon>expand_less</mat-icon>
             </button>
         </div>

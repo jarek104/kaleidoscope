@@ -1,24 +1,8 @@
-<div class="container" fxLayoutAlign="space-between center">
+<div class="container" fxLayout="row" fxLayoutAlign="space-between center">
     <div>
         <app-selection-menu [isDisabled]="numberOfSelectedItems === 0?  true : false"></app-selection-menu>
         <span *ngIf="numberOfSelectedItems > 0">{{numberOfSelectedItems}} {{numberOfSelectedItems > 1 ? 'items' : 'item'}} selected</span>
     </div>
-    <div fxLayout="row" fxLayoutAlign="right center">
-        <div style="padding-right: 10px;">Views </div>
-        <mat-button-toggle-group #group="matButtonToggleGroup" value="metadata" (change)="setCurrentView($event)">
-            <mat-button-toggle value="metadata">
-                <mat-icon>bubble_chart</mat-icon>
-                <!-- <i class="material-icons">blur_linear</i> -->
-            </mat-button-toggle>
-            <mat-button-toggle value="keywords">
-                <i class="material-icons">reorder</i>
-            </mat-button-toggle>
-            <mat-button-toggle value="thumbnails">
-                <mat-icon>apps</mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle value="map">
-                <mat-icon>pin_drop</mat-icon>
-            </mat-button-toggle>
-        </mat-button-toggle-group>
-    </div>
+    <app-view-selector></app-view-selector>
+
 </div>

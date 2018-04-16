@@ -5,6 +5,7 @@ import { DataControllerService } from './services/data-controller.service';
 import { FilteringService } from './services/filtering.service';
 import { RowDensityService } from './services/row-density.service';
 import { AgmCoreModule } from '@agm/core';
+import { DynamicColumnsService } from './services/dynamic-columns.service';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { AgmCoreModule } from '@agm/core';
     TableViewService,
     DataControllerService,
     FilteringService,
-    RowDensityService
+    RowDensityService,
+    DynamicColumnsService
   ]
 })
 export class KaleidoscopeModule { }

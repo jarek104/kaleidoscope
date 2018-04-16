@@ -24,6 +24,7 @@ import { SelectionMenuComponent } from './kaleidoscope/shared/selection-menu/sel
 import { RowDensityService } from './kaleidoscope/services/row-density.service';
 import { DocumentProviderService } from './app-services/document-provider.service';
 import { KaleidoscopeModule } from './kaleidoscope/kaleidoscope.module';
+import { ViewSelectorComponent } from './kaleidoscope/views/view-selector.component';
 
 
 
@@ -40,6 +41,7 @@ import { KaleidoscopeModule } from './kaleidoscope/kaleidoscope.module';
     TableFooterComponent,
     MapViewComponent,
     SelectionMenuComponent,
+    ViewSelectorComponent
   ],
   imports: [
     BrowserModule,

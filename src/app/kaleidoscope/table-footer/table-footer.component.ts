@@ -10,7 +10,6 @@ import { DataControllerService } from '../services/data-controller.service';
 export class TableFooterComponent implements OnInit {
 
   constructor(
-    private _viewService: TableViewService,
     private _dataControllerService: DataControllerService
   ) { }
 
@@ -21,8 +20,5 @@ export class TableFooterComponent implements OnInit {
     this._dataControllerService.selectedRowsData.subscribe( data => {
       this.numberOfSelectedItems = data.length;
     });
-  }
-  setCurrentView(viewName) {
-    this._viewService.setCurrentView(viewName.value);
   }
 }

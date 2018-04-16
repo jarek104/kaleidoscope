@@ -1,0 +1,40 @@
+<div fxLayout="row" fxLayoutAlign="right center">
+    <div style="padding-right: 10px;">Views </div>
+    <!-- This shows on screens > xs -->
+    <mat-button-toggle-group #group="matButtonToggleGroup" fxShow fxHide.xs="true" value="metadata" (change)="setCurrentView($event.value)">
+        <mat-button-toggle value="metadata">
+            <mat-icon>bubble_chart</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle value="keywords">
+            <i class="material-icons">reorder</i>
+        </mat-button-toggle>
+        <mat-button-toggle value="thumbnails">
+            <mat-icon>apps</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle value="map">
+            <mat-icon>pin_drop</mat-icon>
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+    <!-- This shows only on xs -->
+    <button mat-icon-button [matMenuTriggerFor]="menu" fxHide fxShow.xs="true" class="views_button__margin">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="setCurrentView('metadata');">
+            <mat-icon>bubble_chart</mat-icon>
+            <span>Metadata</span>
+        </button>
+        <button mat-menu-item (click)="setCurrentView('keywords');">
+            <mat-icon>reorder</mat-icon>
+            <span>Keywords</span>
+        </button>
+        <button mat-menu-item (click)="setCurrentView('thumbnails');">
+            <mat-icon>apps</mat-icon>
+            <span>Thumbnails</span>
+        </button>
+        <button mat-menu-item (click)="setCurrentView('map');">
+            <mat-icon>pin_drop</mat-icon>
+            <span>Map</span>
+        </button>
+    </mat-menu>
+</div>

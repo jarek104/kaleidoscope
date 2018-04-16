@@ -1,26 +1,66 @@
-[
-  {
-        "name": "Document ID",
-        "width": "100px"
-  },
-  {
-        "name": "Document Name",
-        "width": "100px"
-  },
-  {
-        "name": "Author",
-        "width": "100px"
-  },
-  {
-        "name": "Date Created",
-        "width": "100px"
-  },
-  {
-        "name": "Last Modified",
-        "width": "100px"
-  },
-  {
-        "name": "Actions",
-        "width": "100px"
-  }
+[{
+        "name": "id",
+        "displayName": "Document ID",
+        "width": "50px"
+    },
+    {
+        "name": "name",
+        "displayName": "Autoname",
+        "width": "200px"
+    },
+    {
+        "name": "author",
+        "displayName": "Author",
+        "width": "150px"
+    },
+    {
+        "name": "dateCreated",
+        "displayName": "Date Created",
+        "width": "150px"
+    },
+    {
+        "name": "lastModified",
+        "displayName": "Last Modified",
+        "width": "150px"
+    },
+    {
+        "name": "employee_first_name",
+        "displayName": "First Name",
+        "width": "150px"
+    },
+    {
+        "name": "employee_last_name",
+        "displayName": "Last Name",
+        "width": "150px"
+    },
+    {
+        "name": "email",
+        "displayName": "Email",
+        "width": "150px"
+    },
+    {
+        "name": "department",
+        "displayName": "Department",
+        "width": "150px"
+    },
+    {
+        "name": "city",
+        "displayName": "City",
+        "width": "150px"
+    },
+    {
+        "name": "streetAddress",
+        "displayName": "Address",
+        "width": "150px"
+    },
+    {
+        "name": "stockIndustry",
+        "displayName": "Industry",
+        "width": "150px"
+    },
+    {
+        "name": "stockName",
+        "displayName": "Company",
+        "width": "150px"
+    }
 ]

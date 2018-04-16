@@ -20,7 +20,7 @@ export class DocumentProviderService {
     }
     getColumns(): Observable<IColumn[]> {
       return this._http.get<IDocument[]>(this._columnsUrl)
-          .do(data => console.log('All: ' + JSON.stringify(data)))
+        //   .do(data => console.log('Columns: ' + JSON.stringify(data)))
           .catch(this.handleError);
   }
 

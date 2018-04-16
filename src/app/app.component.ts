@@ -3,6 +3,7 @@ import { IDocument } from './kaleidoscope/models/document';
 import { MatTableDataSource } from '@angular/material';
 import { IColumn } from './kaleidoscope/models/column';
 import { DocumentProviderService } from './app-services/document-provider.service';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ import { DocumentProviderService } from './app-services/document-provider.servic
 export class AppComponent implements OnInit {
 
   dataSource = new MatTableDataSource<IDocument>();
-  columns: IColumn[];
+  columns = new BehaviorSubject<IColumn[]>([]);
 
   constructor(private dps: DocumentProviderService) {}
 
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit {
       this.dataSource.data = data;
     });
     this.dps.getColumns().subscribe(data => {
-      this.columns = data;
+      this.columns.next(data);
     });
   }
 }
