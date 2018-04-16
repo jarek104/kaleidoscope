@@ -1,8 +1,11 @@
 <div fxLayout="column" fxLayoutAlign="center center" class="container__padding">
-      <mat-form-field class="search-box" fxShow.xs="true" fxHide>
-          <input matInput (keyup)="storeFilterValue($event.target.value)" placeholder="Search term">
-      </mat-form-field>
-      <div fxLayout="row" fxLayoutGap="10px">
+    <mat-form-field class="search-box" fxShow.xs="true" fxHide>
+        <input matInput (keyup)="applyFilter($event.target.value)">
+        <mat-placeholder>
+            <mat-icon>search</mat-icon> Search term
+        </mat-placeholder>
+    </mat-form-field>
+    <div fxLayout="row" fxLayoutGap="10px">
         <mat-form-field>
             <input matInput [matDatepicker]="fromPicker" placeholder="From">
             <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
@@ -13,7 +16,7 @@
             <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
             <mat-datepicker #toPicker></mat-datepicker>
         </mat-form-field>
-      </div>
+    </div>
     <!-- <div fxLayout="row" fxLayoutGap="10px">
       <mat-form-field>
           <input matInput placeholder="ID from">

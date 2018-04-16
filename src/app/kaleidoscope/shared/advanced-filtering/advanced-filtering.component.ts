@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FilteringService } from '../../services/filtering.service';
 
 @Component({
   selector: 'app-advanced-filtering',
@@ -7,9 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AdvancedFilteringComponent implements OnInit {
 
-  constructor() { }
+  constructor( private _filteringService: FilteringService) { }
 
   ngOnInit() {
   }
 
+  applyFilter(filterValue: string) {
+    this._filteringService.applyFilter(filterValue);
+  }
 }
