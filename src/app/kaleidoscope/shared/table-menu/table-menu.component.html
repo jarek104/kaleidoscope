@@ -7,10 +7,14 @@
     <mat-icon>subdirectory_arrow_left</mat-icon>
     <span>Shift columns left</span>
   </button>
-    <button mat-menu-item [matMenuTriggerFor]="density">
-        <mat-icon>reorder</mat-icon>
-        <span>Row density</span>
-    </button>
+  <button mat-menu-item [matMenuTriggerFor]="density">
+      <mat-icon>reorder</mat-icon>
+      <span>Row density</span>
+  </button>
+  <button mat-menu-item [matMenuTriggerFor]="columns">
+      <mat-icon>view_column</mat-icon>
+      <span>Displayed columns</span>
+  </button>
 </mat-menu>
 
 <mat-menu #density="matMenu">
@@ -18,3 +22,12 @@
     <button mat-menu-item (click)="changeDensity('medium');">Medium</button>
     <button mat-menu-item (click)="changeDensity('high');">High</button>
 </mat-menu>
+
+<mat-menu #columns="matMenu">
+  <button mat-menu-item *ngFor="let column of currentlyShownColumns">{{column.displayName}}</button>
+    <!-- <mat-option *ngFor="let column of currentlyShownColumns">{{column.displayName}}</mat-option> -->
+    <!-- <mat-button-toggle-group vertical='true'>
+        <mat-button-toggle mat-menu-item *ngFor="let column of currentlyShownColumns">{{column.displayName}}</mat-button-toggle>
+    </mat-button-toggle-group> -->
+</mat-menu>
+

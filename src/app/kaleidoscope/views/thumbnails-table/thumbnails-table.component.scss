@@ -19,14 +19,17 @@ mat-grid-list {
 }
 
 .selectedTile {
-    background: #EEEEEE !important;
+    background: #E91E63 !important;
 }
 
 .image-container,
 img {
-    align-items: top;
-    margin: 5px auto 0 auto;
+    align-items: center;
+    margin: 5px auto;
     text-align: center;
-    height: 89%;
-    width: 89%;
+    height: 98%;
+    width: 98%;
+}
+.tile-background {
+  background: #EEEEEE;
 }

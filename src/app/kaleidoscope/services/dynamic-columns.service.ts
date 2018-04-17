@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { IColumn } from '../models/column';
 import { map, filter } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
+import { TableViewService } from './table-view.service';
 
 
 @Injectable()
@@ -15,7 +16,9 @@ export class DynamicColumnsService {
 
   shift = new EventEmitter<any>();
 
-  constructor() {
+  constructor(
+    private _tableView: TableViewService
+  ) {
     this.metaColumns = this.columnDefinitions.asObservable().pipe(map(
       values => values.filter(column =>
         column.name === 'id' ||
@@ -36,6 +39,6 @@ export class DynamicColumnsService {
     ));
   }
   shiftColumns() {
-    this.shift.emit('test');
+    this.shift.emit();
   }
 }

@@ -1,12 +1,13 @@
 <div class="thumbnails-container">
-    <mat-grid-list cols="{{columns}}">
-        <mat-grid-tile *ngFor="let document of dataSource | async" [ngClass]="{ 'selectedTile' : isSelected(document) }">
+    <mat-grid-list cols="{{columns}}" gutterSize="10px">
+        <mat-grid-tile *ngFor="let document of dataSource | async" class="tile-background" [ngClass]="{ 'selectedTile' : isSelected(document) }">
             <div class="tile-content" (click)="toggleSelection(document);">
                 <div class="image-container">
                     <img [src]="document.imageUrl">
                 </div>
+              </div>
                 <mat-grid-tile-footer class="overflow-hide">{{document.name | uppercase}}</mat-grid-tile-footer>
-            </div>
+
         </mat-grid-tile>
     </mat-grid-list>
 </div>
