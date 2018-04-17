@@ -11,6 +11,9 @@
         <mat-button-toggle value="thumbnails">
             <mat-icon>apps</mat-icon>
         </mat-button-toggle>
+        <mat-button-toggle value="workflow">
+            <mat-icon>timeline</mat-icon>
+        </mat-button-toggle>
         <mat-button-toggle value="map">
             <mat-icon>pin_drop</mat-icon>
         </mat-button-toggle>
@@ -31,6 +34,10 @@
         <button mat-menu-item (click)="setCurrentView('thumbnails');">
             <mat-icon>apps</mat-icon>
             <span>Thumbnails</span>
+        </button>
+        <button mat-menu-item (click)="setCurrentView('workflow');">
+            <mat-icon>timeline</mat-icon>
+            <span>Workflow</span>
         </button>
         <button mat-menu-item (click)="setCurrentView('map');">
             <mat-icon>pin_drop</mat-icon>

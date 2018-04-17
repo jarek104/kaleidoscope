@@ -25,6 +25,7 @@ import { RowDensityService } from './kaleidoscope/services/row-density.service';
 import { DocumentProviderService } from './app-services/document-provider.service';
 import { KaleidoscopeModule } from './kaleidoscope/kaleidoscope.module';
 import { ViewSelectorComponent } from './kaleidoscope/views/view-selector.component';
+import { WorkflowTableComponent } from './kaleidoscope/views/workflow-table/workflow-table.component';
 
 
 
@@ -41,7 +42,8 @@ import { ViewSelectorComponent } from './kaleidoscope/views/view-selector.compon
     TableFooterComponent,
     MapViewComponent,
     SelectionMenuComponent,
-    ViewSelectorComponent
+    ViewSelectorComponent,
+    WorkflowTableComponent
   ],
   imports: [
     BrowserModule,
