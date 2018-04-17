@@ -17,6 +17,5 @@ export class ViewSelectorComponent implements OnInit {
   }
   setCurrentView(viewName) {
     this._viewService.setCurrentView(viewName);
-    console.log(viewName);
   }
 }

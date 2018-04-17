@@ -4,6 +4,8 @@ import { IDocument } from '../../models/document';
 import { SelectionModel } from '@angular/cdk/collections';
 import { DataControllerService } from '../../services/data-controller.service';
 import { RowDensityService } from '../../services/row-density.service';
+import { DynamicColumnsService } from '../../services/dynamic-columns.service';
+import { ThumbnailsTableComponent } from '../thumbnails-table/thumbnails-table.component';
 
 
 @Component({
@@ -13,7 +15,10 @@ import { RowDensityService } from '../../services/row-density.service';
 })
 export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges {
 
-  displayedColumns = ['select', 'id', 'name', 'author', 'dateCreated', 'lastModified', 'actions'];
+  // displayedColumns = ['select', 'id', 'name', 'author', 'dateCreated', 'lastModified', 'actions'];
+  properties = [];
+  dynamicColumnDefs: any[] = [];
+  dynamicColumnIds: string[] = [];
 
   @ViewChild(MatSort) sort: MatSort;
   dataSource = new MatTableDataSource<IDocument>();
@@ -27,6 +32,7 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
   selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
 
   constructor(
+    private _columnService: DynamicColumnsService,
     private _dataControllerService: DataControllerService,
     private _densityService: RowDensityService) {
   }
@@ -39,6 +45,20 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
     });
     this._densityService.rowDensity.subscribe(value => {
       this.rowDensity = value;
+    });
+
+    this._columnService.metaColumns.subscribe(values => {
+      values.map(cols => {
+        this.properties.push(cols.name);
+        this.dynamicColumnDefs.push({
+          id: cols.name.toUpperCase(),
+          property: cols.name,
+          headerText: cols.displayName
+        });
+      });
+
+      this.dynamicColumnIds = [];
+      this.dynamicColumnIds = this.dynamicColumnIds.concat('select', this.dynamicColumnDefs.map(columnDef => columnDef.id), 'actions');
     });
   }
 

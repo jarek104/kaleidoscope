@@ -1,4 +1,5 @@
-[{
+[
+    {
         "name": "id",
         "displayName": "Document ID",
         "width": "50px"
