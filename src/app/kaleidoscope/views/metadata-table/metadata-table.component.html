@@ -10,15 +10,15 @@
               <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
               </mat-checkbox>
           </mat-cell>
-      </ng-container>
+        </ng-container>
 
+        <!-- Dynamic columns -->
         <ng-container [cdkColumnDef]="column.id" *ngFor="let column of dynamicColumnDefs">
           <mat-header-cell *cdkHeaderCellDef> {{column.headerText}} </mat-header-cell>
           <mat-cell *cdkCellDef="let row"> {{row[column.property]}} </mat-cell>
         </ng-container>
 
-
-
+        <!-- Actions column -->
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef class="small-column__width">Actions</mat-header-cell>
             <mat-cell *matCellDef="let row" class="small-column__width">
@@ -26,51 +26,8 @@
             </mat-cell>
         </ng-container>
 
+        <!-- Cells -->
         <mat-header-row *cdkHeaderRowDef="dynamicColumnIds"></mat-header-row>
         <mat-row *cdkRowDef="let row; columns: dynamicColumnIds;" [ngClass]="getRowClasses(row)"></mat-row>
-
-
-
-
-        <!-- <ng-container matColumnDef="select">
-            <mat-header-cell *matHeaderCellDef class="small-column__width">
-                <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
-                </mat-checkbox>
-            </mat-header-cell>
-            <mat-cell *matCellDef="let row" class="small-column__width">
-                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
-                </mat-checkbox>
-            </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="small-column__width">ID</mat-header-cell>
-            <mat-cell *matCellDef="let document" class="small-column__width">{{document.id}}</mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Autoname</mat-header-cell>
-            <mat-cell *matCellDef="let document">{{document.name}}</mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="author">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Author</mat-header-cell>
-            <mat-cell *matCellDef="let document">{{document.author}}</mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="dateCreated">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Date Created</mat-header-cell>
-            <mat-cell *matCellDef="let document">{{document.dateCreated | date}}</mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="lastModified">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Last Modified</mat-header-cell>
-            <mat-cell *matCellDef="let document">{{document.lastModified | date}}</mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef class="small-column__width">Actions</mat-header-cell>
-            <mat-cell *matCellDef="let document" class="small-column__width">
-                <app-row-menu></app-row-menu>
-            </mat-cell>
-        </ng-container> -->
-
-        <!-- Data -->
-        <!-- <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="getRowClasses(row)"></mat-row> -->
     </mat-table>
 </div>

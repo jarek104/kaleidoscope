@@ -6,12 +6,12 @@ import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
-export class DynamicColumnsService implements OnInit {
+export class DynamicColumnsService {
 
   columnDefinitions = new BehaviorSubject<IColumn[]>([]);
 
   metaColumns = new Observable<IColumn[]>();
-  keywordColumns: IColumn[] = [];
+  keywordColumns = new Observable<IColumn[]>();
 
   constructor() {
     this.metaColumns = this.columnDefinitions.asObservable().pipe(map(
@@ -22,14 +22,16 @@ export class DynamicColumnsService implements OnInit {
         column.name === 'dateCreated' ||
         column.name === 'lastModified'
       )
-    )
-  );
-  // console.log('meta: ' + this.metaColumns.forEach(console.log));
+    ));
+    this.keywordColumns = this.columnDefinitions.asObservable().pipe(map(
+      values => values.filter(column =>
+        column.name !== 'id' &&
+        column.name !== 'name' &&
+        column.name !== 'author' &&
+        column.name !== 'dateCreated' &&
+        column.name !== 'lastModified'
+      )
+    ));
+
   }
-
-  ngOnInit() {
-
-  }
-
-
 }

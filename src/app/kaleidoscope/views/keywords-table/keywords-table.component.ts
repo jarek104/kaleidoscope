@@ -4,6 +4,7 @@ import { IDocument } from '../../models/document';
 import { SelectionModel } from '@angular/cdk/collections';
 import { DataControllerService } from '../../services/data-controller.service';
 import { RowDensityService } from '../../services/row-density.service';
+import { DynamicColumnsService } from '../../services/dynamic-columns.service';
 
 
 @Component({
@@ -26,6 +27,9 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
     'stockName'
   ];
 
+  dynamicColumnDefs: any[] = [];
+  dynamicColumnIds: string[] = [];
+
   @ViewChild(MatSort) sort: MatSort;
   dataSource = new MatTableDataSource<IDocument>();
   @Input() filterValue = '';
@@ -37,6 +41,7 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
   selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
 
   constructor(
+    private _columnService: DynamicColumnsService,
     private _dataControllerService: DataControllerService,
     private _densityService: RowDensityService) {
   }
@@ -48,6 +53,19 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
     });
     this._densityService.rowDensity.subscribe(value => {
       this.rowDensity = value;
+    });
+
+    this._columnService.keywordColumns.subscribe(values => {
+      values.map(cols => {
+        this.dynamicColumnDefs.push({
+          id: cols.name.toUpperCase(),
+          property: cols.name,
+          headerText: cols.displayName
+        });
+      });
+
+      this.dynamicColumnIds = [];
+      this.dynamicColumnIds = this.dynamicColumnIds.concat('select', this.dynamicColumnDefs.map(columnDef => columnDef.id), 'actions');
     });
   }
 

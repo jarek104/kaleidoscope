@@ -15,8 +15,6 @@ import { ThumbnailsTableComponent } from '../thumbnails-table/thumbnails-table.c
 })
 export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges {
 
-  // displayedColumns = ['select', 'id', 'name', 'author', 'dateCreated', 'lastModified', 'actions'];
-  properties = [];
   dynamicColumnDefs: any[] = [];
   dynamicColumnIds: string[] = [];
 
@@ -49,7 +47,6 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
 
     this._columnService.metaColumns.subscribe(values => {
       values.map(cols => {
-        this.properties.push(cols.name);
         this.dynamicColumnDefs.push({
           id: cols.name.toUpperCase(),
           property: cols.name,
