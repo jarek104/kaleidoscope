@@ -10,7 +10,7 @@ import { DynamicColumnsService } from '../../services/dynamic-columns.service';
 @Component({
   selector: 'app-keywords-table',
   templateUrl: './keywords-table.component.html',
-  styleUrls: ['./keywords-table.component.scss', '../shared-table-style.scss']
+  styleUrls: ['../shared-table-style.scss', './keywords-table.component.scss']
 })
 export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges {
 
@@ -67,6 +67,10 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
       this.dynamicColumnIds = [];
       this.dynamicColumnIds = this.dynamicColumnIds.concat('select', this.dynamicColumnDefs.map(columnDef => columnDef.id), 'actions');
     });
+
+    this._columnService.shift.subscribe(data =>
+      this.dynamicColumnIds.push(this.dynamicColumnIds.shift())
+    );
   }
 
   isSelected(item: IDocument): boolean {

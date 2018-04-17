@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable, OnInit, EventEmitter } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { IColumn } from '../models/column';
 import { map, filter } from 'rxjs/operators';
@@ -12,6 +12,8 @@ export class DynamicColumnsService {
 
   metaColumns = new Observable<IColumn[]>();
   keywordColumns = new Observable<IColumn[]>();
+
+  shift = new EventEmitter<any>();
 
   constructor() {
     this.metaColumns = this.columnDefinitions.asObservable().pipe(map(
@@ -32,6 +34,8 @@ export class DynamicColumnsService {
         column.name !== 'lastModified'
       )
     ));
-
+  }
+  shiftColumns() {
+    this.shift.emit('test');
   }
 }

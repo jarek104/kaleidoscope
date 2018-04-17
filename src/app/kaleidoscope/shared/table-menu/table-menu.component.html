@@ -3,10 +3,10 @@
 </button>
 
 <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-        <mat-icon>refresh</mat-icon>
-        <span>Refresh</span>
-    </button>
+  <button mat-menu-item (click)="shiftColumns();">
+    <mat-icon>subdirectory_arrow_left</mat-icon>
+    <span>Shift columns left</span>
+  </button>
     <button mat-menu-item [matMenuTriggerFor]="density">
         <mat-icon>reorder</mat-icon>
         <span>Row density</span>

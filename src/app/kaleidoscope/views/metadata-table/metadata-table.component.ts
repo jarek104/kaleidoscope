@@ -11,7 +11,7 @@ import { ThumbnailsTableComponent } from '../thumbnails-table/thumbnails-table.c
 @Component({
   selector: 'app-metadata-table',
   templateUrl: './metadata-table.component.html',
-  styleUrls: ['./metadata-table.component.scss', '../shared-table-style.scss']
+  styleUrls: ['../shared-table-style.scss', './metadata-table.component.scss']
 })
 export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges {
 
@@ -57,6 +57,10 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
       this.dynamicColumnIds = [];
       this.dynamicColumnIds = this.dynamicColumnIds.concat('select', this.dynamicColumnDefs.map(columnDef => columnDef.id), 'actions');
     });
+
+    this._columnService.shift.subscribe(data =>
+      this.dynamicColumnIds.push(this.dynamicColumnIds.shift())
+    );
   }
 
   isSelected(item: IDocument): boolean {
