@@ -6,8 +6,11 @@ import { DataControllerService } from '../../services/data-controller.service';
 import { RowDensityService } from '../../services/row-density.service';
 import { DynamicColumnsService } from '../../services/dynamic-columns.service';
 import { IColumn } from '../../models/column';
+<<<<<<< HEAD
 import { map } from 'rxjs/operators/map';
 import { Observable } from 'rxjs/Observable';
+=======
+>>>>>>> a94cc671ba52f16306d696370639bbdd8fd2c6d4
 
 
 @Component({
@@ -29,10 +32,14 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
   allowMultiSelect = true;
   rowDensity;
   selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
+<<<<<<< HEAD
   metaColumns: Observable<any[]>;
 
   dynamicColumnDefs: any[] = [];
   dynamicColumnIds: string[] = [];
+=======
+  columns: IColumn[];
+>>>>>>> a94cc671ba52f16306d696370639bbdd8fd2c6d4
 
   constructor(
     private _dynamicColumns: DynamicColumnsService,
@@ -49,6 +56,7 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
     this._densityService.rowDensity.subscribe(value => {
       this.rowDensity = value;
     });
+<<<<<<< HEAD
     this.metaColumns = this._dynamicColumns.columnDefinitions.asObservable().pipe(map(
       values => values.filter(column =>
         // column.name === 'id' ||
@@ -68,6 +76,10 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
       // console.log(this.dynamicColumnDefs);
       // this.dynamicColumnIds = this.dynamicColumnDefs.map(columnDef => columnDef.id);
       // console.log(this.dynamicColumnIds);
+=======
+    this._dynamicColumns.columnDefinitions.subscribe(values => {
+      this.columns = values;
+>>>>>>> a94cc671ba52f16306d696370639bbdd8fd2c6d4
     });
   }
 
@@ -91,8 +103,12 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
   ngOnChanges() {
     this.selection = this._dataControllerService.selection;
     this.dataSource = this._dataControllerService.dataSource;
+<<<<<<< HEAD
     // this.displayedColumns = this._dynamicColumns.getMetaColumns();
 
+=======
+    this.displayedColumns = this._dynamicColumns.getMetaColumns();
+>>>>>>> a94cc671ba52f16306d696370639bbdd8fd2c6d4
   }
 
   getRowClasses(item: IDocument) {
