@@ -1,66 +1,79 @@
 [{
         "name": "id",
         "displayName": "Document ID",
-        "width": "50px"
+        "width": "50px",
+        "cell": "(document: IDocument) => `${document.id}`"
     },
     {
         "name": "name",
         "displayName": "Autoname",
-        "width": "200px"
+        "width": "200px",
+        "cell": "(document: IDocument) => `${document.name}`"
     },
     {
         "name": "author",
         "displayName": "Author",
-        "width": "150px"
+        "width": "150px",
+        "cell": "(document: IDocument) => `${document.author}`"
     },
     {
         "name": "dateCreated",
         "displayName": "Date Created",
-        "width": "150px"
+        "width": "150px",
+        "cell": "(document: IDocument) => `${document.dateCreated}`"
     },
     {
         "name": "lastModified",
         "displayName": "Last Modified",
-        "width": "150px"
+        "width": "150px",
+        "cell": "(document: IDocument) => `${document.lastModified}`"
     },
     {
         "name": "employee_first_name",
         "displayName": "First Name",
-        "width": "150px"
+        "width": "150px",
+        "cell": "(document: IDocument) => `${document.employee_first_name}`"
     },
     {
         "name": "employee_last_name",
         "displayName": "Last Name",
-        "width": "150px"
+        "width": "150px",
+        "cell": "(document: IDocument) => `${document.employee_last_name}`"
     },
     {
         "name": "email",
         "displayName": "Email",
-        "width": "150px"
+        "width": "150px",
+        "cell": "(document: IDocument) => `${document.email}`"
     },
     {
         "name": "department",
         "displayName": "Department",
-        "width": "150px"
+        "width": "150px",
+        "cell": "(document: IDocument) => `${document.department}`"
     },
     {
         "name": "city",
         "displayName": "City",
-        "width": "150px"
+        "width": "150px",
+        "cell": "(document: IDocument) => `${document.city}`"
     },
     {
         "name": "streetAddress",
         "displayName": "Address",
-        "width": "150px"
+        "width": "150px",
+        "cell": "(document: IDocument) => `${document.streetAddress}`"
     },
     {
         "name": "stockIndustry",
         "displayName": "Industry",
-        "width": "150px"
+        "width": "150px",
+        "cell": "(document: IDocument) => `${document.stockIndustry}`"
     },
     {
         "name": "stockName",
         "displayName": "Company",
-        "width": "150px"
+        "width": "150px",
+        "cell": "(document: IDocument) => `${document.stockName}`"
     }
 ]

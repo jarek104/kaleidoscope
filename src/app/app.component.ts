@@ -13,7 +13,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class AppComponent implements OnInit {
 
   dataSource = new MatTableDataSource<IDocument>();
-  columns = new BehaviorSubject<IColumn[]>([]);
+  columns: IColumn[] = [];
 
   constructor(private dps: DocumentProviderService) {}
 
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
       this.dataSource.data = data;
     });
     this.dps.getColumns().subscribe(data => {
-      this.columns.next(data);
+      this.columns = data;
     });
   }
 }

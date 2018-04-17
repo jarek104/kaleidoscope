@@ -1,7 +1,17 @@
+<!-- SHOW HERE: <pre>{{metaColumns | async | json}}</pre> -->
+<!-- <p>{{cols[0] | json}}</p> -->
+<div *ngFor="let column of cols">
+    <p>Name: {{column.name}}, displayName: {{column.displayName}}, cell: {{column.cell}}</p>
+</div>
 <div class="table-container">
     <mat-table #table [dataSource]="dataSource" matSort>
+
+        <!-- <ng-container [matColumnDef]="column.name" *ngFor="let column of metaColumns | async">
+            <mat-header-cell *matHeaderCellDef> {{column.displayName}} </mat-header-cell>
+            <mat-cell *matCellDef="let document"> {{document[column.name]}} </mat-cell>
+        </ng-container> -->
         <!-- Column header definitions -->
-        <ng-container matColumnDef="select">
+        <!-- <ng-container matColumnDef="select">
             <mat-header-cell *matHeaderCellDef class="small-column__width">
                 <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
                 </mat-checkbox>
@@ -14,16 +24,23 @@
         <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef mat-sort-header class="small-column__width">ID</mat-header-cell>
             <mat-cell *matCellDef="let document" class="small-column__width">{{document.id}}</mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="name">
+        </ng-container> -->
+        <!-- <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Autoname</mat-header-cell>
             <mat-cell *matCellDef="let document">{{document.name}}</mat-cell>
-        </ng-container>
+        </ng-container> -->
+
+
         <ng-container matColumnDef="author">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Author</mat-header-cell>
             <mat-cell *matCellDef="let document">{{document.author}}</mat-cell>
         </ng-container>
-        <ng-container matColumnDef="dateCreated">
+
+        <!-- <ng-container *ngFor="let column of cols" matColumnDef="column.name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>{{column.name}}</mat-header-cell>
+            <mat-cell *matCellDef="let document">{{document[column.name]}}</mat-cell>
+        </ng-container> -->
+        <!-- <ng-container matColumnDef="dateCreated">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Date Created</mat-header-cell>
             <mat-cell *matCellDef="let document">{{document.dateCreated | date}}</mat-cell>
         </ng-container>
@@ -36,7 +53,7 @@
             <mat-cell *matCellDef="let document" class="small-column__width">
                 <app-row-menu></app-row-menu>
             </mat-cell>
-        </ng-container>
+        </ng-container> -->
 
         <!-- Data -->
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

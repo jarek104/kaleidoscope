@@ -4,6 +4,10 @@ import { IDocument } from '../../models/document';
 import { SelectionModel } from '@angular/cdk/collections';
 import { DataControllerService } from '../../services/data-controller.service';
 import { RowDensityService } from '../../services/row-density.service';
+import { DynamicColumnsService } from '../../services/dynamic-columns.service';
+import { IColumn } from '../../models/column';
+import { map } from 'rxjs/operators/map';
+import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -13,7 +17,7 @@ import { RowDensityService } from '../../services/row-density.service';
 })
 export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges {
 
-  displayedColumns = ['select', 'id', 'name', 'author', 'dateCreated', 'lastModified', 'actions'];
+  displayedColumns = ['author'];
 
   @ViewChild(MatSort) sort: MatSort;
   dataSource = new MatTableDataSource<IDocument>();
@@ -25,20 +29,45 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
   allowMultiSelect = true;
   rowDensity;
   selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
+  metaColumns: Observable<any[]>;
+
+  dynamicColumnDefs: any[] = [];
+  dynamicColumnIds: string[] = [];
 
   constructor(
+    private _dynamicColumns: DynamicColumnsService,
     private _dataControllerService: DataControllerService,
     private _densityService: RowDensityService) {
   }
 
   ngOnInit() {
     this.dataSource = this._dataControllerService.dataSource;
-    // Push selection to the service everytime componenent's selection changes
+    // Push selection to the service everytime componenent's row selection changes
     this.selection.onChange.subscribe( () => {
       this._dataControllerService.selectedRowsData.next(this.selection.selected);
     });
     this._densityService.rowDensity.subscribe(value => {
       this.rowDensity = value;
+    });
+    this.metaColumns = this._dynamicColumns.columnDefinitions.asObservable().pipe(map(
+      values => values.filter(column =>
+        // column.name === 'id' ||
+        // column.name === 'name' ||
+        column.name === 'author'
+        // column.name === 'dateCreated' ||
+        // column.name === 'lastModified'
+      )));
+    this.metaColumns.subscribe(column => {
+      column.map(val => console.log(val.name));
+      // this.dynamicColumnDefs.push({
+      //   id: column[0].name.toUpperCase(),
+      //   property: column[0],
+      //   headerText: column[0]
+
+      // });
+      // console.log(this.dynamicColumnDefs);
+      // this.dynamicColumnIds = this.dynamicColumnDefs.map(columnDef => columnDef.id);
+      // console.log(this.dynamicColumnIds);
     });
   }
 
@@ -62,6 +91,8 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
   ngOnChanges() {
     this.selection = this._dataControllerService.selection;
     this.dataSource = this._dataControllerService.dataSource;
+    // this.displayedColumns = this._dynamicColumns.getMetaColumns();
+
   }
 
   getRowClasses(item: IDocument) {
