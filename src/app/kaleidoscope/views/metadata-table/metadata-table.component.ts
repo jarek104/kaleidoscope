@@ -50,7 +50,8 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
         this.dynamicColumnDefs.push({
           id: cols.name.toUpperCase(),
           property: cols.name,
-          headerText: cols.displayName
+          headerText: cols.displayName,
+          width: cols.width
         });
       });
 

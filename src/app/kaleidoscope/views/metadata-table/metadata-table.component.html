@@ -13,21 +13,21 @@
         </ng-container>
 
         <!-- Dynamic columns -->
-        <ng-container [cdkColumnDef]="column.id" *ngFor="let column of dynamicColumnDefs">
-          <mat-header-cell *cdkHeaderCellDef> {{column.headerText}} </mat-header-cell>
-          <mat-cell *cdkCellDef="let row"> {{row[column.property]}} </mat-cell>
+        <ng-container [matColumnDef]="column.id" *ngFor="let column of dynamicColumnDefs">
+          <mat-header-cell *matHeaderCellDef mat-sort-header disabled [fxFlex]="column.width + 'px'" > {{column.headerText}} </mat-header-cell>
+          <mat-cell *matCellDef="let row" [fxFlex]="column.width + 'px'"> {{row[column.property]}} </mat-cell>
         </ng-container>
 
         <!-- Actions column -->
         <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef class="small-column__width">Actions</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
             <mat-cell *matCellDef="let row" class="small-column__width">
                 <app-row-menu></app-row-menu>
             </mat-cell>
         </ng-container>
 
         <!-- Cells -->
-        <mat-header-row *cdkHeaderRowDef="dynamicColumnIds"></mat-header-row>
-        <mat-row *cdkRowDef="let row; columns: dynamicColumnIds;" [ngClass]="getRowClasses(row)"></mat-row>
+        <mat-header-row *matHeaderRowDef="dynamicColumnIds"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: dynamicColumnIds;" [ngClass]="getRowClasses(row)"></mat-row>
     </mat-table>
 </div>

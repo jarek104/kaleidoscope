@@ -14,8 +14,8 @@
 
         <!-- Dynamic columns -->
         <ng-container [cdkColumnDef]="column.id" *ngFor="let column of dynamicColumnDefs">
-          <mat-header-cell *cdkHeaderCellDef>{{column.headerText}}</mat-header-cell>
-          <mat-cell *cdkCellDef="let row">{{row[column.property]}}</mat-cell>
+          <mat-header-cell *cdkHeaderCellDef [fxFlex]="column.width + 'px'" mat-sort-header>{{column.headerText}}</mat-header-cell>
+          <mat-cell *cdkCellDef="let row" [fxFlex]="column.width + 'px'">{{row[column.property]}}</mat-cell>
         </ng-container>
 
         <!-- Actions column -->

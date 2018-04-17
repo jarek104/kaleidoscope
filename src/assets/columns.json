@@ -2,66 +2,66 @@
     {
         "name": "id",
         "displayName": "Document ID",
-        "width": "50px"
+        "width": "120"
     },
     {
         "name": "name",
         "displayName": "Autoname",
-        "width": "200px"
+        "width": "350"
     },
     {
         "name": "author",
         "displayName": "Author",
-        "width": "150px"
+        "width": "250"
     },
     {
         "name": "dateCreated",
         "displayName": "Date Created",
-        "width": "150px"
+        "width": "170"
     },
     {
         "name": "lastModified",
         "displayName": "Last Modified",
-        "width": "150px"
+        "width": "170"
     },
     {
         "name": "employee_first_name",
         "displayName": "First Name",
-        "width": "150px"
+        "width": "180"
     },
     {
         "name": "employee_last_name",
         "displayName": "Last Name",
-        "width": "150px"
+        "width": "180"
     },
     {
         "name": "email",
         "displayName": "Email",
-        "width": "150px"
+        "width": "180"
     },
     {
         "name": "department",
         "displayName": "Department",
-        "width": "150px"
+        "width": "150"
     },
     {
         "name": "city",
         "displayName": "City",
-        "width": "150px"
+        "width": "130"
     },
     {
         "name": "streetAddress",
         "displayName": "Address",
-        "width": "150px"
+        "width": "180"
     },
     {
         "name": "stockIndustry",
         "displayName": "Industry",
-        "width": "150px"
+        "width": "150"
     },
     {
         "name": "stockName",
         "displayName": "Company",
-        "width": "150px"
+        "width": "250"
     }
 ]

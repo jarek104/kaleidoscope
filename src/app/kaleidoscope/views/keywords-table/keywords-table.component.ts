@@ -14,19 +14,6 @@ import { DynamicColumnsService } from '../../services/dynamic-columns.service';
 })
 export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges {
 
-  displayedColumns = [
-    'select',
-    'id',
-    'employee_first_name',
-    'employee_last_name',
-    'email',
-    'department',
-    'city',
-    'streetAddress',
-    'stockIndustry',
-    'stockName'
-  ];
-
   dynamicColumnDefs: any[] = [];
   dynamicColumnIds: string[] = [];
 
@@ -60,7 +47,8 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
         this.dynamicColumnDefs.push({
           id: cols.name.toUpperCase(),
           property: cols.name,
-          headerText: cols.displayName
+          headerText: cols.displayName,
+          width: cols.width
         });
       });
 
