@@ -11,9 +11,3 @@ export class TableViewService {
     this.selectedView.next(view);
   }
 }
-enum ViewType {
-  Metadata = 'metadata',
-  Keywords = 'keywords',
-  Thumbnails = 'thumbnails',
-  Map = 'map'
-}

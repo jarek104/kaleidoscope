@@ -13,6 +13,7 @@ export class DynamicColumnsService {
 
   metaColumns = new Observable<IColumn[]>();
   keywordColumns = new Observable<IColumn[]>();
+  workflowColumns = new Observable<IColumn[]>();
 
   shift = new EventEmitter<any>();
 
@@ -35,6 +36,14 @@ export class DynamicColumnsService {
         column.name !== 'author' &&
         column.name !== 'dateCreated' &&
         column.name !== 'lastModified'
+      )
+    ));
+    this.workflowColumns = this.columnDefinitions.asObservable().pipe(map(
+      values => values.filter(column =>
+        column.name === 'name' ||
+        column.name === 'status' ||
+        column.name === 'lastQueue' ||
+        column.name === 'lastTransition'
       )
     ));
   }

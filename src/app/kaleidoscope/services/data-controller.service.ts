@@ -20,6 +20,7 @@ export class DataControllerService {
   selectRows(rows: IDocument[]) {
     rows.forEach(doc => {
       this.selection.select(doc);
+      console.log(doc);
     });
   }
 

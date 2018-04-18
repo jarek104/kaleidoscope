@@ -2,20 +2,20 @@
     <mat-table #table [dataSource]="dataSource" matSort>
         <!-- Column header definitions -->
         <ng-container matColumnDef="select">
-          <mat-header-cell *matHeaderCellDef class="small-column__width">
-              <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
-              </mat-checkbox>
-          </mat-header-cell>
-          <mat-cell *matCellDef="let row" class="small-column__width">
-              <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
-              </mat-checkbox>
-          </mat-cell>
+            <mat-header-cell *matHeaderCellDef class="small-column__width">
+                <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
+                </mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" class="small-column__width">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+                </mat-checkbox>
+            </mat-cell>
         </ng-container>
 
         <!-- Dynamic columns -->
-        <ng-container [cdkColumnDef]="column.id" *ngFor="let column of dynamicColumnDefs">
-          <mat-header-cell *cdkHeaderCellDef [fxFlex]="column.width + 'px'" mat-sort-header>{{column.headerText}}</mat-header-cell>
-          <mat-cell *cdkCellDef="let row" [fxFlex]="column.width + 'px'">{{row[column.property]}}</mat-cell>
+        <ng-container [matColumnDef]="column.id" *ngFor="let column of dynamicColumnDefs">
+            <mat-header-cell *matHeaderCellDef [fxFlex]="column.width + 'px'" [mat-sort-header]="column.property">{{column.headerText}}</mat-header-cell>
+            <mat-cell *matCellDef="let row" [fxFlex]="column.width + 'px'">{{row[column.property]}}</mat-cell>
         </ng-container>
 
         <!-- Actions column -->
@@ -27,7 +27,7 @@
         </ng-container>
 
         <!-- Cells -->
-        <mat-header-row *cdkHeaderRowDef="dynamicColumnIds"></mat-header-row>
-        <mat-row *cdkRowDef="let row; columns: dynamicColumnIds;" [ngClass]="getRowClasses(row)"></mat-row>
+        <mat-header-row *matHeaderRowDef="dynamicColumnIds"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: dynamicColumnIds;" [ngClass]="getRowClasses(row)"></mat-row>
     </mat-table>
 </div>

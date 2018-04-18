@@ -1,4 +1,9 @@
 .workflow-container {
-  overflow-x: auto;
-  height: 556px;
+    overflow-x: auto;
+    height: 606px;
+}
+
+mat-grid-list {
+    overflow: auto;
+    max-height: 606px;
 }

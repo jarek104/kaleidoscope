@@ -1,12 +1,11 @@
-[
-    {
+[{
         "name": "id",
         "displayName": "Document ID",
         "width": "120"
     },
     {
         "name": "name",
-        "displayName": "Autoname",
+        "displayName": "Document Name",
         "width": "350"
     },
     {
@@ -62,6 +61,21 @@
     {
         "name": "stockName",
         "displayName": "Company",
+        "width": "250"
+    },
+    {
+        "name": "status",
+        "displayName": "Status",
+        "width": "250"
+    },
+    {
+        "name": "lastQueue",
+        "displayName": "Last Queue",
+        "width": "250"
+    },
+    {
+        "name": "lastTransition",
+        "displayName": "Last Transition",
         "width": "250"
     }
 ]
