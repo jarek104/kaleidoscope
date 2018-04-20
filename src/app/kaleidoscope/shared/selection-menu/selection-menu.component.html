@@ -2,28 +2,56 @@
   <mat-icon>menu</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-        <mat-icon>get_app</mat-icon>
-        <span>Export</span>
-    </button>
-    <button mat-menu-item>
-        <mat-icon>print</mat-icon>
-        <span>Print</span>
-    </button>
-    <button mat-menu-item>
-        <mat-icon>email</mat-icon>
-        <span>Send via email</span>
-    </button>
-    <button mat-menu-item>
-        <mat-icon>cloud</mat-icon>
-        <span>Send to Sharebase</span>
-    </button>
-    <button mat-menu-item>
-        <mat-icon>favorite</mat-icon>
-        <span>Add to favorites</span>
-    </button>
-    <button mat-menu-item>
-        <mat-icon>delete</mat-icon>
-        <span>Delete</span>
-    </button>
+    <ng-container *ngIf="view === 'workflow'">
+        <button mat-menu-item>
+            <mat-icon>done</mat-icon>
+            <span>Approve</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>close</mat-icon>
+            <span>Reject</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>call_made</mat-icon>
+            <span>Send to review</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>assignment_ind</mat-icon>
+            <span>Background ckeck</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>access_time</mat-icon>
+            <span>Pending</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+        </button>
+    </ng-container>
+    <ng-container *ngIf="view !== 'workflow'">
+        <button mat-menu-item>
+            <mat-icon>get_app</mat-icon>
+            <span>Export</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>print</mat-icon>
+            <span>Print</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>email</mat-icon>
+            <span>Send via email</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>cloud</mat-icon>
+            <span>Send to Sharebase</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>favorite</mat-icon>
+            <span>Add to favorites</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+        </button>
+    </ng-container>
 </mat-menu>

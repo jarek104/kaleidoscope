@@ -35,7 +35,10 @@ export class DynamicColumnsService {
         column.name !== 'name' &&
         column.name !== 'author' &&
         column.name !== 'dateCreated' &&
-        column.name !== 'lastModified'
+        column.name !== 'lastModified' &&
+        column.name !== 'status' &&
+        column.name !== 'lastQueue' &&
+        column.name !== 'lastTransition'
       )
     ));
     this.workflowColumns = this.columnDefinitions.asObservable().pipe(map(

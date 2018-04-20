@@ -1,9 +1,9 @@
-.workflow-container {
-    overflow-x: auto;
-    height: 606px;
+.table-container .mat-table.mat-table {
+    min-width: 717px;
+    max-height: 550px;
+    height: 550px;
 }
 
-mat-grid-list {
-    overflow: auto;
-    max-height: 606px;
+.table-container .mat-table .mat-header-row {
+    min-width: 700px;
 }

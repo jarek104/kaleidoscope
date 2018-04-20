@@ -42,6 +42,7 @@ export class WorkflowTableComponent implements OnInit, OnChanges, AfterViewInit 
     });
 
     this._columnService.workflowColumns.subscribe(values => {
+      this.dynamicColumnDefs = [];
       values.map(cols => {
         this.dynamicColumnDefs.push({
           id: cols.name.toUpperCase(),

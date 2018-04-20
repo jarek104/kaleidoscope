@@ -43,6 +43,7 @@ export class KeywordsTableComponent implements OnInit, AfterViewInit, OnChanges 
     });
 
     this._columnService.keywordColumns.subscribe(values => {
+      this.dynamicColumnDefs = [];
       values.map(cols => {
         this.dynamicColumnDefs.push({
           id: cols.name.toUpperCase(),

@@ -39,4 +39,9 @@ export class TableMenuComponent implements OnInit {
   shiftColumns() {
     this._columnsService.shiftColumns();
   }
+  popAColumn(col) {
+    let columns: IColumn[] = this._columnsService.columnDefinitions.value;
+    columns = columns.filter(e => e !== col);
+    this._columnsService.columnDefinitions.next(columns);
+  }
 }

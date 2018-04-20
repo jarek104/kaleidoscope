@@ -46,6 +46,7 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
     });
 
     this._columnService.metaColumns.subscribe(values => {
+      this.dynamicColumnDefs = [];
       values.map(cols => {
         this.dynamicColumnDefs.push({
           id: cols.name.toUpperCase(),
