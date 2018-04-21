@@ -1,5 +1,5 @@
-<div class="mat-elevation-z6 limit-size">
-    <mat-sidenav-container class="example-container" (backdropClick)="close('backdrop')">
+<div class="mat-elevation-z6">
+    <mat-sidenav-container (backdropClick)="close('backdrop')">
         <mat-sidenav #sidenav (keydown.escape)="sidenav.close()" disableClose align="end" fxLayout="column" fxLayoutAlign="space-between center">
 
             <app-advanced-filtering></app-advanced-filtering>

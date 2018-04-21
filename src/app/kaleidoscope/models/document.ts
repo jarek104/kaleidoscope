@@ -15,4 +15,7 @@ export interface IDocument {
     imageUrl: string;
     latitude: number;
     longitude: number;
+    status: string;
+    lastQueue: string;
+    lastTransition: Date;
 }
