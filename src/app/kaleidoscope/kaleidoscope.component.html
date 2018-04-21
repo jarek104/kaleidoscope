@@ -1,33 +1,41 @@
 <div class="mat-elevation-z6 limit-size">
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="menu-row__padding">
-        <app-table-menu></app-table-menu>
-        <div fxLayout="row" fxLayoutAlign="center center">
-            <mat-form-field fxHide.xs="true">
-                <input matInput (keyup)="applyFilter($event.target.value)">
-                <mat-placeholder>
-                    <mat-icon>search</mat-icon> Search term
-                </mat-placeholder>
-            </mat-form-field>
-            <button *ngIf="!(advancedFilteringEnabled)" (click)="toggleAdvancedFiltering()" mat-icon-button class="expand-button__margin">
-                <mat-icon>expand_more</mat-icon>
-            </button>
-            <button *ngIf="advancedFilteringEnabled" (click)="toggleAdvancedFiltering()" mat-icon-button class="expand-button__margin">
-                <mat-icon>expand_less</mat-icon>
-            </button>
-        </div>
-    </div>
-    <div [ngSwitch]="currentView">
-        <app-advanced-filtering *ngIf="advancedFilteringEnabled"></app-advanced-filtering>
-        <app-metadata-table *ngSwitchCase="'metadata'" [filterValue]="filterValue">
-        </app-metadata-table>
-        <app-keywords-table *ngSwitchCase="'keywords'" [filterValue]="filterValue">
-        </app-keywords-table>
-        <app-thumbnails-table *ngSwitchCase="'thumbnails'">
-        </app-thumbnails-table>
-        <app-map-view *ngSwitchCase="'map'">
-        </app-map-view>
-        <app-workflow-table *ngSwitchCase="'workflow'" [filterValue]="filterValue">
-        </app-workflow-table>
-    </div>
-    <app-table-footer></app-table-footer>
+    <mat-sidenav-container class="example-container" (backdropClick)="close('backdrop')">
+        <mat-sidenav #sidenav (keydown.escape)="sidenav.close()" disableClose align="end" fxLayout="column" fxLayoutAlign="space-between center">
+
+            <app-advanced-filtering></app-advanced-filtering>
+            <div>
+                <button mat-button>Apply</button>
+                <button mat-button (click)="close('toggle button')">Close</button>
+            </div>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="menu-row__padding">
+                <app-table-menu></app-table-menu>
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <mat-form-field fxHide.xs="true">
+                        <input matInput (keyup)="applyFilter($event.target.value)">
+                        <mat-placeholder>
+                            <mat-icon>search</mat-icon> Search term
+                        </mat-placeholder>
+                    </mat-form-field>
+                    <button (click)="sidenav.open()" mat-icon-button class="expand-button__margin">
+                        <mat-icon>filter_list</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div [ngSwitch]="currentView">
+                <app-metadata-table *ngSwitchCase="'metadata'" [filterValue]="filterValue">
+                </app-metadata-table>
+                <app-keywords-table *ngSwitchCase="'keywords'" [filterValue]="filterValue">
+                </app-keywords-table>
+                <app-thumbnails-table *ngSwitchCase="'thumbnails'">
+                </app-thumbnails-table>
+                <app-map-view *ngSwitchCase="'map'">
+                </app-map-view>
+                <app-workflow-table *ngSwitchCase="'workflow'" [filterValue]="filterValue">
+                </app-workflow-table>
+            </div>
+            <app-table-footer></app-table-footer>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </div>

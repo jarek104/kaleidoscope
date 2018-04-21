@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FilteringService } from '../../services/filtering.service';
+import { IColumn } from '../../models/column';
+import { TableViewService } from '../../services/table-view.service';
+import { DynamicColumnsService } from '../../services/dynamic-columns.service';
 
 @Component({
   selector: 'app-advanced-filtering',
@@ -8,9 +11,29 @@ import { FilteringService } from '../../services/filtering.service';
 })
 export class AdvancedFilteringComponent implements OnInit {
 
-  constructor( private _filteringService: FilteringService) { }
+  currentlyShownColumns: IColumn[] = [];
+  constructor(
+    private _filteringService: FilteringService,
+    private _tableView: TableViewService,
+    private _columnsService: DynamicColumnsService
+  ) { }
 
   ngOnInit() {
+    this._tableView.selectedView$.subscribe(data => {
+      if (data === 'metadata') {
+        this._columnsService.metaColumns.subscribe(cols => this.currentlyShownColumns = cols);
+      }
+      if (data === 'keywords') {
+        this._columnsService.keywordColumns.subscribe(cols => this.currentlyShownColumns = cols);
+
+        console.log(this.currentlyShownColumns);
+      }
+      if (data === 'wofkflow') {
+        this._columnsService.workflowColumns.subscribe(cols => this.currentlyShownColumns = cols);
+
+        console.log(this.currentlyShownColumns);
+      }
+    });
   }
 
   applyFilter(filterValue: string) {

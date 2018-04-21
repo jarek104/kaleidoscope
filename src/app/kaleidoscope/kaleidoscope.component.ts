@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatSidenav } from '@angular/material';
 import { IDocument } from './models/document';
 import { FilteringService } from './services/filtering.service';
 import { DataControllerService } from './services/data-controller.service';
@@ -22,7 +22,14 @@ export class KaleidoscopeComponent implements OnInit  {
 
   @Input() private dataSource = new MatTableDataSource<IDocument>();
   @Input() private columnDefinitions = new BehaviorSubject<IColumn[]>([]);
+  @ViewChild('sidenav') sidenav: MatSidenav;
 
+  reason = '';
+
+  close(reason: string) {
+    this.reason = reason;
+    this.sidenav.close();
+  }
   constructor(
     private _filteringService: FilteringService,
     private _dataControllerService: DataControllerService,
