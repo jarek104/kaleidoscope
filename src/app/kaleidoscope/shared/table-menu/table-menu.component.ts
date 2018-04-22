@@ -6,6 +6,7 @@ import { TableViewService } from '../../services/table-view.service';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/take';
+import { DataControllerService } from '../../services/data-controller.service';
 
 @Component({
   selector: 'app-table-menu',
@@ -20,7 +21,8 @@ export class TableMenuComponent implements OnInit {
   constructor(
     private _tableView: TableViewService,
     private _columnsService: DynamicColumnsService,
-    private _densityService: RowDensityService
+    private _densityService: RowDensityService,
+    private _dataController: DataControllerService
   ) {
   }
 
@@ -52,5 +54,8 @@ export class TableMenuComponent implements OnInit {
     let columns: IColumn[] = this._columnsService.columnDefinitions.value;
     columns = columns.filter(e => e !== col);
     this._columnsService.columnDefinitions.next(columns);
+  }
+  showSelected() {
+    this._dataController.dataSource.data = this._dataController.selectedRowsData.value;
   }
 }

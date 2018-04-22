@@ -3,17 +3,21 @@
 </button>
 
 <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="showSelected();">
+        <mat-icon>location_searching</mat-icon>
+        <span>Show only selected rows</span>
+    </button>
     <button mat-menu-item (click)="shiftColumns();">
-    <mat-icon>subdirectory_arrow_left</mat-icon>
-    <span>Shift columns left</span>
-  </button>
+        <mat-icon>subdirectory_arrow_left</mat-icon>
+        <span>Shift columns left</span>
+    </button>
     <button mat-menu-item [matMenuTriggerFor]="density">
       <mat-icon>reorder</mat-icon>
       <span>Row density</span>
-  </button>
+    </button>
     <button mat-menu-item [matMenuTriggerFor]="columns">
-      <mat-icon>view_column</mat-icon>
-      <span>Displayed columns</span>
+        <mat-icon>view_column</mat-icon>
+        <span>Displayed columns</span>
   </button>
 </mat-menu>
 

@@ -10,7 +10,7 @@ export class DataControllerService {
 
   dataSource = new MatTableDataSource<IDocument>();
 
-  selectedRowsData = new Subject<IDocument[]>();
+  selectedRowsData = new BehaviorSubject<IDocument[]>([]);
 
   private _initialSelection = [];
   private _allowMultiSelect = true;
