@@ -3,10 +3,14 @@
 </button>
 
 <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="showSelected();">
-        <mat-icon>location_searching</mat-icon>
+    <button mat-menu-item *ngIf="showSelectedOnly === false" (click)="showSelected();">
+        <mat-icon>filter_center_focus</mat-icon>
         <span>Show only selected rows</span>
     </button>
+    <button mat-menu-item *ngIf="showSelectedOnly === true" (click)="showSelected();">
+            <mat-icon>crop_free</mat-icon>
+            <span>Show all rows</span>
+        </button>
     <button mat-menu-item (click)="shiftColumns();">
         <mat-icon>subdirectory_arrow_left</mat-icon>
         <span>Shift columns left</span>
