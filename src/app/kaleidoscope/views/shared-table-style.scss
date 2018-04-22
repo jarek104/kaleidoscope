@@ -7,38 +7,22 @@ $hover-color: #EEEEEE;
 
 .mat-row:hover {
     background-color: $hover-color;
-    -webkit-transition: background-color 400ms linear;
-    -ms-transition: background-color 400ms linear;
-    transition: background-color 400ms linear;
+    -webkit-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
+    transition: background-color 300ms linear;
 }
 
-//Testing
-.table-container {
-    position: relative;
-    // margin-top: 10px;
-    overflow-x: auto;
-    overflow-y: auto;
-}
-
+//Important table stuff. Every table needs to have height set and they must match
 .mat-table {
     overflow: auto;
     max-height: 500px;
-    margin-top: 46px;
-}
-
-.table-container .mat-table .mat-header-row {
-    position: absolute;
-    top: -10px;
-    left: 0px;
-    right: 17px;
-    background: #fff;
 }
 
 .small-column__width {
     flex: 0 0 100px !important;
-    white-space: unset !important;
 }
 
+// CHECKBOXES
 .mat-column-select {
     overflow: initial;
 }

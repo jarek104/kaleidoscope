@@ -1,9 +1,6 @@
-.table-container .mat-table.mat-table {
-    min-width: 717px;
-    max-height: 550px;
-    height: 550px;
-}
-
-.table-container .mat-table .mat-header-row {
-    min-width: 700px;
+// THIS NEEDS TO BE SET PROGRAMATICALLY BASED ON THE WITH OF ALL THE COLUMNS
+.mat-row,
+.mat-header-row {
+    background: white;
+    min-width: 1250px;
 }

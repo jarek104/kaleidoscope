@@ -1,9 +1,20 @@
-.table-container .mat-table.mat-table {
-    min-width: 1417px;
-    max-height: 550px;
-    height: 550px;
+// THIS NEEDS TO BE SET PROGRAMATICALLY BASED ON THE WITH OF ALL THE COLUMNS
+.mat-row,
+.mat-header-row {
+    background: white;
+    min-width: 1050px;
 }
 
-.table-container .mat-table .mat-header-row {
-    min-width: 1400px;
-}
+// .table-container .mat-table .mat-header-row {
+//     position: absolute;
+//     top: -30px;
+//     left: 0px;
+//     right: 15px;
+//     background: #fff;
+// }
+// .table-container {
+//     position: relative;
+//     margin-top: 50px;
+//     overflow-x: auto;
+//     overflow-y: auto;
+// }
