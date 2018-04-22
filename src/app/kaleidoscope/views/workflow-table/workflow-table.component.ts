@@ -81,7 +81,6 @@ export class WorkflowTableComponent implements OnInit, OnChanges, AfterViewInit 
 
   ngOnChanges() {
     this.selection = this._dataControllerService.selection;
-    this.dataSource = this._dataControllerService.dataSource;
   }
   getRowClasses(item: IDocument) {
     const classes: string[] = [];

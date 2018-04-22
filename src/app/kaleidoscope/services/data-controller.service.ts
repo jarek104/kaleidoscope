@@ -8,20 +8,15 @@ import { SelectionModel } from '@angular/cdk/collections';
 @Injectable()
 export class DataControllerService {
 
-  dataSource = new MatTableDataSource<IDocument>();
 
+  dataSource = new MatTableDataSource<IDocument>();
+  dataSourceHelper: IDocument[] = [];
+  allRowsData = new BehaviorSubject<IDocument[]>([]);
   selectedRowsData = new BehaviorSubject<IDocument[]>([]);
 
   private _initialSelection = [];
   private _allowMultiSelect = true;
 
   selection = new SelectionModel<IDocument>(this._allowMultiSelect, this._initialSelection);
-
-  selectRows(rows: IDocument[]) {
-    rows.forEach(doc => {
-      this.selection.select(doc);
-      console.log(doc);
-    });
-  }
 
 }

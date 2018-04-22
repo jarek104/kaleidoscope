@@ -84,7 +84,6 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
   }
   ngOnChanges() {
     this.selection = this._dataControllerService.selection;
-    this.dataSource = this._dataControllerService.dataSource;
   }
 
   getRowClasses(item: IDocument) {

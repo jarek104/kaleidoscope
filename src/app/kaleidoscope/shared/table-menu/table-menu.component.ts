@@ -16,8 +16,9 @@ import { DataControllerService } from '../../services/data-controller.service';
 export class TableMenuComponent implements OnInit {
 
   @Input() isDisabled?;
-  originalColumns: IColumn[] = [];
   currentlyShownColumns: IColumn[] = [];
+  showSelectedOnly = false;
+  dataCopy;
   constructor(
     private _tableView: TableViewService,
     private _columnsService: DynamicColumnsService,
@@ -27,6 +28,7 @@ export class TableMenuComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this._tableView.selectedView$.subscribe(data => {
       if (data === 'metadata') {
         this._columnsService.metaColumns.subscribe(cols => this.currentlyShownColumns = cols);
@@ -56,6 +58,16 @@ export class TableMenuComponent implements OnInit {
     this._columnsService.columnDefinitions.next(columns);
   }
   showSelected() {
-    this._dataController.dataSource.data = this._dataController.selectedRowsData.value;
+    if (this.dataCopy === undefined) {
+      this.dataCopy = this._dataController.dataSource.data;
+    }
+
+    this.showSelectedOnly = !this.showSelectedOnly;
+
+    if (this.showSelectedOnly) {
+      this._dataController.dataSource.data = this._dataController.selectedRowsData.value;
+    } else {
+      this._dataController.dataSource.data = this.dataCopy;
+    }
   }
 }
