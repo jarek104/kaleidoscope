@@ -6,31 +6,22 @@
         </mat-placeholder>
     </mat-form-field>
     <div fxLayout="row" fxLayoutGap="10px">
-        <mat-form-field>
+        <mat-form-field class="date-input__width">
             <input matInput [matDatepicker]="fromPicker" placeholder="From">
             <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
             <mat-datepicker #fromPicker></mat-datepicker>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="date-input__width">
             <input matInput [matDatepicker]="toPicker" placeholder="To">
             <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
             <mat-datepicker #toPicker></mat-datepicker>
         </mat-form-field>
     </div>
     <div fxFlexAlign="baseline" class="full-width">
-        <form class="example-form" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+        <form fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
             <mat-form-field class="full-width" *ngFor="let columnName of currentlyShownColumns;">
                 <input matInput placeholder="{{columnName.displayName}}">
             </mat-form-field>
         </form>
-
     </div>
-    <!-- <div fxLayout="row" fxLayoutGap="10px">
-      <mat-form-field>
-          <input matInput placeholder="ID from">
-      </mat-form-field>
-      <mat-form-field>
-          <input matInput placeholder="ID to">
-      </mat-form-field>
-    </div> -->
 </div>
