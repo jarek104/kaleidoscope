@@ -12,10 +12,17 @@ $hover-color: #EEEEEE;
     transition: background-color 300ms linear;
 }
 
-//Important table stuff. Every table needs to have height set and they must match
+// Every table needs to have height set and they must match. Thumbnails and map have theirs in their scss
 .mat-table {
     overflow: auto;
     max-height: 500px;
+}
+
+// Sticky header row
+.mat-header-row {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
 }
 
 .small-column__width {
