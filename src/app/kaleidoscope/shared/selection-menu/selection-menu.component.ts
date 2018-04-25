@@ -15,7 +15,6 @@ export class SelectionMenuComponent implements OnInit {
   ngOnInit() {
     this.tableView.selectedView$.subscribe(val => {
       this.view = val;
-      console.log(this.view);
     });
   }
 

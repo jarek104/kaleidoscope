@@ -35,13 +35,9 @@ export class TableMenuComponent implements OnInit {
       }
       if (data === 'keywords') {
         this._columnsService.keywordColumns.subscribe(cols => this.currentlyShownColumns = cols);
-
-        console.log(this.currentlyShownColumns);
       }
       if (data === 'wofkflow') {
         this._columnsService.workflowColumns.subscribe(cols => this.currentlyShownColumns = cols);
-
-        console.log(this.currentlyShownColumns);
       }
     });
   }

@@ -7,6 +7,7 @@ import { TableViewService } from './services/table-view.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { IColumn } from './models/column';
 import { DynamicColumnsService } from './services/dynamic-columns.service';
+import { Subject } from 'rxjs/Subject';
 
 
 @Component({
@@ -22,9 +23,12 @@ export class KaleidoscopeComponent implements OnInit  {
 
   @Input() private dataSource = new MatTableDataSource<IDocument>();
   @Input() private columnDefinitions = new BehaviorSubject<IColumn[]>([]);
+  @Input() private preselectedItemIds = [];
+
   @ViewChild('sidenav') sidenav: MatSidenav;
 
   reason = '';
+  preselectedDocuments: IDocument[] = [];
 
   close(reason: string) {
     this.reason = reason;
@@ -46,6 +50,10 @@ export class KaleidoscopeComponent implements OnInit  {
     this.columnDefinitions.subscribe(values => {
       this._columnService.columnDefinitions.next(values);
     });
+
+    this.preselectedDocuments = this._dataControllerService.dataSource.data.filter(item =>
+      item.id !== '');
+    console.log(this.preselectedDocuments);
   }
 
   toggleAdvancedFiltering() {

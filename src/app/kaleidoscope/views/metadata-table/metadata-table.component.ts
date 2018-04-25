@@ -107,7 +107,4 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
    }
     return classes;
   }
-  log(any) {
-    console.log(any);
-  }
 }

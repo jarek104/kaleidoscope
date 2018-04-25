@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
 
   dataSource = new MatTableDataSource<IDocument>();
   columns = new BehaviorSubject<IColumn[]>([]);
+  preselectedItemIds = ['48281', '43373'];
 
   constructor(private dps: DocumentProviderService) {}
 
