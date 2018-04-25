@@ -7,6 +7,7 @@ import { RowDensityService } from '../../services/row-density.service';
 import { DynamicColumnsService } from '../../services/dynamic-columns.service';
 
 
+
 @Component({
   selector: 'app-keywords-table',
   templateUrl: './keywords-table.component.html',

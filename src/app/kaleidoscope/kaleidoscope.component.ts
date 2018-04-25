@@ -7,8 +7,7 @@ import { TableViewService } from './services/table-view.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { IColumn } from './models/column';
 import { DynamicColumnsService } from './services/dynamic-columns.service';
-import { Subject } from 'rxjs/Subject';
-
+import { map } from 'rxjs/operators';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -21,9 +20,9 @@ export class KaleidoscopeComponent implements OnInit  {
   filterValue = '';
   currentView: string;
 
-  @Input() private dataSource = new MatTableDataSource<IDocument>();
+  @Input() private dataSource = new BehaviorSubject<IDocument[]>([]);
   @Input() private columnDefinitions = new BehaviorSubject<IColumn[]>([]);
-  @Input() private preselectedItemIds = [];
+  @Input() private preselectedItemIds = [72086, 84830, 51577];
 
   @ViewChild('sidenav') sidenav: MatSidenav;
 
@@ -42,7 +41,12 @@ export class KaleidoscopeComponent implements OnInit  {
   ) {}
 
   ngOnInit() {
-    this._dataControllerService.dataSource = this.dataSource;
+
+    this.dataSource.subscribe(data => {
+      this._dataControllerService.dataSource.data = data;
+      this._dataControllerService._initialSelection = data.filter(val => this.preselectedItemIds.includes(val.id ));
+    });
+
     this._viewService.selectedView$.subscribe(view =>
       this.currentView = view
     );
@@ -51,9 +55,8 @@ export class KaleidoscopeComponent implements OnInit  {
       this._columnService.columnDefinitions.next(values);
     });
 
-    this.preselectedDocuments = this._dataControllerService.dataSource.data.filter(item =>
-      item.id !== '');
-    console.log(this.preselectedDocuments);
+
+
   }
 
   toggleAdvancedFiltering() {

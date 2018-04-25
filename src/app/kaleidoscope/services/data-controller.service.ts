@@ -14,8 +14,8 @@ export class DataControllerService {
   allRowsData = new BehaviorSubject<IDocument[]>([]);
   selectedRowsData = new BehaviorSubject<IDocument[]>([]);
 
-  private _initialSelection = [];
-  private _allowMultiSelect = true;
+  _initialSelection = [];
+  _allowMultiSelect = true;
 
   selection = new SelectionModel<IDocument>(this._allowMultiSelect, this._initialSelection);
 

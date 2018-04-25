@@ -27,7 +27,7 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
   initialSelection = [];
   allowMultiSelect = true;
   rowDensity;
-  selection = new SelectionModel<IDocument>(this.allowMultiSelect, this.initialSelection);
+  selection;
 
   constructor(
     private _columnService: DynamicColumnsService,
@@ -36,6 +36,7 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
   }
 
   ngOnInit() {
+    this.selection = new SelectionModel<IDocument>(this.allowMultiSelect, this._dataControllerService._initialSelection);
     this.dataSource = this._dataControllerService.dataSource;
     // Push selection to the service everytime componenent's selection changes
     this.selection.onChange.subscribe( () => {

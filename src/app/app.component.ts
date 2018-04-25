@@ -12,7 +12,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 })
 export class AppComponent implements OnInit {
 
-  dataSource = new MatTableDataSource<IDocument>();
+  dataSourceFromTheService = new BehaviorSubject<IDocument[]>([]);
   columns = new BehaviorSubject<IColumn[]>([]);
   preselectedItemIds = ['48281', '43373'];
 
@@ -20,7 +20,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.dps.getDocuments().subscribe(data => {
-      this.dataSource.data = data;
+      this.dataSourceFromTheService.next(data);
+      // console.log('app.component.ts' + JSON.stringify(this.dataSourceFromTheService));
+
     });
     this.dps.getColumns().subscribe(data => {
       this.columns.next(data);

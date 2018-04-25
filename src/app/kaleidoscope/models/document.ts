@@ -1,5 +1,5 @@
 export interface IDocument {
-    id: string;
+    id: number;
     name: string;
     author: string;
     dateCreated: Date;
