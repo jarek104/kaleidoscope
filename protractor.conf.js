@@ -9,10 +9,20 @@ exports.config = {
     './e2e/**/*.e2e-spec.ts'
   ],
   capabilities: {
-    'browserName': 'chrome'
+    // 'browserName' : 'chrome',
+
+    'browserName' : 'Chrome',
+    'browser_version' : '66.0',
+    'os' : 'Windows',
+    'os_version' : '10',
+    'resolution' : '1920x1080',
+    'browserstack.user' : 'jerryolewniczak1',
+    'browserstack.key' : 'dAxzCDNq6HkPyuGST1EJ'
   },
-  directConnect: true,
-  baseUrl: 'http://localhost:4200/',
+  directConnect: false,
+  // directConnect: true,
+  seleniumAddress: 'http://hub-cloud.browserstack.com/wd/hub',
+  baseUrl: 'http://nokurna.com/kaleidoscope/',
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,

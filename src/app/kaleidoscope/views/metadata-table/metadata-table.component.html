@@ -3,7 +3,7 @@
         <!-- Column header definitions -->
         <ng-container matColumnDef="select">
             <mat-header-cell *matHeaderCellDef class="small-column__width">
-                <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
+                <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()" class="protractor-checkbox-all">
                 </mat-checkbox>
             </mat-header-cell>
             <mat-cell *matCellDef="let row" class="small-column__width">

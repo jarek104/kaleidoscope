@@ -1,8 +1,4 @@
-[{
-        "name": "id",
-        "displayName": "Document ID",
-        "width": "120"
-    },
+[
     {
         "name": "name",
         "displayName": "Document Name",
