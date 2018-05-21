@@ -8,17 +8,25 @@ exports.config = {
   specs: [
     './e2e/**/*.e2e-spec.ts'
   ],
-  capabilities: {
+  commonCapabilities: {
     // 'browserName' : 'chrome',
-
-    'browserName' : 'Chrome',
-    'browser_version' : '66.0',
-    'os' : 'Windows',
-    'os_version' : '10',
-    'resolution' : '1920x1080',
     'browserstack.user' : 'jerryolewniczak1',
     'browserstack.key' : 'dAxzCDNq6HkPyuGST1EJ'
   },
+  multiCapabilities: [
+    {
+      'browserName': 'Safari',
+      'device': 'iPhone 8 Plus',
+      'realMobile': 'true',
+      'os_version': '11.0'
+    },
+    {
+      'browserName': 'Chrome',
+      'device': 'Samsung Galaxy S8',
+      'realMobile': 'true',
+      'os_version': '7.0'
+    },
+  ],
   directConnect: false,
   // directConnect: true,
   seleniumAddress: 'http://hub-cloud.browserstack.com/wd/hub',
@@ -36,3 +44,6 @@ exports.config = {
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
   }
 };
+exports.config.multiCapabilities.forEach(function(caps){
+  for(var i in exports.config.commonCapabilities) caps[i] = caps[i] || exports.config.commonCapabilities[i];
+});
