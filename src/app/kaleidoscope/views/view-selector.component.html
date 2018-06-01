@@ -2,19 +2,19 @@
     <div style="padding-right: 10px;">Views </div>
     <!-- This shows on screens > xs -->
     <mat-button-toggle-group #group="matButtonToggleGroup" fxShow fxHide.xs="true" value="metadata" (change)="setCurrentView($event.value)">
-        <mat-button-toggle value="metadata">
+        <mat-button-toggle value="metadata" class="protractor-metadata-view">
             <mat-icon>bubble_chart</mat-icon>
         </mat-button-toggle>
-        <mat-button-toggle value="keywords">
+        <mat-button-toggle value="keywords" class="protractor-keywords-view">
             <i class="material-icons">reorder</i>
         </mat-button-toggle>
-        <mat-button-toggle value="thumbnails">
+        <mat-button-toggle value="thumbnails" class="protractor-thumbnails-view">
             <mat-icon>apps</mat-icon>
         </mat-button-toggle>
-        <mat-button-toggle value="workflow">
+        <mat-button-toggle value="workflow" class="protractor-workflow-view">
             <mat-icon>timeline</mat-icon>
         </mat-button-toggle>
-        <mat-button-toggle value="map">
+        <mat-button-toggle value="map" class="protractor-map-view">
             <mat-icon>pin_drop</mat-icon>
         </mat-button-toggle>
     </mat-button-toggle-group>

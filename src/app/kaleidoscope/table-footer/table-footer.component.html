@@ -1,7 +1,7 @@
 <div class="container" fxLayout="row" fxLayoutAlign="space-between center">
     <div>
         <app-selection-menu [isDisabled]="numberOfSelectedItems === 0?  true : false"></app-selection-menu>
-        <span *ngIf="numberOfSelectedItems > 0">{{numberOfSelectedItems}} {{numberOfSelectedItems > 1 ? 'items' : 'item'}} selected</span>
+        <span *ngIf="numberOfSelectedItems > 0" class="protractor-items-selected">{{numberOfSelectedItems}} {{numberOfSelectedItems > 1 ? 'items' : 'item'}} selected</span>
     </div>
     <app-view-selector></app-view-selector>
 
