@@ -3,19 +3,19 @@
         <!-- Column header definitions -->
         <ng-container matColumnDef="select">
             <mat-header-cell *matHeaderCellDef class="small-column__width">
-                <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
+                <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()" class="protractor-check-all">
                 </mat-checkbox>
             </mat-header-cell>
-            <mat-cell *matCellDef="let row" class="small-column__width">
-                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+            <mat-cell *matCellDef="let row; let ind = index" class="small-column__width">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)" [ngClass]="getCheckboxIdent(ind)">
                 </mat-checkbox>
             </mat-cell>
         </ng-container>
 
         <!-- Dynamic columns -->
         <ng-container [matColumnDef]="column.id" *ngFor="let column of dynamicColumnDefs">
-            <mat-header-cell *matHeaderCellDef [mat-sort-header]="column.property" [fxFlex]="column.width + 'px'"> {{column.headerText}} </mat-header-cell>
-            <mat-cell *matCellDef="let row" [fxFlex]="column.width + 'px'"> {{row[column.property]}} </mat-cell>
+            <mat-header-cell *matHeaderCellDef [mat-sort-header]="column.property" [fxFlex]="column.width + 'px'" [ngClass]="column.property"> {{column.headerText}} </mat-header-cell>
+            <mat-cell *matCellDef="let row; let ind = index" [fxFlex]="column.width + 'px'" [className]="getIdent(ind)"> {{row[column.property]}} </mat-cell>
         </ng-container>
 
         <!-- Actions column -->

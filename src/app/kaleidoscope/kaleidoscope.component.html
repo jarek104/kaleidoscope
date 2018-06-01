@@ -13,7 +13,7 @@
                 <app-table-menu></app-table-menu>
                 <div fxLayout="row" fxLayoutAlign="center center">
                     <mat-form-field fxHide.xs="true">
-                        <input matInput (keyup)="applyFilter($event.target.value)">
+                        <input matInput (keyup)="applyFilter($event.target.value)" class="protractor-search">
                         <mat-placeholder>
                             <mat-icon>search</mat-icon> Search term
                         </mat-placeholder>

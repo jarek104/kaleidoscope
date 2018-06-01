@@ -1,6 +1,6 @@
 <div fxLayout="column" fxLayoutAlign="start center" class="container__padding">
     <mat-form-field class="search-box" fxShow.xs="true" fxHide class="full-width">
-        <input matInput (keyup)="applyFilter($event.target.value)">
+        <input matInput (keyup)="applyFilter($event.target.value)" class="protractor-search">
         <mat-placeholder>
             <mat-icon>search</mat-icon> Search term
         </mat-placeholder>

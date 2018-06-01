@@ -107,4 +107,10 @@ export class MetadataTableComponent implements OnInit, AfterViewInit, OnChanges 
    }
     return classes;
   }
+  getIdent(val) {
+    return 'protractor-row-' + val;
+  }
+  getCheckboxIdent(val) {
+    return 'protractor-checkbox-row-' + val;
+  }
 }
