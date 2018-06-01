@@ -14,8 +14,8 @@ describe('grid App', () => {
   it('should display welcome message', () => {
     page.navigateTo();
     browser.sleep(2000);
-    filterButton.click();
-    browser.sleep(2000);
+    // filterButton.click();
+    // browser.sleep(2000);
     searchInput.sendKeys('lorem');
     browser.sleep(2000);
     checkAll.click();

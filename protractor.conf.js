@@ -10,26 +10,38 @@ exports.config = {
   ],
   commonCapabilities: {
     // 'browserName' : 'chrome',
-    'browserstack.user' : 'jerryolewniczak1',
-    'browserstack.key' : 'dAxzCDNq6HkPyuGST1EJ'
+    // 'browserstack.user' : 'jerryolewniczak1',
+    // 'browserstack.key' : 'dAxzCDNq6HkPyuGST1EJ'
   },
   multiCapabilities: [
     {
-      'browserName': 'Safari',
-      'device': 'iPhone 8 Plus',
-      'realMobile': 'true',
-      'os_version': '11.0'
+      'browserName': 'Chrome',
     },
     {
-      'browserName': 'Chrome',
-      'device': 'Samsung Galaxy S8',
-      'realMobile': 'true',
-      'os_version': '7.0'
+      'browserName': 'Firefox',
     },
+    {
+      'browserName': 'Interet Explorer',
+    },
+    {
+      'browserName': 'Safari',
+    },
+    // {
+    //   'browserName': 'Safari',
+    //   'device': 'iPhone 8 Plus',
+    //   'realMobile': 'true',
+    //   'os_version': '11.0'
+    // },
+    // {
+    //   'browserName': 'Chrome',
+    //   'device': 'Samsung Galaxy S8',
+    //   'realMobile': 'true',
+    //   'os_version': '7.0'
+    // },
   ],
   directConnect: false,
   // directConnect: true,
-  seleniumAddress: 'http://hub-cloud.browserstack.com/wd/hub',
+  seleniumAddress: 'http://zaphod:38609b2d-e735-4f08-bc6e-f2e61e6a59d6@ondemand.saucelabs.com:80/wd/hub',
   baseUrl: 'http://nokurna.com/kaleidoscope/',
   framework: 'jasmine',
   jasmineNodeOpts: {
