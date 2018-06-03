@@ -16,7 +16,7 @@ export class AppPage {
 
   navigateTo() {
     // return browser.get('http://nokurna.com/kaleidoscope/');
-    return browser.get('/');
+    return browser.get('http://nokurna.com/kaleidoscope/');
   }
   waitForElementToBePresent(el: ElementFinder, errorMsg?: string) {
     const ec = protractor.ExpectedConditions;
