@@ -26,17 +26,22 @@ exports.config = {
         'browserName' : 'Edge',
         'browser_version' : '17.0',
       },
-      {
-        'os' : 'Windows',
-        'os_version' : '10',
-        'browserName' : 'IE',
-        'browser_version' : '11.0',
-      },
+      // {
+      //   'os' : 'Windows',
+      //   'os_version' : '10',
+      //   'browserName' : 'IE',
+      //   'browser_version' : '11.0',
+      // },
       {
         'os' : 'Windows',
         'os_version' : '10',
         'browserName' : 'Firefox',
         'browser_version' : '60.0',
+      },
+      {
+        'os' : 'OS X',
+        'browserName' : 'Safari',
+        'browser_version' : '10.0',
       }
     ],
     // multiCapabilities: [{
