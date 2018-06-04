@@ -13,19 +13,45 @@ exports.config = {
         'browserstack.user': 'jerryolewniczak1',
         'browserstack.key': 'dAxzCDNq6HkPyuGST1EJ'
     },
-    multiCapabilities: [{
-            'browserName': 'Safari',
-            'device': 'iPhone 8 Plus',
-            'realMobile': 'true',
-            'os_version': '11.0'
-        },
-        {
-            'browserName': 'Chrome',
-            'device': 'Samsung Galaxy S8',
-            'realMobile': 'true',
-            'os_version': '7.0'
-        },
+    multiCapabilities: [
+      {
+        'os' : 'Windows',
+        'os_version' : '10',
+        'browserName' : 'Chrome',
+        'browser_version' : '66.0',
+      },
+      {
+        'os' : 'Windows',
+        'os_version' : '10',
+        'browserName' : 'Edge',
+        'browser_version' : '17.0',
+      },
+      {
+        'os' : 'Windows',
+        'os_version' : '10',
+        'browserName' : 'IE',
+        'browser_version' : '11.0',
+      },
+      {
+        'os' : 'Windows',
+        'os_version' : '10',
+        'browserName' : 'Firefox',
+        'browser_version' : '60.0',
+      }
     ],
+    // multiCapabilities: [{
+    //         'browserName': 'Safari',
+    //         'device': 'iPhone 8 Plus',
+    //         'realMobile': 'true',
+    //         'os_version': '11.0'
+    //     },
+    //     {
+    //         'browserName': 'Chrome',
+    //         'device': 'Samsung Galaxy S8',
+    //         'realMobile': 'true',
+    //         'os_version': '7.0'
+    //     },
+    // ],
     directConnect: false,
     // directConnect: true,
     seleniumAddress: 'http://hub-cloud.browserstack.com/wd/hub',
