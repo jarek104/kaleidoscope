@@ -53,7 +53,6 @@ exports.config = {
     //     },
     // ],
     directConnect: false,
-    // directConnect: true,
     seleniumAddress: 'http://hub-cloud.browserstack.com/wd/hub',
     baseUrl: 'http://nokurna.com/kaleidoscope/',
     framework: 'jasmine',
